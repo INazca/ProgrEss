@@ -1,0 +1,30 @@
+{
+  "name": "progress",
+  "version": "1.0.0",
+  "description": "ProgrEss is a Classroom-Response-System for introductory programming courses, that respects the variety of possible tasks being involved in programming.",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/INazca/ProgrEss.git"
+  },
+  "keywords": [
+    "classroom-response-system",
+    "poll",
+    "programming-exercises"
+  ],
+  "author": "Stefan Braun (INazca)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/INazca/ProgrEss/issues"
+  },
+  "homepage": "https://github.com/INazca/ProgrEss#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
