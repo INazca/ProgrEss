@@ -1,7 +1,17 @@
 <%- include('partials/html-header'); -%>
 <%- include('partials/header') -%>
 
-
+<div class="code-input-wrapper">
+    <form action="" method="get">
+        <div class="form-group">
+            <input type="text" class="form-control form-control-lg" id="code-input" aria-describedby="code-help">
+            <small id="code-help" class="form-text text-muted">Geben Sie hier Ihren Umfragecode ein</small>
+        </div>
+        <div class="btn-wrapper">
+            <button type="submit" class="btn btn-primary-color btn-lg">Zur Umfrage &gt</button>
+        </div>
+    </form>
+</div>
 
 <%- include('partials/footer') -%>
 <%- include('partials/html-close') -%>
