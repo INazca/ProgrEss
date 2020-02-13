@@ -6,6 +6,7 @@ var express = require("express"),
     app = express();
 
 app.use(express.static("app/resources"));
+app.use(express.static("node_modules/codemirror"));
 app.set("view engine", "ejs");
 app.set("views", "app/views");
 

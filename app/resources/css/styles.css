@@ -133,6 +133,8 @@ header {
 
 .view-container {
     height: 100%;
+    border: 2px solid #ffc107;
+    border-radius: .25rem;
     box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.53);
     padding: 2rem;
 }
@@ -144,12 +146,40 @@ header {
     font-size: 1.2rem;
 }
 
+.tool-description {
+    font-size: 0.8rem;
+}
+
 .task-wrapper {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.editor-container-ss {
+    height: 100%;
     flex: 1 1 auto;
 }
 
 .view-container .btn-wrapper {
     flex: 0 1 auto;
+}
+
+.view-container .CodeMirror {
+    height: 100%;
+    border: 1px solid #0d0d0d;
+    background-color: #fafafa;
+    border-radius: .25rem;
+    padding: .5rem;
+}
+
+.tools-wrapper {
+    flex: 0 1 auto;
+    width: 10rem;
+    display: flex;
+    flex-flow: column;
+    margin-left: .5rem;
 }
 
 /* css for syntax-highlighting-solve-phase */
