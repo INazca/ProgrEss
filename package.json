@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/INazca/ProgrEss#readme",
   "dependencies": {
+    "codemirror": "^5.51.0",
     "ejs": "^3.0.1",
     "esm": "^3.2.25",
     "express": "^4.17.1",

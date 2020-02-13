@@ -28,6 +28,10 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.hidden {
+    display: none;
+}
+
 /* settings for primary and secondary buttons */
 .btn-wrapper {
     width: 100%;
@@ -130,4 +134,29 @@ header {
 .view-container {
     height: 100%;
     box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.53);
+    padding: 2rem;
+}
+
+/* overlapping css rules for sub views of survey viewer*/
+
+.task-description {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.task-wrapper {
+    flex: 1 1 auto;
+}
+
+.view-container .btn-wrapper {
+    flex: 0 1 auto;
+}
+
+/* css for syntax-highlighting-solve-phase */
+
+#syntax-highlighting-solve {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 100%;
 }
