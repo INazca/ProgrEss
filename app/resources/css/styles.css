@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    color: #0d0d0d;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.primary-color {
+    color: #EDC913;
+}
+
+.bg-primary-color {
+    background-color: #EDC913;
+}
+
+.shadow-strong {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar-brand {
+    margin: 0 auto;
+    font-weight: 600;
+}

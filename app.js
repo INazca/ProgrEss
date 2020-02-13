@@ -5,7 +5,7 @@ import ServerConst from "./lib/utils/ServerConst.js";
 var express = require("express"),
     app = express();
 
-app.use(express.static("app/rescources"));
+app.use(express.static("app/resources"));
 app.set("view engine", "ejs");
 app.set("views", "app/views");
 
