@@ -19,9 +19,24 @@
         </div>
     </div>
 
-    <!-- controls for working on tasks -->
+    <!-- controls for controlling survey-cards -->
+
     <button class="btn btn-secondary-color controls controls-prev shadow-strong">&lt</button>
     <button class="btn btn-secondary-color controls controls-next shadow-strong">&gt</button>
+
+    <div class="controls-correctness-wrapper">
+        <button class="btn btn-correct controls controls-correctness controls-correct shadow-strong">
+            <i class="material-icons">done</i>
+        </button>
+        <button class="btn btn-incorrect controls controls-correctness controls-incorrect shadow-strong">
+            <i class="material-icons md-light">clear</i>
+        </button>
+    </div>
+
+    <div class="controls-submission-wrapper">
+        <button class="btn btn-secondary-color controls controls-submit shadow-strong">Abgeben</button>
+    </div>
+
 </div>
 
 <%- include('partials/html-close') -%>

@@ -213,9 +213,46 @@ header {
     border-bottom-right-radius: 0;
 }
 
+.controls-correctness {
+    position: relative;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin: 0 5vw;
+}
+
+.controls.controls-submit {
+    width: 10rem;
+    position: relative;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.controls-correctness-wrapper {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+}
+
+.controls-correctness-wrapper-hidden {
+    display: none;
+}
+
+.controls-submission-wrapper {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+}
+
+.controls-submission-wrapper-hidden {
+    display: none;
+}
+
 .controls {
     width: 3rem;
-    
 }
 
 /* overlapping css rules for sub views of survey viewer*/
