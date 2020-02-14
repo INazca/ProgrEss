@@ -1,0 +1,30 @@
+<div id="type-determination-solve" class="survey-content-wrapper">
+    <div class="survey-content">
+
+        <!-- task description and hints -->
+        <p class="task-description">Bestimmen Sie, ob folgender markierter Ausdruck zulässig ist und geben Sie, sofern dies zutrifft, dessen Rückgabe-Typ an!</p>
+
+        <!-- editor -->
+        <div class="task-wrapper">
+            <div class="editor-container editor-container-ts"></div>
+        </div>
+
+        <!-- form to determine legality and type of expression -->
+        <div class="btn-wrapper legal-controls">
+            <button class="btn btn-primary-color controls-legality btn-legal">legal</button>
+            <button class="btn btn-primary-color controls-legality btn-illegal">unzulässig</button>
+        </div>
+        <form action="">
+            <div class="form-group">
+                <input type="text" class="form-control" id="type-input" aria-describedby="type-help">
+                <small id="type-help" class="form-text text-muted text-centered">Geben Sie den Typ des Rückgabewerts an</small>
+            </div>
+        </form>
+
+        <!-- button for submition -->
+        <div class="btn-wrapper">
+            <button type="submit" class="btn btn-secondary-color">Lösung abgeben &gt</button>
+        </div>
+
+    </div>
+</div>

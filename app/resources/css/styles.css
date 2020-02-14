@@ -33,6 +33,10 @@ body {
     display: none;
 }
 
+.text-centered {
+    text-align: center;
+}
+
 /* settings for primary and secondary buttons */
 .btn-wrapper {
     width: 100%;
@@ -247,6 +251,8 @@ header {
     padding: .5rem;
 }
 
+/* css for syntax-highlighting */
+
 .tools-wrapper {
     flex: 0 1 auto;
     width: 10rem;
@@ -255,5 +261,22 @@ header {
     margin-left: .5rem;
 }
 
-/* css for syntax-highlighting-solve-phase */
+/* css for type-determination */
 
+.controls-legality {
+    margin: 0 2rem;
+    width: 10rem;
+}
+
+.survey-content .form-control {
+    width: 30%;
+    min-width: 250px;
+    margin: 0 auto;
+    transition: border-width .1s ease-in;
+}
+
+.survey-content .form-control:focus {
+    border-color: #ffc107;
+    border-width: 4px;
+    box-shadow: 0px 0px 0px 0px #ffc107;
+}
