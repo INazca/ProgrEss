@@ -72,6 +72,37 @@ body {
     box-shadow: 0 0 0 0;
 }
 
+.btn-secondary-color {
+    background-color: #0d47a1;
+    border-color: #0d47a1;
+    color: #fff;
+    transition: border-width .1s ease-in, background-color .1s ease-in;
+}
+
+.btn-secondary-color:hover {
+    background-color: #002171;
+    border-color: #002171;
+    color: #fff;
+}
+
+.btn-secondary-color:active {
+    background-color: #002171;
+    border-color: #0d47a1;
+    border-width: 4px;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 0 0 0;
+}
+
+.btn-secondary-color:focus {
+    background-color: #002171;
+    border-color: #0d47a1;
+    border-width: 4px;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 0 0 0;
+}
+
 /* header: */
 header {
     flex: 0 1 auto;
@@ -126,24 +157,64 @@ header {
 
 /* set css for survey viewer */
 
-.view-wrapper {
+.content-area {
     flex: 1 1 auto;
-    padding: 3vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.view-wrapper {
+    height: 100%;
+    width: 100%;
+    padding: 5vw 3vw;
 }
 
 .view-container {
     height: 100%;
-    border: 2px solid #ffc107;
     border-radius: .25rem;
     box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.53);
-    padding: 2rem;
+}
+
+/* controls */
+
+.controls-prev {
+    position: absolute;
+    left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.controls-next {
+    position: absolute;
+    right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.controls {
+    width: 3rem;
+    
 }
 
 /* overlapping css rules for sub views of survey viewer*/
 
+.survey-content-wrapper {
+    height: 100%;
+    padding: 3rem;
+}
+
+.survey-content {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 100%;
+}
+
 .task-description {
     font-weight: 600;
     font-size: 1.2rem;
+    border-bottom: 2px solid #ffc107;
 }
 
 .tool-description {
@@ -157,7 +228,7 @@ header {
     padding-bottom: 1rem;
 }
 
-.editor-container-ss {
+.editor-container {
     height: 100%;
     flex: 1 1 auto;
 }
@@ -184,9 +255,3 @@ header {
 
 /* css for syntax-highlighting-solve-phase */
 
-#syntax-highlighting-solve {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    height: 100%;
-}

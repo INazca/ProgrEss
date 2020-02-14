@@ -1,10 +1,18 @@
 <%- include('partials/html-header'); -%>
 <%- include('partials/header') -%>
 
-<div class="view-wrapper">
-    <div class="view-container">
-        <%- include('partials/survey-viewer/syntax-highlighting-solve') -%>
+<div class="content-area">
+    <div class="view-wrapper">
+        <div class="view-container">
+            <%- include('partials/survey-viewer/syntax-highlighting-solve') -%>
+            <%- include('partials/survey-viewer/syntax-highlighting-evaluate') -%>
+            <%- include('partials/survey-viewer/syntax-highlighting-discussion') -%>
+        </div>
     </div>
+
+    <!-- controls for working on tasks -->
+    <button class="btn btn-secondary-color controls controls-prev shadow-strong">&lt</button>
+    <button class="btn btn-secondary-color controls controls-next shadow-strong">&gt</button>
 </div>
 
 <%- include('partials/html-close') -%>
