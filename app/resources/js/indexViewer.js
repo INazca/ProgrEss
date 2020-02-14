@@ -18,7 +18,12 @@ codeEditorSR = CodeMirror(document.getElementsByClassName("editor-container-sr")
     mode: "text/x-java",
     readOnly: true,
 }),
-codeEditorSR = CodeMirror(document.getElementsByClassName("editor-container-ts")[0], {
+codeEditorTS = CodeMirror(document.getElementsByClassName("editor-container-ts")[0], {
+    value: "public class Object {\n    public Object(int variable) {\n    }\n}",
+    mode: "text/x-java",
+    readOnly: true,
+}),
+codeEditorTE = CodeMirror(document.getElementsByClassName("editor-container-te")[0], {
     value: "public class Object {\n    public Object(int variable) {\n    }\n}",
     mode: "text/x-java",
     readOnly: true,

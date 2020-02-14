@@ -108,6 +108,21 @@ body {
     box-shadow: 0 0 0 0;
 }
 
+/* settings for correction buttons */
+.btn-correct {
+    background-color: #1B5E20;
+    border-color: #1B5E20;
+}
+
+.btn-incorrect {
+    background-color: #B00020;
+    border-color: #B00020;
+}
+
+.controls-correctness i{
+    color: #fff;
+}
+
 /* header: */
 header {
     flex: 0 1 auto;
