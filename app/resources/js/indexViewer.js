@@ -37,6 +37,11 @@ codeEditorTR = CodeMirror(document.getElementsByClassName("editor-container-tr")
 codeEditorMS = CodeMirror(document.getElementsByClassName("editor-container-ms")[0], {
     value: "public class Object {\n    public Object(int variable) {\n    }\n}",
     mode: "text/x-java",
+}),
+codeEditorME = CodeMirror(document.getElementsByClassName("editor-container-me")[0], {
+    value: "public class Object {\n    public Object(int variable) {\n    }\n}",
+    mode: "text/x-java",
+    readOnly: true,
 });
 
 //create the barplot
