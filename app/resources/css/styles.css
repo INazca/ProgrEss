@@ -273,6 +273,7 @@ header {
     font-weight: 600;
     font-size: 1.2rem;
     border-bottom: 2px solid #ffc107;
+    flex: 0 1 auto;
 }
 
 .tool-description {
@@ -331,4 +332,24 @@ header {
     border-color: #ffc107;
     border-width: 4px;
     box-shadow: 0px 0px 0px 0px #ffc107;
+}
+
+.expression {
+    text-align: center;
+    flex: 0 1 auto;
+    font-size: 2rem;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: .25rem;
+    background-color: #fff350;
+    padding: .5rem;
+}
+
+.histogramm-wrapper {
+    flex: 1 1 auto;
+    padding: 1vw 8vw;
+}
+
+.histogramm-container {
+    height: 100%;
 }
