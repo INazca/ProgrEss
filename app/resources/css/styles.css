@@ -284,7 +284,7 @@ header {
     flex: 1 1 auto;
     display: flex;
     align-items: center;
-    padding: 1vw 8vw;
+    padding: 1vw 6vw;
 }
 
 .editor-container {
@@ -370,4 +370,20 @@ header {
     background-color: rgb(181, 255, 186);;
     border: 4px solid #1B5E20;
     margin: 0 .5rem 0 0;
+}
+
+/* css for microtasks */
+
+.editor-container-md {
+    margin: 0 2vw;
+}
+
+.editor-container-md1 .CodeMirror {
+    background-color: rgb(181, 255, 186);;
+    border: 4px solid #1B5E20;
+}
+
+.editor-container-md2 .CodeMirror {
+    background-color: #fdf1cd;
+    border: 4px solid #ffc107;
 }
