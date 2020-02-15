@@ -284,7 +284,7 @@ header {
     flex: 1 1 auto;
     display: flex;
     align-items: center;
-    padding-bottom: 1rem;
+    padding: 1vw 8vw;
 }
 
 .editor-container {
@@ -352,4 +352,22 @@ header {
 
 .histogramm-container {
     height: 100%;
+}
+
+.solution {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.solution i {
+    color: #1B5E20;
+    width: fit-content;
+}
+
+.solution .form-control {
+    color: #1B5E20;
+    background-color: rgb(181, 255, 186);;
+    border: 4px solid #1B5E20;
+    margin: 0 .5rem 0 0;
 }
