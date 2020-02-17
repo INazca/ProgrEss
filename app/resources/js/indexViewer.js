@@ -6,13 +6,21 @@ var prev,
     correct,
     incorrect,
     submit,
-    view;
+    view,
+    highlightSolve,
+    eraseSolve,
+    highlightEvaluate,
+    eraseEvaluate,
+    exprLegal,
+    exprIllegal;
 
 function init() {
     initControls();
+    initSubcontrols();
     view = new SurveyViewer(prev, next, correct, incorrect, submit);
 
     view.hideAll(false);
+    view.showCard();
 }
 
 function initControls() {
@@ -21,6 +29,21 @@ function initControls() {
     correct = document.getElementById("controls-correct");
     incorrect = document.getElementById("controls-incorrect");
     submit = document.getElementById("controls-submit");
+
+    prev.addEventListener("click", onPrev);
+}
+
+function initSubcontrols() {
+    highlightSolve = document.getElementById("highlight-solve");
+    eraseSolve = document.getElementById("erase-solve");
+    highlightEvaluate = document.getElementById("highlight-evaluate");
+    eraseEvaluate = document.getElementById("erase-evaluate");
+    exprLegal = document.getElementById("expression-legal");
+    exprIllegal = document.getElementById("expression-illegal");
+}
+
+function onPrev() {
+    //add code for prev click
 }
 
 init();

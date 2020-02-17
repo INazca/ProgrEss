@@ -13,6 +13,19 @@ class SurveyViewer {
         };
     }
 
+    showCard() {
+        var cards = document.getElementsByClassName("survey-card");
+
+        $(cards[0]).animate({left: 0}, "slow");
+    }
+
+    changeCard() {
+        var cards = document.getElementsByClassName("survey-card");
+
+        $(cards[0]).animate({right: "100%"}, "slow");
+        $(cards[1]).animate({left: 0}, "slow");
+    }
+
     hideAll(isHidden) {
         let controls = this.controls;
 
