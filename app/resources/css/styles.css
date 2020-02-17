@@ -180,11 +180,13 @@ header {
 }
 
 .survey-card {
+    max-width: 1250px;
     height: 100%;
     width: 100%;
-    padding: 5vw 3vw;
+    padding: 5vh 3vw;
     position: relative;
     left: 100%;
+    margin: 0 auto;
 }
 
 .card-content {
