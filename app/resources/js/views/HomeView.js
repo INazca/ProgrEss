@@ -1,22 +1,32 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
 class HomeView {
 
-    constructor() {
-        this.codeInput = document.getElementById("code-input");
-        this.surveyButton = document.getElementById("survey-button");
-        this.surveyLink = document.getElementById("survey-link");
+    constructor(surveyButton) {
+        this._codeInput = document.getElementById("code-input");
+        this._surveyLink = document.getElementById("survey-link");
 
-        this.surveyButton.addEventListener("click", onSurveyJoin.bind(this, {input: this.codeInput, link: this.surveyLink}));
+        //controller elements
+        this._surveyButton = surveyButton;
     }
-}
 
-function onSurveyJoin(surveyElements) {
-    var link = surveyElements.link,
-        input = surveyElements.input;
+    disabled(isDisabled) {
+        this._codeInput.disabled = isDisabled;
+        this._surveyButton.disabled = isDisabled;
+    }
 
-    link.href = "/" + input.value;
-    link.click();
+    clickSurveyLink() {
+        this._surveyLink.click();
+    }
+
+    set surveyLink(code) {
+        this._surveyLink.href = "/" + code;
+    }
+
+    get codeInput() {
+        return this._codeInput.value;
+    }
 }
 
 export default HomeView;
