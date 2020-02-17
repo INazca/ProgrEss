@@ -1,3 +1,52 @@
+/* eslint-env browser */
+import SurveyViewer from "../js/views/SurveyViewer.js";
+
+var prev,
+    next,
+    correct,
+    incorrect,
+    submit,
+    view;
+
+function init() {
+    initControls();
+    view = new SurveyViewer(prev, next, correct, incorrect, submit);
+
+    view.hideAll(false);
+}
+
+function initControls() {
+    prev = document.getElementById("controls-prev");
+    next = document.getElementById("controls-next");
+    correct = document.getElementById("controls-correct");
+    incorrect = document.getElementById("controls-incorrect");
+    submit = document.getElementById("controls-submit");
+}
+
+init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// create dummy vars and visualizations
 //instantiate codeEditors
 var codeEditorSS = CodeMirror(document.getElementsByClassName("editor-container-ss")[0], {
     value: "public class Object {\n    public Object(int variable) {\n    }\n}",

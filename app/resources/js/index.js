@@ -17,10 +17,11 @@ function onSurveyJoin() {
     //disable home view while checking validity
     view.disabled(true);
 
-    if(validationCheck(input) === true) {
+    if(validationCheck(input)) {
         view.surveyLink = input;
         view.clickSurveyLink();
     } else {
+        //enable home view when input was not valid
         view.disabled(false);
     }
 }

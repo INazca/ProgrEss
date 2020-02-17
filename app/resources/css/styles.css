@@ -193,14 +193,14 @@ header {
 
 /* controls */
 
-.controls-prev {
+#controls-prev {
     position: absolute;
     left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.controls-next {
+#controls-next {
     position: absolute;
     right: 0;
     border-top-right-radius: 0;
@@ -214,7 +214,7 @@ header {
     margin: 0 5vw;
 }
 
-.controls.controls-submit {
+#controls-submit {
     width: 10rem;
     position: relative;
     border-bottom-left-radius: 0;
@@ -229,20 +229,12 @@ header {
     bottom: 0;
 }
 
-.controls-correctness-wrapper-hidden {
-    display: none;
-}
-
 .controls-submission-wrapper {
     position: absolute;
     width: 100%;
     display: flex;
     justify-content: center;
     bottom: 0;
-}
-
-.controls-submission-wrapper-hidden {
-    display: none;
 }
 
 .controls {
