@@ -143,12 +143,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.code-input-wrapper form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-flow: column;
 }
 
