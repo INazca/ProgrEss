@@ -303,6 +303,11 @@ header {
     padding: .5rem;
 }
 
+.highlighted {
+    background-color: #fff350;
+    border-radius: 0.25rem;
+}
+
 /* css for syntax-highlighting */
 
 .tools-wrapper {

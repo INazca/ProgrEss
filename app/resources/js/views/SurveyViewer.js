@@ -16,7 +16,8 @@ class SurveyViewer{
             submit: submit,
         };
         this.cards = [];
-        this.active = -1;
+        this.active = 0;
+        this.isActive = false;
     }
 
     createCards(survey){
@@ -42,18 +43,21 @@ class SurveyViewer{
         updateHTML(this.cards);
     }
 
-    showCard() {
-        var activeCard = this.cards[this.active]
-        activeCard.showCard();
-
-        updateUI(this.controls, this)
-    }
-
     nextCard() {
-        this.cards[this.active].hideCard();
-        this.cards[this.active + 1].showCard();
+        var activeCard = this.cards[this.active],
+            nextCard = this.cards[this.active];
 
-        this.active++;
+        if (this.isActive) {
+            activeCard.hideCard();
+            nextCard.showCard();
+            activeCard = nextCard;
+            this.active++;
+        } else {
+            activeCard.showCard();
+            this.isActive = true;
+        }
+
+        updateUI(this.controls, activeCard.controlType);
     }
 
     prevCard() {
@@ -61,18 +65,6 @@ class SurveyViewer{
 
     clearCards() {
 
-    }
-
-    hideAll(isHidden) {
-        let controls = this.controls;
-
-        Object.keys(this.controls).forEach(function (key) {
-            if(isHidden) {
-                controls[key].classList.add("hidden");
-            } else {
-                controls[key].classList.remove("hidden");
-            }
-        });
     }
 }
 
@@ -82,6 +74,16 @@ function updateHTML(cards) {
     cards.forEach(card => {
         cardsContainer.appendChild(card.node);
     });
+}
+
+function updateUI(controls, type) {
+    if(type === "solve") {
+        controls.prev.classList.add("hidden");
+        controls.next.classList.add("hidden");
+        controls.correct.classList.add("hidden");
+        controls.incorrect.classList.add("hidden");
+        controls.submit.classList.remove("hidden");
+    }
 }
 
 export default SurveyViewer;

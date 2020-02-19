@@ -20,8 +20,7 @@ function init() {
     initControls();
     initSubcontrols();
     view = new SurveyViewer(prev, next, correct, incorrect, submit);
-
-    view.hideAll(false);
+    
     parseData();
     runSurvey();
 }
@@ -48,7 +47,7 @@ function parseData() {
 
 function runSurvey() {
     view.createCards(survey);
-    view.showCard();
+    view.nextCard();
 }
 
 //event handler

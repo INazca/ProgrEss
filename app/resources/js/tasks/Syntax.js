@@ -32,6 +32,7 @@ class SyntaxSolve {
         this._waitTime = waitTime;
         this._task = task;
         this._code = code;
+        this.highlights = [];
     }
 
     get task() {
