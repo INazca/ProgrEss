@@ -2,28 +2,8 @@
 <%- include('partials/header') -%>
 
 <div class="content-area">
-    <div class="survey-card">
-        <div class="card-content">
 
-            <!-- partials for syntax-highlighting tasks -->
-            <%- include('partials/survey-viewer/syntax-highlighting-solve') -%>
-            <%- include('partials/survey-viewer/syntax-highlighting-evaluate') -%>
-            <%- include('partials/survey-viewer/syntax-highlighting-discussion') -%>
-            <%- include('partials/survey-viewer/syntax-highlighting-reveal') -%>
-
-            <!-- partials for type-determination tasks -->
-            <%- include('partials/survey-viewer/type-determination-solve') -%>
-            <%- include('partials/survey-viewer/type-determination-evaluate') -%>
-            <%- include('partials/survey-viewer/type-determination-discussion') -%>
-            <%- include('partials/survey-viewer/type-determination-reveal') -%>
-
-            <!-- partials for microtasks -->
-            <%- include('partials/survey-viewer/microtask-solve') -%>
-            <%- include('partials/survey-viewer/microtask-evaluate') -%>
-            <%- include('partials/survey-viewer/microtask-discussion') -%>
-            <%- include('partials/survey-viewer/microtask-reveal') -%>
-        </div>
-    </div>
+    <div id="cards-container"></div>
 
     <!-- controls for controlling survey-cards -->
 
@@ -43,6 +23,25 @@
         <button id="controls-submit" class="btn btn-secondary-color controls shadow-strong hidden">Abgeben</button>
     </div>
 
+    <!-- task templates -->
+    <!-- partials for syntax-highlighting tasks -->
+    <%- include('partials/survey-viewer/syntax-highlighting-solve') -%>
+    <%- include('partials/survey-viewer/syntax-highlighting-evaluate') -%>
+    <%- include('partials/survey-viewer/syntax-highlighting-discussion') -%>
+    <%- include('partials/survey-viewer/syntax-highlighting-reveal') -%>
+
+    <!-- partials for type-determination tasks -->
+    <%- include('partials/survey-viewer/type-determination-solve') -%>
+    <%- include('partials/survey-viewer/type-determination-evaluate') -%>
+    <%- include('partials/survey-viewer/type-determination-discussion') -%>
+    <%- include('partials/survey-viewer/type-determination-reveal') -%>
+
+    <!-- partials for microtasks -->
+    <%- include('partials/survey-viewer/microtask-solve') -%>
+    <%- include('partials/survey-viewer/microtask-evaluate') -%>
+    <%- include('partials/survey-viewer/microtask-discussion') -%>
+    <%- include('partials/survey-viewer/microtask-reveal') -%>
+
 </div>
 
 <%- include('partials/html-close') -%>
@@ -52,6 +51,9 @@
 <!-- import codemirror -->
 <script src="/lib/codemirror.js"></script>
 <script src="/mode/clike/clike.js"></script>
+
+<!-- import ejs -->
+<script src="/ejs.js"></script>
 
 <!-- import d3 -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
