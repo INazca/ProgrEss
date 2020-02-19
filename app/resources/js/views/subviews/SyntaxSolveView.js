@@ -3,49 +3,115 @@
 var taskType = "syntax-highlighting-solve";
 
 class SyntaxSolveView {
-
+    
     constructor(task, code) {
-        this._controlType = "solve";
-        this.template = document.getElementById(taskType);
-        this.card = createCard(this.template);
-        this.editorContainer = this.card.getElementsByClassName("editor-container")[0];
-        this.task = task;
-        this.code = code;
-        this.highlights = [];
+        //create card as div node with correct data (not added to HTML)
+        this.card = initCard(task, document.getElementById(taskType));
+        this._highlightButton = this.card.getElementsByClassName("highlight-tool")[0];
+        this._eraseButton = this.card.getElementsByClassName("erase-tool")[0];
 
-        //register control buttons for this card
-        this.highlightButton = this.card.getElementsByClassName("highlight-tool")[0];
-        this.eraseButton = this.card.getElementsByClassName("erase-tool")[0];
-        
-    } 
+        this.editorContainer = this.card.getElementsByClassName("editor-container")[0];
+        this.code = code;
+    }
 
     showCard() {
         $(this.card).animate({left: 0}, "slow");
 
-        //register editor, highlight and erase listener, must be here, since CodeMirror editor will bug if created in constructor
+        //register editor must be here since CodeMirror editor will bug if created in constructor
         this.editor = registerEditor(this.editorContainer, this.code);
-        this.highlightButton.addEventListener("click", onHighlight.bind(this, this.editor));
-        this.eraseButton.addEventListener("click", onErase.bind(this, this.editor));
     }
 
     hideCard(){
         $(this.card).animate({left: "-100%"}, "slow");
     }
 
+    highlight(selection) {
+        var marks = this.editor.findMarks(selection.anchor, selection.head);
+
+        //check if marks would cross another, if so then connect to a new mark complemented by the selection
+        if(marks.length === 0) {
+            this.editor.markText(selection.anchor, selection.head, {className: "highlighted"});
+        } else {
+            let mark = marks[0],
+                markDimensions = mark.find();
+
+            if (isBefore(selection.anchor, markDimensions.from) && isAfter(selection.head, markDimensions.to)) {
+                mark.clear();
+                this.editor.markText(selection.anchor, selection.head, {className: "highlighted"});
+            } else if(isBefore(selection.anchor, markDimensions.from)) {
+                let markEnd = markDimensions.to;
+
+                mark.clear();
+                this.editor.markText(selection.anchor, markEnd, {className: "highlighted"});
+            } else if(isAfter(selection.head, markDimensions.to)) {
+                let markStart = markDimensions.from;
+
+                mark.clear();
+                this.editor.markText(markStart, selection.head, {className: "highlighted"});
+            }
+        }
+    }
+
+    erase(selection) {
+        var marks = this.editor.findMarks(selection.anchor, selection.head);
+
+        if(marks.length > 0) {
+            let mark = marks[0],
+                markDimensions = mark.find();
+
+            if (isBefore(selection.anchor, markDimensions.from) && isAfter(selection.head, markDimensions.to)) {
+                mark.clear();
+            } else if(isBefore(selection.anchor, markDimensions.from)) {
+                let markEnd = markDimensions.to;
+
+                mark.clear();
+                this.editor.markText(selection.head, markEnd, {className: "highlighted"});
+            } else if(isAfter(selection.head, markDimensions.to)) {
+                let markStart = markDimensions.from;
+
+                mark.clear();
+                this.editor.markText(markStart, selection.anchor, {className: "highlighted"});
+            } else if(isBetween({from: selection.anchor, to: selection.head}, markDimensions)) {
+                let markStart = markDimensions.from,
+                    markEnd = markDimensions.to;
+
+                mark.clear();
+                this.editor.markText(markStart, selection.anchor, {className: "highlighted"});
+                this.editor.markText(selection.head, markEnd, {className: "highlighted"});
+            }
+        }
+    }
+
+    get highlightButton() {
+        return this._highlightButton;
+    }
+
+    get eraseButton() {
+        return this._eraseButton;
+    }
+
+    get selections() {
+        return this.editor.listSelections();
+    }
+
+    get highlights() {
+        return this.editor.getAllMarks();
+    }
+
     get node() {
         return this.card;
     }
-
-    get controlType() {
-        return this._controlType;
-    }
 }
 
-function createCard(template) {
+function initCard(task, template) {
     var card = template.cloneNode(true);
 
+    //add survey-card class and enable visibility, but card is not visible yet, because its not embedded in the HTML structure
     card.classList.add("survey-card");
     card.classList.remove("hidden");
+
+    //add the task description to the node
+    card.getElementsByClassName("task-description")[0].innerHTML = task;
 
     return card;
 }
@@ -97,93 +163,6 @@ function isBetween(selection1, selection2) {
         }
     }
     return false;
-}
-
-//event handler
-function onHighlight(editor) {
-    var selections = editor.listSelections();
-
-    selections.forEach(selection => {
-        var marks = editor.findMarks(selection.anchor, selection.head);
-
-        //check if marks would cross another, if so then connect to a new mark complemented by the selection
-        if(marks.length === 0) {
-            editor.markText(selection.anchor, selection.head, {className: "highlighted"});
-        } else {
-            let mark = marks[0],
-                markDimensions = mark.find();
-
-            if (isBefore(selection.anchor, markDimensions.from) && isAfter(selection.head, markDimensions.to)) {
-                mark.clear();
-                editor.markText(selection.anchor, selection.head, {className: "highlighted"});
-            } else if(isBefore(selection.anchor, markDimensions.from)) {
-                let markEnd = markDimensions.to;
-
-                mark.clear();
-                editor.markText(selection.anchor, markEnd, {className: "highlighted"});
-            } else if(isAfter(selection.head, markDimensions.to)) {
-                let markStart = markDimensions.from;
-
-                mark.clear();
-                editor.markText(markStart, selection.head, {className: "highlighted"});
-            }
-        }
-    });
-
-    //get all highlights and add them to the highlight array of the SyntaxSolve-Object
-    let allMarks = editor.getAllMarks(),
-    highlights = [];
-
-    allMarks.forEach(mark => {
-        highlights.push(mark.find());
-    });
-
-    this.highlights = highlights;
-}
-
-function onErase(editor) {
-    var selections = editor.listSelections();
-
-    selections.forEach(selection => {
-        var marks = editor.findMarks(selection.anchor, selection.head);
-
-        if(marks.length > 0) {
-            let mark = marks[0],
-                markDimensions = mark.find();
-
-            if (isBefore(selection.anchor, markDimensions.from) && isAfter(selection.head, markDimensions.to)) {
-                mark.clear();
-            } else if(isBefore(selection.anchor, markDimensions.from)) {
-                let markEnd = markDimensions.to;
-
-                mark.clear();
-                editor.markText(selection.head, markEnd, {className: "highlighted"});
-            } else if(isAfter(selection.head, markDimensions.to)) {
-                let markStart = markDimensions.from;
-
-                mark.clear();
-                editor.markText(markStart, selection.anchor, {className: "highlighted"});
-            } else if(isBetween({from: selection.anchor, to: selection.head}, markDimensions)) {
-                let markStart = markDimensions.from,
-                    markEnd = markDimensions.to;
-
-                mark.clear();
-                editor.markText(markStart, selection.anchor, {className: "highlighted"});
-                editor.markText(selection.head, markEnd, {className: "highlighted"});
-            }
-        }
-    });
-
-    //get all highlights and add them to the highlight array of the SyntaxSolve-Object
-    let allMarks = editor.getAllMarks(),
-    highlights = [];
-
-    allMarks.forEach(mark => {
-        highlights.push(mark.find());
-    });
-
-    this.highlights = highlights;
-    console.log(this.highlights);
 }
 
 export default SyntaxSolveView;

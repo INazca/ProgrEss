@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
-class Syntax {
+class SyntaxHighlighting {
 
     constructor(task, code, evaluations, waitTime, highlights, duration, heatmap, solution){
         this.solve = new SyntaxSolve(task, code, waitTime);
@@ -29,10 +29,15 @@ class Syntax {
 class SyntaxSolve {
 
     constructor(task, code, waitTime) {
+        this._controlType = "solve";
         this._waitTime = waitTime;
         this._task = task;
         this._code = code;
-        this.highlights = [];
+        this._highlights = [];
+    }
+
+    get controlType() {
+        return this._controlType;
     }
 
     get task() {
@@ -41,6 +46,11 @@ class SyntaxSolve {
 
     get code() {
         return this._code;
+    }
+
+    set highlights(highlights) {
+        this._highlights = highlights;
+        console.log(highlights);
     }
 }
 
@@ -63,4 +73,4 @@ class SyntaxReveal {
     }
 }
 
-export default Syntax;
+export default SyntaxHighlighting;

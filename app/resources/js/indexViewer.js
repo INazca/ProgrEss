@@ -1,6 +1,7 @@
 /* eslint-env browser */
 import SurveyViewer from "../js/views/SurveyViewer.js";
 import Syntax from "../js/tasks/Syntax.js";
+import SyntaxSolveController from "../js/controller/SyntaxSolveController.js";
 
 var prev,
     next,
@@ -14,15 +15,16 @@ var prev,
     eraseEvaluate,
     exprLegal,
     exprIllegal,
-    survey = [];
+    survey = [],
+    cards = [];
 
 function init() {
     initControls();
     initSubcontrols();
     view = new SurveyViewer(prev, next, correct, incorrect, submit);
-    
+
     parseData();
-    runSurvey();
+    startSurvey();
 }
 
 function initControls() {
@@ -45,9 +47,32 @@ function parseData() {
     survey.push(new Syntax("Eine weitere Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!", "public class Object {\n    public Object(int variable) {\n    }\n}", 3, 2, {}, 10, {}, {}));
 }
 
-function runSurvey() {
-    view.createCards(survey);
-    view.nextCard();
+function startSurvey() {
+    createCards();
+    view.updateHTML(cards);
+    cards[0].start();
+    view.updateUI(cards[0].controlType);
+}
+
+function createCards() {
+    survey.forEach(type => {
+        var task = type.data;
+
+        //create cards if the task type is syntax highlighting
+        if(task.type === "syntax") {
+            cards.push(new SyntaxSolveController(task.solve));
+        }
+
+        //create cards if the task type is type determination
+        if(task.type === "type") {
+            //write code for instantiation
+        }
+
+        //create cards if the task type is microtask
+        if(task.type === "micro") {
+            //write code for instantiation
+        }
+    });
 }
 
 //event handler
