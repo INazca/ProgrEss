@@ -2,7 +2,7 @@
 /* eslint-env browser */
 var taskType = "syntax-highlighting-solve";
 
-class SyntaxSolveView {
+class SyntaxView {
     
     constructor(task, code) {
         //create card as div node with correct data (not added to HTML)
@@ -165,4 +165,4 @@ function isBetween(selection1, selection2) {
     return false;
 }
 
-export default SyntaxSolveView;
+export default SyntaxView;

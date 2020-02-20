@@ -50,14 +50,32 @@ class SyntaxSolve {
 
     set highlights(highlights) {
         this._highlights = highlights;
-        console.log(highlights);
     }
 }
 
 class SyntaxEvaluate {
 
     constructor(task, code, highlights){
+        this._controlType = "evaluate";
+        this._task = task;
+        this._code = code;
+        this._highlights = highlights;
+    }
 
+    get controlType() {
+        return this._controlType;
+    }
+
+    get task() {
+        return this._task;
+    }
+
+    get code() {
+        return this._code;
+    }
+
+    get highlights() {
+        return this._highlights;
     }
 }
 

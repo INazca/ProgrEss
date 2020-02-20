@@ -1,12 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
-import SyntaxSolveView from "../views/subviews/SyntaxSolveView.js";
+import SyntaxView from "../views/subviews/SyntaxView.js";
 
-class SyntaxSolveController {
+class SyntaxController {
 
     constructor(data) {
         this.data = data;
-        this.view = new SyntaxSolveView(this.data.task, this.data.code);
+        this.view = new SyntaxView(this.data.task, this.data.code);
 
         //register control buttons for this card
         this.highlightButton = this.view.highlightButton;
@@ -22,7 +22,7 @@ class SyntaxSolveController {
     }
 
     end() {
-        //add code for ending the task here
+        this.view.hideCard();
     }
 
     get node() {
@@ -67,4 +67,4 @@ function updateHighlights(self, view) {
     self.data.highlights = highlights;
 }
 
-export default SyntaxSolveController;
+export default SyntaxController;

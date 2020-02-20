@@ -38,6 +38,12 @@ class SurveyViewer{
             this.controls.correct.classList.add("hidden");
             this.controls.incorrect.classList.add("hidden");
             this.controls.submit.classList.remove("hidden");
+        } else if (type === "evaluate") {
+            this.controls.prev.classList.remove("hidden");
+            this.controls.next.classList.remove("hidden");
+            this.controls.correct.classList.add("hidden");
+            this.controls.incorrect.classList.add("hidden");
+            this.controls.submit.classList.remove("hidden");
         }
     }
 
