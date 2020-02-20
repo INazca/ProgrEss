@@ -48,6 +48,10 @@ class SyntaxSolve {
         return this._code;
     }
 
+    set controlType(type) {
+        this._controlType = type;
+    }
+
     set highlights(highlights) {
         this._highlights = highlights;
     }
@@ -76,6 +80,10 @@ class SyntaxEvaluate {
 
     get highlights() {
         return this._highlights;
+    }
+
+    set controlType(type) {
+        this._controlType = type;
     }
 }
 

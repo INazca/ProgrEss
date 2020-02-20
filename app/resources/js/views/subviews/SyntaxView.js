@@ -14,15 +14,20 @@ class SyntaxView {
         this.code = code;
     }
 
-    showCard() {
-        $(this.card).animate({left: 0}, "slow");
-
-        //register editor must be here since CodeMirror editor will bug if created in constructor
+    initEditor() {
         this.editor = registerEditor(this.editorContainer, this.code);
     }
 
-    hideCard(){
+    showCard() {
+        $(this.card).animate({left: 0}, "slow");
+    }
+
+    hideCardLeft(){
         $(this.card).animate({left: "-100%"}, "slow");
+    }
+
+    hideCardRight() {
+        $(this.card).animate({left: "100%"}, "slow");
     }
 
     highlight(selection) {
@@ -80,6 +85,11 @@ class SyntaxView {
                 this.editor.markText(selection.head, markEnd, {className: "highlighted"});
             }
         }
+    }
+
+    set editable(isEditable) {
+        this._highlightButton.disabled = !isEditable;
+        this._eraseButton.disabled = !isEditable;
     }
 
     get highlightButton() {

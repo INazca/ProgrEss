@@ -12,8 +12,7 @@ var prev,
     view,
     survey = [],
     cards = [],
-    activeIndex = 0,
-    activeCard;
+    activeIndex = 0;
 
 function init() {
     initControls();
@@ -31,7 +30,8 @@ function initControls() {
     submit = document.getElementById("controls-submit");
 
     prev.addEventListener("click", onPrev);
-    submit.addEventListener("click", onCardEnd);
+    next.addEventListener("click", onNext);
+    submit.addEventListener("click", onSubmit);
 }
 
 function parseData() {
@@ -57,14 +57,13 @@ function parseData() {
             },
         ];
     survey.push(new Syntax(exmplTask, exmplCode, 2, 5, exmplHighlights, 20, {}, {}));
-    survey.push(new Syntax("Eine weitere Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!", "public class Object {\n    public Object(int variable) {\n    }\n}", 3, 2, {}, 10, {}, {}));
+    survey.push(new Syntax("Eine weitere Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!", "public class Object {\n    public Object(int variable) {\n    }\n}", 3, 2, [], 10, {}, {}));
 }
 
 function startSurvey() {
     createCards();
     view.updateHTML(cards);
-    activeCard = cards[activeIndex];
-    showCard(activeCard);
+    showCard(activeIndex);
 }
 
 function createCards() {
@@ -91,9 +90,36 @@ function createCards() {
     });
 }
 
-function showCard(card) {
-    card.start();
-    view.updateUI(card.controlType);
+function showCard(index) {
+    cards[index].show();
+
+    //activate buttons for switching cards, choose the right cases
+    if(index === 0) {
+        view.updateUI(cards[index].controlType, false, cards[index + 1].viewable);
+    } else if(index === cards.length - 1) {
+        view.updateUI(cards[index].controlType, cards[index - 1].viewable, false);
+    } else {
+        view.updateUI(cards[index].controlType, cards[index - 1].viewable, cards[index + 1].viewable);
+    }
+}
+
+function hideCardRight(index) {
+    cards[index].hideRight();
+}
+
+function hideCardLeft(index) {
+    cards[index].hideLeft();
+}
+
+function endCard() {
+    cards[activeIndex].end();
+
+    if(activeIndex < cards.length - 1) {
+        activeIndex++;
+        showCard(activeIndex);
+    } else {
+        endSurvey();
+    }
 }
 
 function endSurvey() {
@@ -102,20 +128,19 @@ function endSurvey() {
 
 //event handler
 function onPrev() {
-    //add code for prev click
-    view.nextCard();
+    activeIndex--;
+    hideCardRight(activeIndex + 1);
+    showCard(activeIndex);
 }
 
-function onCardEnd() {
-    activeCard.end();
+function onNext() {
+    activeIndex++;
+    hideCardLeft(activeIndex - 1);
+    showCard(activeIndex);
+}
 
-    if(activeIndex < cards.length - 1) {
-        activeIndex++;
-        activeCard = cards[activeIndex];
-        showCard(activeCard);
-    } else {
-        endSurvey();
-    }
+function onSubmit() {
+    endCard();
 }
 
 init();

@@ -7,6 +7,8 @@ class SyntaxController {
     constructor(data) {
         this.data = data;
         this.view = new SyntaxView(this.data.task, this.data.code);
+        this._viewable = false;
+        this.initialized = false;
 
         //register control buttons for this card
         this.highlightButton = this.view.highlightButton;
@@ -17,12 +19,28 @@ class SyntaxController {
         this.eraseButton.addEventListener("click", onErase.bind(this, this.view));
     } 
 
-    start() {
+    show() {
         this.view.showCard();
+        if(!this.initialized) {
+            this.view.initEditor();
+            this.initialized = true;
+        }
     }
 
     end() {
-        this.view.hideCard();
+        this._viewable = true;
+        this.view.hideCardLeft();
+        this.view.editable = false;
+        this.data.controlType = this.data.controlType + "-done";
+    }
+
+    hideRight() {
+        this.view.hideCardRight();
+        this._viewable = true;
+    }
+
+    hideLeft() {
+        this.view.hideCardLeft();
     }
 
     get node() {
@@ -31,6 +49,14 @@ class SyntaxController {
 
     get controlType() {
         return this.data.controlType;
+    }
+
+    get edited() {
+        return this._edited;
+    }
+
+    get viewable() {
+        return this._viewable;
     }
 }
 
