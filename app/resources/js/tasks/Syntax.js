@@ -3,12 +3,12 @@
 
 class SyntaxHighlighting {
 
-    constructor(task, code, evaluations, waitTime, highlights, duration, heatmap, solution){
+    constructor(task, code, waitTime, evaluationHighlights, duration, heatmap, solution){
         this.solve = new SyntaxSolve(task, code, waitTime);
         this.evaluate = [];
-        for(let i = 0; i < evaluations; i++) {
+        evaluationHighlights.forEach(highlights => {
             this.evaluate.push(new SyntaxEvaluate(task, code, highlights));
-        }
+        });
         this.discussion = new SyntaxDiscussion(task, code, duration, heatmap);
         this.reveal = new SyntaxReveal(task, code, duration, solution);
 

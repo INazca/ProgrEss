@@ -47,17 +47,29 @@ function parseData() {
 }
 `,
         exmplHighlights = [
-            {
-                anchor: {line: 2, ch: 4},
-                head: {line: 2, ch: 25},
-            },
-            {
-                anchor: {line: 5, ch: 8},
-                head: {line: 5, ch: 33},
-            },
+            [
+                {
+                    anchor: { line: 2, ch: 4 },
+                    head: { line: 2, ch: 25 },
+                },
+                {
+                    anchor: { line: 5, ch: 8 },
+                    head: { line: 5, ch: 33 },
+                },
+            ],
+            [
+                {
+                    anchor: { line: 4, ch: 4 },
+                    head: { line: 4, ch: 10 },
+                },
+                {
+                    anchor: { line: 5, ch: 8 },
+                    head: { line: 5, ch: 33 },
+                },
+            ],
         ];
-    survey.push(new Syntax(exmplTask, exmplCode, 2, 5, exmplHighlights, 20, {}, {}));
-    survey.push(new Syntax("Eine weitere Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!", "public class Object {\n    public Object(int variable) {\n    }\n}", 3, 2, [], 10, {}, {}));
+    survey.push(new Syntax(exmplTask, exmplCode, 5, exmplHighlights, 20, {}, {}));
+    survey.push(new Syntax("Eine weitere Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!", "public class Object {\n    public Object(int variable) {\n    }\n}", 2, [], 10, {}, {}));
 }
 
 function startSurvey() {
@@ -71,7 +83,7 @@ function createCards() {
         var task = type.data;
 
         //create cards if the task type is syntax highlighting
-        if(task.type === "syntax") {
+        if (task.type === "syntax") {
             cards.push(new SyntaxController(task.solve));
             task.evaluate.forEach(evaluation => {
                 cards.push(new SyntaxEvaluation(evaluation));
@@ -79,12 +91,12 @@ function createCards() {
         }
 
         //create cards if the task type is type determination
-        if(task.type === "type") {
+        if (task.type === "type") {
             //write code for instantiation
         }
 
         //create cards if the task type is microtask
-        if(task.type === "micro") {
+        if (task.type === "micro") {
             //write code for instantiation
         }
     });
@@ -94,9 +106,9 @@ function showCard(index) {
     cards[index].show();
 
     //activate buttons for switching cards, choose the right cases
-    if(index === 0) {
+    if (index === 0) {
         view.updateUI(cards[index].controlType, false, cards[index + 1].viewable);
-    } else if(index === cards.length - 1) {
+    } else if (index === cards.length - 1) {
         view.updateUI(cards[index].controlType, cards[index - 1].viewable, false);
     } else {
         view.updateUI(cards[index].controlType, cards[index - 1].viewable, cards[index + 1].viewable);
@@ -114,7 +126,7 @@ function hideCardLeft(index) {
 function endCard() {
     cards[activeIndex].end();
 
-    if(activeIndex < cards.length - 1) {
+    if (activeIndex < cards.length - 1) {
         activeIndex++;
         showCard(activeIndex);
     } else {

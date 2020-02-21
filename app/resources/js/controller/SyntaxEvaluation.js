@@ -1,14 +1,18 @@
 /* eslint-env browser */
 import SyntaxController from "../controller/SyntaxController.js";
 
-class SyntaxEvaluation extends SyntaxController{
+class SyntaxEvaluation extends SyntaxController {
 
     constructor(data) {
         super(data);
 
-        this.start = function() {
+        this.show = function () {
             //add highlights to view
             this.view.showCard();
+            if (!this.initialized) {
+                this.view.initEditor();
+                this.initialized = true;
+            }
             highlight(this.view, this.data.highlights);
         };
     }
