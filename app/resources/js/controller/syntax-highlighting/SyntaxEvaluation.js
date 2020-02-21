@@ -1,19 +1,19 @@
 /* eslint-env browser */
-import SyntaxController from "../controller/SyntaxController.js";
+import SyntaxMark from "../../controller/syntax-highlighting/SyntaxMark.js";
 
-class SyntaxEvaluation extends SyntaxController {
+class SyntaxEvaluation extends SyntaxMark {
 
     constructor(data) {
         super(data);
 
         this.show = function () {
-            //add highlights to view
             this.view.showCard();
             if (!this.initialized) {
                 this.view.initEditor();
+                //add highlights to view
+                highlight(this.view, this.data.highlights);
                 this.initialized = true;
             }
-            highlight(this.view, this.data.highlights);
         };
     }
 }

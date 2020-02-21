@@ -1,14 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
-import SyntaxView from "../views/subviews/SyntaxView.js";
+import Controller from "../../controller/Controller.js";
+import EditorMarkView from "../../views/subviews/EditorMarkView.js";
 
-class SyntaxController {
+class SyntaxMark extends Controller {
 
     constructor(data) {
-        this.data = data;
-        this.view = new SyntaxView(this.data.task, this.data.code);
-        this._viewable = false;
-        this.initialized = false;
+        super(data, new EditorMarkView(data.task, data.code));
 
         //register control buttons for this card
         this.highlightButton = this.view.highlightButton;
@@ -17,46 +15,13 @@ class SyntaxController {
         //register listeners for controller
         this.highlightButton.addEventListener("click", onHighlight.bind(this, this.view));
         this.eraseButton.addEventListener("click", onErase.bind(this, this.view));
-    } 
 
-    show() {
-        this.view.showCard();
-        if(!this.initialized) {
-            this.view.initEditor();
-            this.initialized = true;
+        this.end = function () {
+            this._viewable = true;
+            this.view.hideCardLeft();
+            this.view.editable = false;
+            this.data.controlType = this.data.controlType + "-done";
         }
-    }
-
-    end() {
-        this._viewable = true;
-        this.view.hideCardLeft();
-        this.view.editable = false;
-        this.data.controlType = this.data.controlType + "-done";
-    }
-
-    hideRight() {
-        this.view.hideCardRight();
-        this._viewable = true;
-    }
-
-    hideLeft() {
-        this.view.hideCardLeft();
-    }
-
-    get node() {
-        return this.view.node;
-    }
-
-    get controlType() {
-        return this.data.controlType;
-    }
-
-    get edited() {
-        return this._edited;
-    }
-
-    get viewable() {
-        return this._viewable;
     }
 }
 
@@ -90,7 +55,8 @@ function updateHighlights(self, view) {
         highlights.push(mark.find());
     });
 
+    console.log(highlights);
     self.data.highlights = highlights;
 }
 
-export default SyntaxController;
+export default SyntaxMark;

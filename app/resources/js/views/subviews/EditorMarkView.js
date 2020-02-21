@@ -1,33 +1,16 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
-var taskType = "syntax-highlighting-solve";
+import EditorView from "../subviews/EditorView.js";
 
-class SyntaxView {
-    
+var template = "syntax-highlighting-solve";
+
+class EditorMarkView extends EditorView {
+
     constructor(task, code) {
-        //create card as div node with correct data (not added to HTML)
-        this.card = initCard(task, document.getElementById(taskType));
+        super(task, code, true, template);
+
         this._highlightButton = this.card.getElementsByClassName("highlight-tool")[0];
         this._eraseButton = this.card.getElementsByClassName("erase-tool")[0];
-
-        this.editorContainer = this.card.getElementsByClassName("editor-container")[0];
-        this.code = code;
-    }
-
-    initEditor() {
-        this.editor = registerEditor(this.editorContainer, this.code);
-    }
-
-    showCard() {
-        $(this.card).animate({left: 0}, "slow");
-    }
-
-    hideCardLeft(){
-        $(this.card).animate({left: "-100%"}, "slow");
-    }
-
-    hideCardRight() {
-        $(this.card).animate({left: "100%"}, "slow");
     }
 
     highlight(selection) {
@@ -107,33 +90,6 @@ class SyntaxView {
     get highlights() {
         return this.editor.getAllMarks();
     }
-
-    get node() {
-        return this.card;
-    }
-}
-
-function initCard(task, template) {
-    var card = template.cloneNode(true);
-
-    //add survey-card class and enable visibility, but card is not visible yet, because its not embedded in the HTML structure
-    card.classList.add("survey-card");
-    card.classList.remove("hidden");
-
-    //add the task description to the node
-    card.getElementsByClassName("task-description")[0].innerHTML = task;
-
-    return card;
-}
-
-function registerEditor(element, code) {
-    var editor = CodeMirror(element, {
-        value: code,
-        mode: "text/x-java",
-        readOnly: true,
-    });
-
-    return editor;
 }
 
 function isBefore(cursor1, cursor2) {
@@ -175,4 +131,4 @@ function isBetween(selection1, selection2) {
     return false;
 }
 
-export default SyntaxView;
+export default EditorMarkView;

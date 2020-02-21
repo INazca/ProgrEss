@@ -1,8 +1,10 @@
 /* eslint-env browser */
 import SurveyViewer from "../js/views/SurveyViewer.js";
 import Syntax from "../js/tasks/Syntax.js";
-import SyntaxController from "../js/controller/SyntaxController.js";
-import SyntaxEvaluation from "../js/controller/SyntaxEvaluation.js";
+import SyntaxMark from "../js/controller/syntax-highlighting/SyntaxMark.js";
+import SyntaxEvaluation from "../js/controller/syntax-highlighting/SyntaxEvaluation.js";
+import SyntaxDiscussion from "../js/controller/syntax-highlighting/SyntaxDiscussion.js";
+import Examples from "../js/utils/Examples.js";
 
 var prev,
     next,
@@ -17,6 +19,8 @@ var prev,
 function init() {
     initControls();
     view = new SurveyViewer(prev, next, correct, incorrect, submit);
+
+    listenForContinue();
 
     parseData();
     startSurvey();
@@ -34,42 +38,19 @@ function initControls() {
     submit.addEventListener("click", onSubmit);
 }
 
-function parseData() {
-    //init example data (later this will already be given by parsing a JSON file, which is given by the server)
-    var exmplTask = "Eine Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!",
-        exmplCode = `public class Object {
-    private static final int CONSTANT = 4;
-    private int variable;
-    
-    public Object(int variable) {
-        this.variable = variable;
-    }
+function listenForContinue() {
+    document.onkeydown = function (e) {
+        e = e || window.event;
+
+        if(e.code === "End") {
+            endCard();
+        }
+    };
 }
-`,
-        exmplHighlights = [
-            [
-                {
-                    anchor: { line: 2, ch: 4 },
-                    head: { line: 2, ch: 25 },
-                },
-                {
-                    anchor: { line: 5, ch: 8 },
-                    head: { line: 5, ch: 33 },
-                },
-            ],
-            [
-                {
-                    anchor: { line: 4, ch: 4 },
-                    head: { line: 4, ch: 10 },
-                },
-                {
-                    anchor: { line: 5, ch: 8 },
-                    head: { line: 5, ch: 33 },
-                },
-            ],
-        ];
-    survey.push(new Syntax(exmplTask, exmplCode, 5, exmplHighlights, 20, {}, {}));
-    survey.push(new Syntax("Eine weitere Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!", "public class Object {\n    public Object(int variable) {\n    }\n}", 2, [], 10, {}, {}));
+
+function parseData() {
+    survey.push(new Syntax(Examples.solve.task, Examples.solve.code, 5, Examples.solve.highlights, Examples.solve.heatmap, {}));
+    survey.push(new Syntax("Eine weitere Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!", "public class Object {\n    public Object(int variable) {\n    }\n}", 2, [], {}, {}));
 }
 
 function startSurvey() {
@@ -84,10 +65,11 @@ function createCards() {
 
         //create cards if the task type is syntax highlighting
         if (task.type === "syntax") {
-            cards.push(new SyntaxController(task.solve));
+            cards.push(new SyntaxMark(task.solve));
             task.evaluate.forEach(evaluation => {
                 cards.push(new SyntaxEvaluation(evaluation));
             });
+            cards.push(new SyntaxDiscussion(task.discussion));
         }
 
         //create cards if the task type is type determination

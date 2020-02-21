@@ -318,6 +318,39 @@ header {
     margin-left: .5rem;
 }
 
+.legend-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.legend {
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    background-color: #fff350;
+    border-radius: 50%;
+    float: left;
+    margin: .5rem;
+}
+
+.light {
+    background-color: #ffeda0;
+}
+
+.medium {
+    background-color: #feb24c;
+}
+
+.strong {
+    background-color: #f03b20;
+}
+
 /* css for type-determination */
 
 .controls-legality {
