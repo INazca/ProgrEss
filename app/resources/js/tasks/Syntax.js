@@ -118,7 +118,26 @@ class SyntaxDiscussion {
 
 class SyntaxReveal {
     constructor(task, code, solution) {
+        this._controlType = "none";
+        this._task = task;
+        this._code = code;
+        this._solution = solution;
+    }
 
+    get controlType() {
+        return this._controlType;
+    }
+
+    get task() {
+        return this._task;
+    }
+
+    get code() {
+        return this._code;
+    }
+
+    get solution() {
+        return this._solution;
     }
 }
 

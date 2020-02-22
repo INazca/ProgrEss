@@ -57,6 +57,12 @@ const Examples = {
                 },
             ],
         },
+        solution: [
+            {
+                anchor: { line: 5, ch: 8 },
+                head: { line: 5, ch: 33 },
+            },
+        ],
     },
 };
 

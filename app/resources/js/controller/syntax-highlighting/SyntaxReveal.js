@@ -2,7 +2,7 @@
 import Controller from "../Controller.js";
 import EditorAnalyseView from "../../views/subviews/EditorAnalyseView.js";
 
-class SyntaxDiscussion extends Controller {
+class SyntaxReveal extends Controller {
 
     constructor(data) {
         super(data, new EditorAnalyseView(data.task, data.code, true));
@@ -12,22 +12,20 @@ class SyntaxDiscussion extends Controller {
             if (!this.initialized) {
                 this.view.initEditor();
 
-                // add legends and highlight to card
-                this.view.addLegend();
-                heatmap(this.view, this.data.heatmap);
+                // show solution
+                solution(this.view, this.data.solution);
                 this.initialized = true;
             }
         };
     }
 }
 
-function heatmap(view, heatmap) {
-    Object.keys(heatmap).forEach(function(key) {
-        heatmap[key].forEach(selection => {
-            view.drawHeat(selection, key);
-        });
+function solution(view, solution) {
+    solution.forEach(selection => {
+        view.drawSolution(selection);
     });
-    view.showHeatmap();
+
+    view.showSolution();
 }
 
-export default SyntaxDiscussion;
+export default SyntaxReveal;

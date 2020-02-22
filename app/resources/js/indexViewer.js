@@ -5,6 +5,7 @@ import SyntaxMark from "../js/controller/syntax-highlighting/SyntaxMark.js";
 import SyntaxEvaluation from "../js/controller/syntax-highlighting/SyntaxEvaluation.js";
 import SyntaxDiscussion from "../js/controller/syntax-highlighting/SyntaxDiscussion.js";
 import Examples from "../js/utils/Examples.js";
+import SyntaxReveal from "./controller/syntax-highlighting/SyntaxReveal.js";
 
 var prev,
     next,
@@ -49,7 +50,7 @@ function listenForContinue() {
 }
 
 function parseData() {
-    survey.push(new Syntax(Examples.solve.task, Examples.solve.code, 5, Examples.solve.highlights, Examples.solve.heatmap, {}));
+    survey.push(new Syntax(Examples.solve.task, Examples.solve.code, 5, Examples.solve.highlights, Examples.solve.heatmap, Examples.solve.solution));
     survey.push(new Syntax("Eine weitere Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!", "public class Object {\n    public Object(int variable) {\n    }\n}", 2, [], {}, {}));
 }
 
@@ -70,6 +71,7 @@ function createCards() {
                 cards.push(new SyntaxEvaluation(evaluation));
             });
             cards.push(new SyntaxDiscussion(task.discussion));
+            cards.push(new SyntaxReveal(task.reveal));
         }
 
         //create cards if the task type is type determination
