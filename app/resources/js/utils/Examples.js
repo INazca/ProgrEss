@@ -8,11 +8,21 @@ var codeString1 = `public class Object {
     public Object(int variable) {
         this.variable = variable;
     }
-}
-`;
+}`,
+    codeString2 = `public class Example {
+    private boolean isSth;
+
+    public Example(boolean isSth) {
+        this.isSth = isSth;
+
+        if(this.isSth == isSth) {
+            System.out.println("Example!");
+        }
+    }
+}`;
 
 const Examples = {
-    solve: {
+    syntax: {
         task: "Eine Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!",
         code: codeString1,
         highlights: [
@@ -63,6 +73,9 @@ const Examples = {
                 head: { line: 5, ch: 33 },
             },
         ],
+    },
+    type: {
+        code: codeString2,
     },
 };
 

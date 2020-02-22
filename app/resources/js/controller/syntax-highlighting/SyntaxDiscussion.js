@@ -24,7 +24,7 @@ class SyntaxDiscussion extends Controller {
 function heatmap(view, heatmap) {
     Object.keys(heatmap).forEach(function(key) {
         heatmap[key].forEach(selection => {
-            view.drawHeat(selection, key);
+            view.drawMark(selection, "heat-" + key);
         });
     });
     view.showHeatmap();

@@ -8,10 +8,6 @@ class EditorAnalyseView extends EditorView {
         this.duration = 2000;
     }
 
-    drawHeat(selection, weight) {
-        this.editor.markText(selection.anchor, selection.head, {className: "heat-" + weight});
-    }
-
     showHeatmap() {
         var lights = this.card.getElementsByClassName("heat-light"),
             mediums = this.card.getElementsByClassName("heat-medium"),
@@ -42,10 +38,6 @@ class EditorAnalyseView extends EditorView {
         legend.classList.add("legend-wrapper");
 
         this.card.getElementsByClassName("survey-content")[0].insertBefore(legend, this.card.getElementsByClassName("task-wrapper")[0]);
-    }
-
-    drawSolution(selection) {
-        this.editor.markText(selection.anchor, selection.head, {className: "solution-mark"});
     }
 
     showSolution() {

@@ -22,7 +22,7 @@ class SyntaxReveal extends Controller {
 
 function solution(view, solution) {
     solution.forEach(selection => {
-        view.drawSolution(selection);
+        view.drawMark(selection, "solution-mark");
     });
 
     view.showSolution();

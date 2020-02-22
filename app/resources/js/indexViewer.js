@@ -6,6 +6,7 @@ import SyntaxEvaluation from "../js/controller/syntax-highlighting/SyntaxEvaluat
 import SyntaxDiscussion from "../js/controller/syntax-highlighting/SyntaxDiscussion.js";
 import Examples from "../js/utils/Examples.js";
 import SyntaxReveal from "./controller/syntax-highlighting/SyntaxReveal.js";
+import TypeDetermination from "./tasks/Type.js";
 
 var prev,
     next,
@@ -50,8 +51,8 @@ function listenForContinue() {
 }
 
 function parseData() {
-    survey.push(new Syntax(Examples.solve.task, Examples.solve.code, 5, Examples.solve.highlights, Examples.solve.heatmap, Examples.solve.solution));
-    survey.push(new Syntax("Eine weitere Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!", "public class Object {\n    public Object(int variable) {\n    }\n}", 2, [], {}, {}));
+    survey.push(new Syntax(Examples.syntax.task, Examples.syntax.code, 5, Examples.syntax.highlights, Examples.syntax.heatmap, Examples.syntax.solution));
+    survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 10, {}, {}, {}));
 }
 
 function startSurvey() {

@@ -34,6 +34,10 @@ class EditorView {
         $(this.card).animate({left: "100%"}, "slow");
     }
 
+    drawMark(selection, className) {
+        this.editor.markText(selection.anchor, selection.head, {className: className});
+    }
+
     get node() {
         return this.card;
     }
