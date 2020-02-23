@@ -5,7 +5,7 @@ import CardView from "../CardView.js";
 class EditorView extends CardView {
     
     constructor(task, code, readOnly, template) {
-        super(task, template || "syntax-highlighting-discussion");
+        super(task, template || "microtask-solve");
 
         this.editorContainer = this.card.getElementsByClassName("editor-container")[0];
         this.code = code;
@@ -18,6 +18,14 @@ class EditorView extends CardView {
 
     drawMark(selection, className) {
         this.editor.markText(selection.anchor, selection.head, {className: className});
+    }
+
+    get content() {
+        return this.editor.getValue();
+    }
+
+    set editable(isEditable) {
+        this.editor.setOption("readOnly", !isEditable);
     }
 }
 

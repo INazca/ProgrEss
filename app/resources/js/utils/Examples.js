@@ -19,6 +19,39 @@ var codeString1 = `public class Object {
             System.out.println("Example!");
         }
     }
+}`,
+    codeString3 = `public class Example {
+    private boolean isSth;
+
+    public Example(boolean isSth) {
+        this.isSth = isSth;
+    }
+
+    private void setIsSth(boolean isSth) {
+
+    }
+}`,
+    evaluationCode1 = `public class Example {
+    private boolean isSth;
+
+    public Example(boolean isSth) {
+        this.isSth = isSth;
+    }
+
+    private void setIsSth(boolean isSth) {
+        this.isSth = isSth;
+    }
+}`,
+    evaluationCode2 = `public class Example {
+    private boolean isSth;
+
+    public Example(boolean isSth) {
+        this.isSth = isSth;
+    }
+
+    private void setIsSth(boolean isSth) {
+        return isSth;
+    }
 }`;
 
 const Examples = {
@@ -100,6 +133,11 @@ const Examples = {
             },
         ],
         solution: "boolean",
+    },
+    microtask: {
+        task: "Implementieren sie die Methode setIsSth(boolean isSth)",
+        code: codeString3,
+        evaluations: [evaluationCode1, evaluationCode2],
     },
 };
 

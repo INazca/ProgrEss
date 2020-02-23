@@ -11,6 +11,9 @@ import TypeSolve from "./controller/type-determination/TypeSolve.js";
 import TypeEvaluation from "./controller/type-determination/TypeEvaluation.js";
 import TypeDiscussion from "./controller/type-determination/TypeDiscussion.js";
 import TypeReveal from "./controller/type-determination/TypeReveal.js";
+import Microtask from "./tasks/Microtask.js";
+import MicrotaskSolve from "./controller/microtask/MicrotaskSolve.js";
+import MicrotaskEvaluation from "./controller/microtask/MicrotaskEvaluation.js";
 
 var prev,
     next,
@@ -57,6 +60,7 @@ function listenForContinue() {
 }
 
 function parseData() {
+    survey.push(new Microtask(Examples.microtask.task, Examples.microtask.code, 20, Examples.microtask.evaluations, [], ""));
     survey.push(new Syntax(Examples.syntax.task, Examples.syntax.code, 5, Examples.syntax.highlights, Examples.syntax.heatmap, Examples.syntax.solution));
     survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 10, Examples.type.evaluations, Examples.type.expression, Examples.type.histogramm, Examples.type.solution));
 }
@@ -92,8 +96,11 @@ function createCards() {
         }
 
         //create cards if the task type is microtask
-        if (task.type === "micro") {
-            //write code for instantiation
+        if (task.type === "microtask") {
+            cards.push(new MicrotaskSolve(task.solve));
+            task.evaluate.forEach(evaluation => {
+                cards.push(new MicrotaskEvaluation(evaluation));
+            });
         }
     });
 }
