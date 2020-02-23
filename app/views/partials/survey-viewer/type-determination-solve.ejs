@@ -1,25 +1,31 @@
 <div id="type-determination-solve" class="survey-content-wrapper hidden">
-    <div class="survey-content">
+    <div class="card-content">
+        <div class="survey-content-wrapper">
+            <div class="survey-content">
 
-        <!-- task description and hints -->
-        <p class="task-description">Bestimmen Sie, ob folgender markierter Ausdruck zulässig ist und geben Sie, sofern dies zutrifft, dessen Rückgabe-Typ an!</p>
+                <!-- task description and hints -->
+                <p class="task-description">Bestimmen Sie, ob folgender markierter Ausdruck zulässig ist und geben Sie,
+                    sofern dies zutrifft, dessen Rückgabe-Typ an!</p>
 
-        <!-- editor -->
-        <div class="task-wrapper">
-            <div class="editor-container editor-container-ts"></div>
-        </div>
+                <!-- editor -->
+                <div class="task-wrapper">
+                    <div class="editor-container editor-container-ts"></div>
+                </div>
 
-        <!-- form to determine legality and type of expression -->
-        <div class="btn-wrapper legal-controls">
-            <button id="expression-legal" class="btn btn-primary-color controls-legality">legal</button>
-            <button id="expression-illegal" class="btn btn-primary-color controls-legality">unzulässig</button>
-        </div>
-        <form action="">
-            <div class="form-group">
-                <input type="text" class="form-control" id="type-input" aria-describedby="type-help">
-                <small id="type-help" class="form-text text-muted text-centered">Geben Sie den Typ des Rückgabewerts an</small>
+                <!-- form to determine legality and type of expression -->
+                <div class="btn-wrapper legal-controls">
+                    <button class="btn btn-primary-color controls-legality expression-legal">legal</button>
+                    <button class="btn btn-primary-color controls-legality expression-illegal">unzulässig</button>
+                </div>
+                <form action="">
+                    <div class="form-group">
+                        <input type="text" class="form-control type-input" aria-describedby="type-help">
+                        <small id="type-help" class="form-text text-muted text-centered">Geben Sie den Typ des
+                            Rückgabewerts an</small>
+                    </div>
+                </form>
+
             </div>
-        </form>
-
+        </div>
     </div>
 </div>

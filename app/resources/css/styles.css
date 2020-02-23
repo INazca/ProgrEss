@@ -371,6 +371,18 @@ header {
     box-shadow: 0px 0px 0px 0px #ffc107;
 }
 
+.solution-display {
+    color: inherit;
+    font-weight: 600;
+    text-align: center;
+}
+
+.solution-display:disabled {
+    background-color: white;
+    border-color: #ffc107;
+    border-width: 4px;
+}
+
 .expression {
     text-align: center;
     flex: 0 1 auto;

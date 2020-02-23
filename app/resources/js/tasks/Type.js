@@ -34,6 +34,7 @@ class TypeSolve {
         this._task = task;
         this._code = code;
         this._highlight = highlight;
+        this._submition = {};
     }
 
     get controlType() {
@@ -49,16 +50,55 @@ class TypeSolve {
     }
 
     get highlight() {
-        return [this._highlight];
+        return this._highlight;
     }
 
     set controlType(type) {
         this._controlType = type;
     }
+
+    set submition(submition) {
+        this._submition = submition;
+    }
 }
 
 class TypeEvaluate {
+    constructor(task, code, highlight, evaluation) {
+        this._controlType = "evaluate-correctness";
+        this._task = task;
+        this._code = code;
+        this._highlight = highlight;
+        this._evaluation = evaluation;
+        this._isCorrect = true;
+    }
 
+    get controlType() {
+        return this._controlType;
+    }
+
+    get task() {
+        return this._task;
+    }
+
+    get code() {
+        return this._code;
+    }
+
+    get highlight() {
+        return this._highlight;
+    }
+
+    get evaluation() {
+        return this._evaluation;
+    }
+
+    set controlType(type) {
+        this._controlType = type;
+    }
+
+    set isCorrect(isCorrect) {
+        this._isCorrect = isCorrect;
+    }
 }
 
 class TypeDiscussion {

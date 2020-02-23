@@ -21,7 +21,7 @@ class SyntaxMark extends Controller {
             this.view.hideCardLeft();
             this.view.editable = false;
             this.data.controlType = this.data.controlType + "-done";
-        }
+        };
     }
 }
 

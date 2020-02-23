@@ -76,6 +76,11 @@ const Examples = {
     },
     type: {
         code: codeString2,
+        highlight: {
+            anchor: { line: 6, ch: 11 },
+            head: { line: 6, ch: 30 },
+        },
+        evaluations: ["Object", "String"],
     },
 };
 

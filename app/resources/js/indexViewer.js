@@ -7,6 +7,8 @@ import SyntaxDiscussion from "../js/controller/syntax-highlighting/SyntaxDiscuss
 import Examples from "../js/utils/Examples.js";
 import SyntaxReveal from "./controller/syntax-highlighting/SyntaxReveal.js";
 import TypeDetermination from "./tasks/Type.js";
+import TypeSolve from "./controller/type-determination/TypeSolve.js";
+import TypeEvaluation from "./controller/type-determination/TypeEvaluation.js";
 
 var prev,
     next,
@@ -37,6 +39,8 @@ function initControls() {
 
     prev.addEventListener("click", onPrev);
     next.addEventListener("click", onNext);
+    correct.addEventListener("click", onCorrect);
+    incorrect.addEventListener("click", onIncorrect);
     submit.addEventListener("click", onSubmit);
 }
 
@@ -44,7 +48,7 @@ function listenForContinue() {
     document.onkeydown = function (e) {
         e = e || window.event;
 
-        if(e.code === "End") {
+        if (e.code === "End") {
             endCard();
         }
     };
@@ -52,7 +56,7 @@ function listenForContinue() {
 
 function parseData() {
     survey.push(new Syntax(Examples.syntax.task, Examples.syntax.code, 5, Examples.syntax.highlights, Examples.syntax.heatmap, Examples.syntax.solution));
-    survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 10, {}, {}, {}));
+    survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 10, Examples.type.evaluations, {}, {}));
 }
 
 function startSurvey() {
@@ -77,7 +81,10 @@ function createCards() {
 
         //create cards if the task type is type determination
         if (task.type === "type") {
-            //write code for instantiation
+            cards.push(new TypeSolve(task.solve));
+            task.evaluate.forEach(evaluation => {
+                cards.push(new TypeEvaluation(evaluation));
+            });
         }
 
         //create cards if the task type is microtask
@@ -88,15 +95,21 @@ function createCards() {
 }
 
 function showCard(index) {
+    var isCorrect;
+
     cards[index].show();
+
+    if (cards[index].isCorrect) {
+        isCorrect = cards[index].isCorrect;
+    }
 
     //activate buttons for switching cards, choose the right cases
     if (index === 0) {
-        view.updateUI(cards[index].controlType, false, cards[index + 1].viewable);
+        view.updateUI(cards[index].controlType, false, cards[index + 1].viewable, isCorrect);
     } else if (index === cards.length - 1) {
-        view.updateUI(cards[index].controlType, cards[index - 1].viewable, false);
+        view.updateUI(cards[index].controlType, cards[index - 1].viewable, false, isCorrect);
     } else {
-        view.updateUI(cards[index].controlType, cards[index - 1].viewable, cards[index + 1].viewable);
+        view.updateUI(cards[index].controlType, cards[index - 1].viewable, cards[index + 1].viewable, isCorrect);
     }
 }
 
@@ -134,6 +147,20 @@ function onNext() {
     activeIndex++;
     hideCardLeft(activeIndex - 1);
     showCard(activeIndex);
+}
+
+function onCorrect() {
+    if (!correct.classList.contains("inactive")) {
+        cards[activeIndex].isCorrect = true;
+        endCard();
+    }
+}
+
+function onIncorrect() {
+    if (!incorrect.classList.contains("inactive")) {
+        cards[activeIndex].isCorrect = false;
+        endCard();
+    }
 }
 
 function onSubmit() {
