@@ -135,9 +135,11 @@ const Examples = {
         solution: "boolean",
     },
     microtask: {
-        task: "Implementieren sie die Methode setIsSth(boolean isSth)",
+        task: "Implementieren Sie die Methode setIsSth(boolean isSth)!",
         code: codeString3,
         evaluations: [evaluationCode1, evaluationCode2],
+        discussionSolutions: [evaluationCode1, evaluationCode2],
+        solution: evaluationCode1,
     },
 };
 

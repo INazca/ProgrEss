@@ -14,6 +14,8 @@ import TypeReveal from "./controller/type-determination/TypeReveal.js";
 import Microtask from "./tasks/Microtask.js";
 import MicrotaskSolve from "./controller/microtask/MicrotaskSolve.js";
 import MicrotaskEvaluation from "./controller/microtask/MicrotaskEvaluation.js";
+import MicrotaskDiscussion from "./controller/microtask/MicrotaskDiscussion.js";
+import MicrotaskReveal from "./controller/microtask/MicrotaskReveal.js";
 
 var prev,
     next,
@@ -60,7 +62,7 @@ function listenForContinue() {
 }
 
 function parseData() {
-    survey.push(new Microtask(Examples.microtask.task, Examples.microtask.code, 20, Examples.microtask.evaluations, [], ""));
+    survey.push(new Microtask(Examples.microtask.task, Examples.microtask.code, 20, Examples.microtask.evaluations, Examples.microtask.discussionSolutions, Examples.microtask.solution));
     survey.push(new Syntax(Examples.syntax.task, Examples.syntax.code, 5, Examples.syntax.highlights, Examples.syntax.heatmap, Examples.syntax.solution));
     survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 10, Examples.type.evaluations, Examples.type.expression, Examples.type.histogramm, Examples.type.solution));
 }
@@ -101,6 +103,8 @@ function createCards() {
             task.evaluate.forEach(evaluation => {
                 cards.push(new MicrotaskEvaluation(evaluation));
             });
+            cards.push(new MicrotaskDiscussion(task.discussion));
+            cards.push(new MicrotaskReveal(task.reveal));
         }
     });
 }

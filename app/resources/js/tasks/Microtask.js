@@ -86,11 +86,43 @@ class MicrotaskEvaluate {
 }
 
 class MicrotaskDiscussion {
+    constructor(task, discussionSolutions) {
+        this._controlType = "none";
+        this._task = task;
+        this._discussionSolutions = discussionSolutions;
+    }
 
+    get controlType() {
+        return this._controlType;
+    }
+
+    get task() {
+        return this._task;
+    }
+
+    get discussionSolutions() {
+        return this._discussionSolutions;
+    }
 }
 
 class MicrotaskReveal {
+    constructor(task, solution) {
+        this._controlType = "none";
+        this._task = task;
+        this._solution = solution;
+    }
 
+    get controlType() {
+        return this._controlType;
+    }
+
+    get task() {
+        return this._task;
+    }
+
+    get solution() {
+        return this._solution;
+    }
 }
 
 export default Microtask;

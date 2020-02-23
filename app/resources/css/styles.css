@@ -433,3 +433,7 @@ header {
 .editor-container-controversial .CodeMirror {
     border: 4px solid #ffc107;
 }
+
+.CodeMirror.editor-solution {
+    border: 4px solid #1B5E20;
+}

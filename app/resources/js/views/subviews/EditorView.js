@@ -27,6 +27,10 @@ class EditorView extends CardView {
     set editable(isEditable) {
         this.editor.setOption("readOnly", !isEditable);
     }
+
+    set editorStyle(className) {
+        this.card.getElementsByClassName("CodeMirror")[0].classList.add(className);
+    }
 }
 
 function registerEditor(element, code, readOnly) {
