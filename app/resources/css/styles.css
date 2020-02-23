@@ -414,11 +414,10 @@ header {
     width: fit-content;
 }
 
-.solution .form-control {
+.input-solution:disabled {
     color: #1B5E20;
-    background-color: rgb(181, 255, 186);
+    background-color: #b5ffba;
     border: 4px solid #1B5E20;
-    margin: 0 .5rem 0 0;
 }
 
 /* css for microtasks */

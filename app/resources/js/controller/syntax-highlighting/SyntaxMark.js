@@ -23,6 +23,11 @@ class SyntaxMark extends Controller {
             this.data.controlType = this.data.controlType + "-done";
         };
     }
+
+    show() {
+        super.show();
+        this.view.initEditor();
+    }
 }
 
 //event handlers

@@ -15,7 +15,6 @@ class SurveyViewer {
     }
 
     updateUI(type, isViewable1, isViewable2, isCorrect) {
-        console.log(type + ", " + isViewable1 + ", " + isViewable2);
         if (type === "solve") {
             this.controls.prev.classList.add("hidden");
             this.controls.next.classList.add("hidden");

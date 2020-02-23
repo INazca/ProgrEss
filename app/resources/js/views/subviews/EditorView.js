@@ -1,17 +1,11 @@
+import CardView from "../CardView.js";
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
-class EditorView {
+class EditorView extends CardView {
     
     constructor(task, code, readOnly, template) {
-        if(!template) {
-            this.template = "syntax-highlighting-discussion";
-        } else {
-            this.template = template;
-        }
-
-        //create card as div node with correct data (not added to HTML)
-        this.card = initCard(task, document.getElementById(this.template));
+        super(task, template || "syntax-highlighting-discussion");
 
         this.editorContainer = this.card.getElementsByClassName("editor-container")[0];
         this.code = code;
@@ -22,38 +16,9 @@ class EditorView {
         this.editor = registerEditor(this.editorContainer, this.code, this.readOnly);
     }
 
-    showCard() {
-        $(this.card).animate({left: 0}, "slow");
-    }
-
-    hideCardLeft(){
-        $(this.card).animate({left: "-100%"}, "slow");
-    }
-
-    hideCardRight() {
-        $(this.card).animate({left: "100%"}, "slow");
-    }
-
     drawMark(selection, className) {
         this.editor.markText(selection.anchor, selection.head, {className: className});
     }
-
-    get node() {
-        return this.card;
-    }
-}
-
-function initCard(task, template) {
-    var card = template.cloneNode(true);
-
-    //add survey-card class and enable visibility, but card is not visible yet, because its not embedded in the HTML structure
-    card.classList.add("survey-card");
-    card.classList.remove("hidden");
-
-    //add the task description to the node
-    card.getElementsByClassName("task-description")[0].innerHTML = task;
-
-    return card;
 }
 
 function registerEditor(element, code, readOnly) {

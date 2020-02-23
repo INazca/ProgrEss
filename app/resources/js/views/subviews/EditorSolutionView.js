@@ -12,6 +12,10 @@ class EditorSolutionView extends EditorView {
         this.solution = this.card.getElementsByClassName("solution-display")[0];
         this.solution.value = solution;
     }
+
+    setStyle() {
+        this.solution.classList.add("input-solution");
+    }
 }
 
 export default EditorSolutionView;

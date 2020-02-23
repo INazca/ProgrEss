@@ -13,7 +13,6 @@ class Controller {
     show() {
         this.view.showCard();
         if(!this.initialized) {
-            this.view.initEditor();
             this.initialized = true;
         }
     }

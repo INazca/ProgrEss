@@ -81,6 +81,25 @@ const Examples = {
             head: { line: 6, ch: 30 },
         },
         evaluations: ["Object", "String"],
+        expression: "this.isSth == isSth",
+        histogramm: [
+            {
+                group: "boolean",
+                correct: 15,
+                rest: 5,
+            },
+            {
+                group: "String",
+                correct: 3,
+                rest: 5,
+            },
+            {
+                group: "Object",
+                correct: 5,
+                rest: 6,
+            },
+        ],
+        solution: "boolean",
     },
 };
 
