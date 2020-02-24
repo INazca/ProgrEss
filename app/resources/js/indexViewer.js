@@ -25,7 +25,7 @@ var prev,
     view,
     survey = [],
     cards = [],
-    activeIndex = 0;
+    activeIndex = -1;
 
 function init() {
     initControls();
@@ -34,7 +34,7 @@ function init() {
     listenForContinue();
 
     parseData();
-    startSurvey();
+    initSurvey();
 }
 
 function initControls() {
@@ -67,10 +67,9 @@ function parseData() {
     survey.push(new Microtask(Examples.microtask.task, Examples.microtask.code, 20, Examples.microtask.evaluations, Examples.microtask.discussionSolutions, Examples.microtask.solution));
 }
 
-function startSurvey() {
+function initSurvey() {
     createCards();
     view.updateHTML(cards);
-    showCard(activeIndex);
 }
 
 function createCards() {
@@ -137,7 +136,9 @@ function hideCardLeft(index) {
 }
 
 function endCard() {
-    cards[activeIndex].end();
+    if (activeIndex > -1) {
+        cards[activeIndex].end();
+    }
 
     if (activeIndex < cards.length - 1) {
         activeIndex++;

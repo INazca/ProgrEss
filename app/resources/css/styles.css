@@ -26,7 +26,7 @@ body {
 }
 
 .shadow-strong {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
 }
 
 .hidden {
@@ -182,6 +182,147 @@ header {
 
 /* set css for survey viewer */
 
+/* status bar */
+
+.status-bar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding-top: 4vh;
+}
+
+#status-bar {
+    height: 2rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status-wrapper {
+    width: 5vw;
+    float: left;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.status-connection-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status-circle {
+    flex: 0 1 auto;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #bbb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .5s ease-in, width .3s ease-in, height .3s ease-in;
+}
+
+.status-circle-active {
+    width: 24px;
+    height: 24px;
+}
+
+.status-inner-circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status-inner-inner-circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #bbb;
+    transition: background-color .5s ease-in;
+}
+
+.status-connection {
+    flex: 1 1 auto;
+    height: 2px;
+    background-color: #bbb;
+}
+
+.status-connection-filler {
+    flex: 1 1 auto;
+}
+
+#status-bar-stages {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stage {
+    width: 5vw;
+}
+
+.stage-text {
+    text-align: center;
+    font-weight: 600;
+    font-size: .8rem;
+    color: #666;
+}
+
+/* set colors for stages */
+
+.status-circle.solve-color {
+    color: #0d47a1;
+    background-color: #0d47a1;
+}
+
+.status-circle.solve-color .status-inner-inner-circle{
+    color: #0d47a1;
+    background-color: #0d47a1;
+}
+
+.status-circle.evaluate-color {
+    color: #0d47a1;
+    background-color: #0d47a1;
+}
+
+.status-circle.evaluate-color .status-inner-inner-circle{
+    color: #0d47a1;
+    background-color: #0d47a1;
+}
+
+.status-circle.discussion-color {
+    color: #0d47a1;
+    background-color: #0d47a1;
+}
+
+.status-circle.discussion-color .status-inner-inner-circle{
+    color: #0d47a1;
+    background-color: #0d47a1;
+}
+
+.status-circle.reveal-color {
+    color: #0d47a1;
+    background-color: #0d47a1;
+}
+
+.status-circle.reveal-color .status-inner-inner-circle{
+    color: #0d47a1;
+    background-color: #0d47a1;
+}
+
+/* cards */
+
 .content-area {
     flex: 1 1 auto;
     position: relative;
@@ -201,7 +342,7 @@ header {
 .survey-card {
     height: 100%;
     width: 100%;
-    padding: 5vh 3vw;
+    padding: 1vh 3vw 6vh 3vw;
     position: absolute;
     left: 100%;
 }
@@ -209,8 +350,8 @@ header {
 .card-content {
     max-width: 1200px;
     height: 100%;
-    border-radius: .25rem;
-    box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.53);
+    border-radius: 1.5rem;
+    box-shadow: 0px 0px 9px -3px rgba(0,0,0,0.53);
     background-color: #fff;
     margin: 0 auto;
 }

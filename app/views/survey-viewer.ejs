@@ -1,6 +1,63 @@
 <%- include('partials/html-header'); -%>
 <%- include('partials/header') -%>
 
+<!-- status bar -->
+<div class="status-bar-wrapper">
+    <div id="status-bar">
+        <div class="status-wrapper">
+            <div class="status-connection-wrapper">
+                <div class="status-connection-filler"></div>
+                <div class="status-circle">
+                    <div class="status-inner-circle hidden">
+                        <div class="status-inner-inner-circle solve-color"></div>
+                    </div>
+                </div>
+                <div class="status-connection"></div>
+            </div>
+        </div>
+        <div class="status-wrapper">
+            <div class="status-connection-wrapper">
+                <div class="status-connection"></div>
+                <div class="status-circle">
+                    <div class="status-inner-circle hidden">
+                        <div class="status-inner-inner-circle evaluation-color"></div>
+                    </div>
+                </div>
+                <div class="status-connection"></div>
+            </div>
+        </div>
+        <div class="status-wrapper">
+            <div class="status-connection-wrapper">
+                <div class="status-connection"></div>
+                <div class="status-circle">
+                    <div class="status-inner-circle hidden">
+                        <div class="status-inner-inner-circle discussion-color"></div>
+                    </div>
+                </div>
+                <div class="status-connection"></div>
+            </div>
+        </div>
+        <div class="status-wrapper">
+            <div class="status-connection-wrapper">
+                <div class="status-connection"></div>
+                <div class="status-circle">
+                    <div class="status-inner-circle hidden">
+                        <div class="status-inner-inner-circle reveal-color"></div>
+                    </div>
+                </div>
+                <div class="status-connection-filler"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="status-bar-stages">
+        <div class="stage"><div class="stage-text hidden">Bearbeitung</div></div>
+        <div class="stage"><div class="stage-text hidden">Evaluation</div></div>
+        <div class="stage"><div class="stage-text hidden">Diskussion</div></div>
+        <div class="stage"><div class="stage-text hidden">Lösung</div></div>
+    </div>
+</div>
+
 <div class="content-area">
 
     <div id="cards-container"></div>

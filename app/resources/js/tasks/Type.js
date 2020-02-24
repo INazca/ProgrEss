@@ -103,7 +103,7 @@ class TypeEvaluate {
 
 class TypeDiscussion {
     constructor(task, expression, histogramm) {
-        this._controlType = "none";
+        this._controlType = "discuss";
         this._task = task;
         this._expression = expression;
         this._histogramm = histogramm;
@@ -132,7 +132,7 @@ class TypeDiscussion {
 
 class TypeReveal {
     constructor(task, code, highlight, solution) {
-        this._controlType = "none";
+        this._controlType = "reveal";
         this._task = task;
         this._code = code;
         this._highlight = highlight;
