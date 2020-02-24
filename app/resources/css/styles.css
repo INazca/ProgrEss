@@ -123,6 +123,17 @@ body {
     color: #fff;
 }
 
+/* settings for input styles */
+.input-solution {
+    color: #1B5E20;
+    border: 4px solid #1B5E20;
+}
+
+.input-error {
+    color: #B00020;
+    border: 4px solid #B00020;
+}
+
 /* header: */
 header {
     flex: 0 1 auto;
@@ -150,7 +161,7 @@ header {
     width: 20%;
     min-width: 150px;
     margin: 0 auto;
-    transition: border-width .1s ease-in;
+    transition: border-width .2s ease-in, border-color .2s ease-in;
 }
 
 .code-input-wrapper .form-control:focus {

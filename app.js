@@ -13,7 +13,7 @@ app.set("views", "app/views");
 
 //serve the home page on the main route
 app.get("/", function (req, res) {
-    res.render("index");
+    res.render("index", {validIDs: JSON.stringify(ServerConst.validIDs)});
 });
 
 //if the user connects on a valid code then he will be given the needed information for taking part in a survey

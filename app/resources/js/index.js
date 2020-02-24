@@ -2,13 +2,18 @@
 import HomeView from "../js/views/HomeView.js";
 
 var surveyButton,
+    codeInput,
+    validIDs,
     view;
 
 function init() {
     surveyButton = document.getElementById("survey-button");
-    view = new HomeView(surveyButton);
+    codeInput = document.getElementById("code-input");
+    validIDs = JSON.parse(document.getElementById("idContainer").innerHTML);
+    view = new HomeView(surveyButton, codeInput);
 
     surveyButton.addEventListener("click", onSurveyJoin);
+    codeInput.addEventListener("change", onCodeChange);
 }
 
 function onSurveyJoin() {
@@ -26,9 +31,24 @@ function onSurveyJoin() {
     }
 }
 
+function onCodeChange() {
+    var input = view.codeInput;
+
+    view.clearInputStyle();
+    if(!validationCheck(input)) {
+        view.inputStyle = "input-error";
+    } else {
+        view.inputStyle = "input-solution";
+    }
+}
+
 function validationCheck(value) {
-    //add code for input validation
-    return true;
+    for(let i = 0; i < validIDs.length; i++) {
+        if(validIDs[i] === value) {
+            return true;
+        }
+    }
+    return false;
 }
 
 init();

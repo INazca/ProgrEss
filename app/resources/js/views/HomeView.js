@@ -3,11 +3,11 @@
 
 class HomeView {
 
-    constructor(surveyButton) {
-        this._codeInput = document.getElementById("code-input");
+    constructor(surveyButton, codeInput) {    
         this._surveyLink = document.getElementById("survey-link");
 
         //controller elements
+        this._codeInput = codeInput;
         this._surveyButton = surveyButton;
     }
 
@@ -20,8 +20,18 @@ class HomeView {
         this._surveyLink.click();
     }
 
+    clearInputStyle() {
+        this._codeInput.className = "";
+        this._codeInput.classList.add("form-control");
+        this._codeInput.classList.add("form-control-lg");
+    }
+
     set surveyLink(code) {
         this._surveyLink.href = "/" + code;
+    }
+
+    set inputStyle(className) {
+        this._codeInput.classList.add(className);
     }
 
     get codeInput() {
