@@ -67,8 +67,7 @@ function updateHighlights(self, view) {
     marks.forEach(mark => {
         highlights.push(mark.find());
     });
-
-    console.log(highlights);
+    
     self.data.highlights = highlights;
 }
 

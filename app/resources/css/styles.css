@@ -460,10 +460,25 @@ header {
 
 .tools-wrapper {
     flex: 0 1 auto;
-    width: 10rem;
+    width: 8rem;
     display: flex;
     flex-flow: column;
     margin-left: .5rem;
+}
+
+.tools-wrapper .btn-wrapper {
+    width: 100%;
+    height: 8rem;
+}
+
+.tools-wrapper .btn {
+    width: 6rem;
+    height: 6rem;
+
+}
+
+.tools-wrapper i {
+    font-size: 3rem;
 }
 
 .legend-wrapper {
