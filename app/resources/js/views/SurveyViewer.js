@@ -8,22 +8,18 @@ class SurveyViewer {
 
     constructor(prev, next, correct, incorrect, submit) {
         this.controls = {
-            prev: prev,
-            next: next,
-            correct: correct,
-            incorrect: incorrect,
-            submit: submit,
+            prev: {button: prev, isShown: false},
+            next: {button: next, isShown: false},
+            correct: {button: correct, isShown: false},
+            incorrect: {button: incorrect},
+            submit: {button: submit, isShown: false},
         };
         this.statusBar = initStatusBar();
     }
 
     updateUI(type, isViewable1, isViewable2, isCorrect) {
         if (type === "solve") {
-            this.controls.prev.classList.add("hidden");
-            this.controls.next.classList.add("hidden");
-            this.controls.correct.classList.add("hidden");
-            this.controls.incorrect.classList.add("hidden");
-            Animation.showBottom(this.controls.submit);
+            showControls(this, false, false, false, true);
 
             this.resetStatusBar();
             this.statusBar.solve.stage.classList.remove("hidden");
@@ -31,23 +27,15 @@ class SurveyViewer {
             this.statusBar.solve.circles[0].classList.add("solve-color");
             this.statusBar.solve.circles[1].classList.remove("hidden");
         } else if (type === "solve-done") {
-            this.controls.prev.classList.remove("hidden");
-            this.controls.next.classList.remove("hidden");
-            this.controls.correct.classList.add("hidden");
-            this.controls.incorrect.classList.add("hidden");
-            this.controls.submit.classList.add("hidden");
+            showControls(this, true, true, false, false);
 
-            this.controls.prev.disabled = !isViewable1;
-            this.controls.next.disabled = !isViewable2;
+            this.controls.prev.button.disabled = !isViewable1;
+            this.controls.next.button.disabled = !isViewable2;
         } else if (type === "evaluate") {
-            this.controls.prev.classList.remove("hidden");
-            this.controls.next.classList.remove("hidden");
-            this.controls.correct.classList.add("hidden");
-            this.controls.incorrect.classList.add("hidden");
-            this.controls.submit.classList.remove("hidden");
+            showControls(this, true, true, false, true);
 
-            this.controls.prev.disabled = !isViewable1;
-            this.controls.next.disabled = !isViewable2;
+            this.controls.prev.button.disabled = !isViewable1;
+            this.controls.next.button.disabled = !isViewable2;
 
             this.resetStatusBar();
             this.statusBar.evaluate.stage.classList.remove("hidden");
@@ -55,19 +43,15 @@ class SurveyViewer {
             this.statusBar.evaluate.circles[0].classList.add("evaluate-color");
             this.statusBar.evaluate.circles[1].classList.remove("hidden");
         } else if (type === "evaluate-correctness") {
-            this.controls.prev.classList.remove("hidden");
-            this.controls.next.classList.remove("hidden");
-            this.controls.correct.classList.remove("hidden");
-            this.controls.incorrect.classList.remove("hidden");
-            this.controls.submit.classList.add("hidden");
+            showControls(this, true, true, true, false);
 
-            this.controls.prev.disabled = !isViewable1;
-            this.controls.next.disabled = !isViewable2; 
-            this.controls.correct.disabled = false;
-            this.controls.incorrect.disabled = false;
+            this.controls.prev.button.disabled = !isViewable1;
+            this.controls.next.button.disabled = !isViewable2; 
+            this.controls.correct.button.disabled = false;
+            this.controls.incorrect.button.disabled = false;
 
-            this.controls.correct.classList.remove("inactive");
-            this.controls.incorrect.classList.remove("inactive");
+            this.controls.correct.button.classList.remove("inactive");
+            this.controls.incorrect.button.classList.remove("inactive");
 
             this.resetStatusBar();
             this.statusBar.evaluate.stage.classList.remove("hidden");
@@ -75,35 +59,27 @@ class SurveyViewer {
             this.statusBar.evaluate.circles[0].classList.add("evaluate-color");
             this.statusBar.evaluate.circles[1].classList.remove("hidden");
         } else if (type === "evaluate-done") {
-            this.controls.prev.classList.remove("hidden");
-            this.controls.next.classList.remove("hidden");
-            this.controls.correct.classList.add("hidden");
-            this.controls.incorrect.classList.add("hidden");
-            this.controls.submit.classList.add("hidden");
+            showControls(this, true, true, false, false);
 
-            this.controls.prev.disabled = !isViewable1;
-            this.controls.next.disabled = !isViewable2;
+            this.controls.prev.button.disabled = !isViewable1;
+            this.controls.next.button.disabled = !isViewable2;
         } else if (type === "evaluate-correctness-done") {
-            this.controls.prev.classList.remove("hidden");
-            this.controls.next.classList.remove("hidden");
-            this.controls.correct.classList.remove("hidden");
-            this.controls.incorrect.classList.remove("hidden");
-            this.controls.submit.classList.add("hidden");
+            showControls(this, true, true, true, false);
 
-            this.controls.prev.disabled = !isViewable1;
-            this.controls.next.disabled = !isViewable2; 
-            this.controls.correct.disabled = !isCorrect;
-            this.controls.incorrect.disabled = isCorrect;
+            this.controls.prev.button.disabled = !isViewable1;
+            this.controls.next.button.disabled = !isViewable2; 
+            this.controls.correct.button.disabled = !isCorrect;
+            this.controls.incorrect.button.disabled = isCorrect;
 
-            this.controls.correct.classList.remove("inactive");
-            this.controls.incorrect.classList.remove("inactive");
+            this.controls.correct.button.classList.remove("inactive");
+            this.controls.incorrect.button.classList.remove("inactive");
             if(isCorrect) {
-                this.controls.correct.classList.add("inactive");
+                this.controls.correct.button.classList.add("inactive");
             } else {
-                this.controls.incorrect.classList.add("inactive");
+                this.controls.incorrect.button.classList.add("inactive");
             }
         } else if (type === "discuss") {
-            this.hideAllControlls();
+            showControls(this, false, false, false, false);
 
             this.resetStatusBar();
             this.statusBar.discussion.stage.classList.remove("hidden");
@@ -111,7 +87,7 @@ class SurveyViewer {
             this.statusBar.discussion.circles[0].classList.add("discussion-color");
             this.statusBar.discussion.circles[1].classList.remove("hidden");
         } else if (type === "reveal") {
-            this.hideAllControlls();
+            showControls(this, false, false, false, false);
 
             this.resetStatusBar();
             this.statusBar.reveal.stage.classList.remove("hidden");
@@ -119,14 +95,6 @@ class SurveyViewer {
             this.statusBar.reveal.circles[0].classList.add("reveal-color");
             this.statusBar.reveal.circles[1].classList.remove("hidden");
         }
-    }
-
-    hideAllControlls() {
-        this.controls.prev.classList.add("hidden");
-        this.controls.next.classList.add("hidden");
-        this.controls.correct.classList.add("hidden");
-        this.controls.incorrect.classList.add("hidden");
-        this.controls.submit.classList.add("hidden");
     }
 
     resetStatusBar() {
@@ -145,6 +113,59 @@ class SurveyViewer {
         cards.forEach(card => {
             cardsContainer.appendChild(card.node);
         });
+    }
+}
+
+function showControls(self, isShownPrev, isShownNext, isShownCorrect, isShownSubmit) {
+
+    if(isShownPrev) {
+        if(!self.controls.prev.isShown) {
+            Animation.showLeft(self.controls.prev.button);
+            self.controls.prev.isShown = true;
+        }
+    } else {
+        if(self.controls.prev.isShown) {
+            Animation.hideLeft(self.controls.prev.button);
+            self.controls.prev.isShown = false;
+        }
+    }
+    
+    if(isShownNext) {
+        if(!self.controls.next.isShown) {
+            Animation.showRight(self.controls.next.button);
+            self.controls.next.isShown = true;
+        }
+    } else {
+        if(self.controls.next.isShown) {
+            Animation.hideRight(self.controls.next.button);
+            self.controls.next.isShown = false;
+        }
+    }
+    
+    if(isShownCorrect) {
+        if(!self.controls.correct.isShown) {
+            Animation.showBottom(self.controls.correct.button);
+            Animation.showBottom(self.controls.incorrect.button);
+            self.controls.correct.isShown = true;
+        }
+    } else {
+        if(self.controls.correct.isShown) {
+            Animation.hideBottom(self.controls.correct.button);
+            Animation.hideBottom(self.controls.incorrect.button);
+            self.controls.correct.isShown = false;
+        }
+    }
+    
+    if(isShownSubmit) {
+        if(!self.controls.submit.isShown) {
+            Animation.showBottom(self.controls.submit.button);
+            self.controls.submit.isShown = true;
+        }
+    } else {
+        if(self.controls.submit.isShown) {
+            Animation.hideBottom(self.controls.submit.button);
+            self.controls.submit.isShown = false;
+        }
     }
 }
 

@@ -355,14 +355,14 @@ header {
 
 #controls-prev {
     position: absolute;
-    left: 0;
+    left: -5rem;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
 #controls-next {
     position: absolute;
-    right: 0;
+    right: -5rem;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -372,6 +372,8 @@ header {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     margin: 0 5vw;
+    bottom: -5rem;
+    pointer-events: all;
 }
 
 #controls-submit {
@@ -380,6 +382,7 @@ header {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     bottom: -5rem;
+    pointer-events: all;
 }
 
 .controls-correctness-wrapper {
@@ -388,6 +391,11 @@ header {
     display: flex;
     justify-content: center;
     bottom: 0;
+    pointer-events: none;
+}
+
+.controls-correctness-wrapper.hidden {
+    display: none;
 }
 
 .controls-submission-wrapper {
@@ -396,6 +404,11 @@ header {
     display: flex;
     justify-content: center;
     bottom: 0;
+    pointer-events: none;
+}
+
+.controls-submission-wrapper.hidden {
+    display: none;
 }
 
 .controls {
