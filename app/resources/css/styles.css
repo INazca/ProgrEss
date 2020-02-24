@@ -15,6 +15,7 @@ body {
     display: flex;
     flex-flow: column;
     background-color: #eee;
+    overflow: hidden;
 }
 
 .primary-color {
@@ -46,67 +47,61 @@ body {
     align-items: center;
 }
 
+
 .btn-primary-color {
     background-color: #ffc107;
-    border-color: #ffc107;
+    border-width: 0;
     color: #0d0d0d;
     transition: border-width .1s ease-in, background-color .1s ease-in;
 }
 
 .btn-primary-color:hover {
     background-color: #c79100;
-    border-color: #c79100;
+    border-width: 0;
     color: #0d0d0d;
 }
 
 .btn-primary-color:active {
     background-color: #c79100;
-    border-color: #ffc107;
-    border-width: 4px;
+    border-width: 0;
     color: #0d0d0d;
-    font-weight: 600;
     box-shadow: 0 0 0 0;
 }
 
 .btn-primary-color:focus {
-    background-color: #c79100;
-    border-color: #ffc107;
-    border-width: 4px;
+    background-color: none;
+    border-width: 0;
     color: #0d0d0d;
-    font-weight: 600;
     box-shadow: 0 0 0 0;
 }
 
+
 .btn-secondary-color {
     background-color: #0d47a1;
-    border-color: #0d47a1;
+    border-width: 0;
     color: #fff;
-    transition: border-width .1s ease-in, background-color .1s ease-in;
 }
 
 .btn-secondary-color:hover {
     background-color: #002171;
-    border-color: #002171;
+    border: 0;
     color: #fff;
 }
 
 .btn-secondary-color:active {
     background-color: #002171;
-    border-color: #0d47a1;
-    border-width: 4px;
+    border-width: 0;
     color: #fff;
-    font-weight: 600;
     box-shadow: 0 0 0 0;
 }
 
 .btn-secondary-color:focus {
-    background-color: #002171;
-    border-color: #0d47a1;
-    border-width: 4px;
+    background-color: none;
+    border-width: 0;
     color: #fff;
-    font-weight: 600;
     box-shadow: 0 0 0 0;
 }
+
 
 /* settings for correction buttons */
 .btn-correct {
@@ -384,6 +379,7 @@ header {
     position: relative;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    bottom: -5rem;
 }
 
 .controls-correctness-wrapper {

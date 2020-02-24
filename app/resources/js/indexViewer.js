@@ -16,6 +16,7 @@ import MicrotaskSolve from "./controller/microtask/MicrotaskSolve.js";
 import MicrotaskEvaluation from "./controller/microtask/MicrotaskEvaluation.js";
 import MicrotaskDiscussion from "./controller/microtask/MicrotaskDiscussion.js";
 import MicrotaskReveal from "./controller/microtask/MicrotaskReveal.js";
+import Animation from "./utils/Animation.js";
 
 var prev,
     next,
@@ -180,6 +181,7 @@ function onIncorrect() {
 }
 
 function onSubmit() {
+    Animation.click(submit);
     endCard();
 }
 

@@ -2,6 +2,7 @@
 /* eslint-env browser */
 import Controller from "../../controller/Controller.js";
 import EditorMarkView from "../../views/subviews/EditorMarkView.js";
+import Animation from "../../utils/Animation.js";
 
 class SyntaxMark extends Controller {
 
@@ -25,14 +26,19 @@ class SyntaxMark extends Controller {
     }
 
     show() {
-        super.show();
-        this.view.initEditor();
+        this.view.showCard();
+        if (!this.initialized) {
+            this.view.initEditor();
+            this.initialized = true;
+        }
     }
 }
 
 //event handlers
 function onHighlight(view) {
     var selections = view.selections;
+
+    Animation.click(this.highlightButton);
 
     selections.forEach(selection => {
         view.highlight(selection);
@@ -43,6 +49,8 @@ function onHighlight(view) {
 
 function onErase(view) {
     var selections = view.selections;
+
+    Animation.click(this.eraseButton);
 
     selections.forEach(selection => {
         view.erase(selection);

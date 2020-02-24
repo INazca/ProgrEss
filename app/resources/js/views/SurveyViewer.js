@@ -1,3 +1,5 @@
+import Animation from "../utils/Animation.js";
+
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 var cardsContainer = document.getElementById("cards-container");
@@ -21,7 +23,7 @@ class SurveyViewer {
             this.controls.next.classList.add("hidden");
             this.controls.correct.classList.add("hidden");
             this.controls.incorrect.classList.add("hidden");
-            this.controls.submit.classList.remove("hidden");
+            Animation.showBottom(this.controls.submit);
 
             this.resetStatusBar();
             this.statusBar.solve.stage.classList.remove("hidden");
