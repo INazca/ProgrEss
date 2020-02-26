@@ -12,6 +12,8 @@ class HistogrammView extends CardView {
 
         this.card.getElementsByClassName("expression")[0].innerHTML = expression;
         this.data = histogramm;
+
+        this.highestY = calcHighestY(this.data);
     }
 
     drawHistogramm() {
@@ -33,7 +35,7 @@ class HistogrammView extends CardView {
                 .range([0, width])
                 .padding([0.2]),
             y = d3.scaleLinear()
-                .domain([0, 50])
+                .domain([0, this.highestY])
                 .range([height, 0]),
             color = d3.scaleOrdinal()
                 .domain(subgroups)
@@ -79,6 +81,21 @@ class HistogrammView extends CardView {
         this.card.getElementsByClassName("survey-content")[0].append(legend);
     }
 
+}
+
+function calcHighestY(histogramm) {
+    var values = [],
+        max;
+
+    histogramm.forEach(set => {
+        values.push(set.correct + set.rest);
+    });
+
+    max = values.reduce(function(a, b) {
+        return Math.max(a, b);
+    });
+
+    return Math.floor(max * 1.2);
 }
 
 export default HistogrammView;

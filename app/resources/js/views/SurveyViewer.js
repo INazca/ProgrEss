@@ -1,7 +1,7 @@
-import Animation from "../utils/Animation.js";
-
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
+import Animation from "../utils/Animation.js";
+
 var cardsContainer = document.getElementById("cards-container");
 
 class SurveyViewer {
@@ -114,6 +114,8 @@ class SurveyViewer {
         cards.forEach(card => {
             cardsContainer.appendChild(card.node);
         });
+
+        setupEditorContainers()
     }
 }
 
@@ -197,6 +199,15 @@ function initStatusBar() {
             circles: [outerCircles[3], innerCircles[3]],
         },
     };
+}
+
+function setupEditorContainers() {
+    // var containers = document.getElementsByClassName("editor-container");
+
+    // for(let i = 0; i < containers.length; i++) {
+    //     containers[i].style.height = 500;
+    //     console.log(containers[i].offsetHeight);
+    // }
 }
 
 export default SurveyViewer;

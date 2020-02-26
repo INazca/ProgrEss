@@ -1,5 +1,6 @@
 /* eslint-env browser */
 import HomeView from "../js/views/HomeView.js";
+import Animation from "../js/utils/Animation.js";
 
 var surveyButton,
     codeInput,
@@ -18,6 +19,8 @@ function init() {
 
 function onSurveyJoin() {
     var input = view.codeInput;
+
+    Animation.click(surveyButton);
 
     //disable home view while checking validity
     view.disabled(true);

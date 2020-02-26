@@ -38,6 +38,7 @@ function registerEditor(element, code, readOnly) {
         value: code,
         mode: "text/x-java",
         readOnly: readOnly,
+        lineNumbers: true,
     });
 
     return editor;

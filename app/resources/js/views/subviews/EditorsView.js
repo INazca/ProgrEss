@@ -13,7 +13,7 @@ class EditorDeterminationView extends EditorView {
     }
 
     initEditor(){
-        super.initEditor();
+        this.editor = registerEditor(this.editorContainer, this.code, true);
         this.editor2 = registerEditor(this.editorContainer2, this.code2, true);
     }
 }
