@@ -2,6 +2,7 @@
 /* eslint-env browser */
 import Controller from "../Controller.js";
 import EditorDeterminationView from "../../views/subviews/EditorDeterminationView.js";
+import Animation from "../../utils/Animation.js";
 
 class TypeSolve extends Controller {
 
@@ -41,11 +42,13 @@ class TypeSolve extends Controller {
 }
 
 function onLegal(view) {
+    Animation.click(this.legalButton);
     view.showForm();
     this.isLegal = true;
 }
 
 function onIllegal(view) {
+    Animation.click(this.illegalButton);
     view.hideForm();
     this.isLegal = false;
 }

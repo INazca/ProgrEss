@@ -155,12 +155,14 @@ function endSurvey() {
 
 //event handler
 function onPrev() {
+    Animation.click(prev);
     activeIndex--;
     hideCardRight(activeIndex + 1);
     showCard(activeIndex);
 }
 
 function onNext() {
+    Animation.click(next);
     activeIndex++;
     hideCardLeft(activeIndex - 1);
     showCard(activeIndex);
@@ -168,6 +170,7 @@ function onNext() {
 
 function onCorrect() {
     if (!correct.classList.contains("inactive")) {
+        Animation.click(correct);
         cards[activeIndex].isCorrect = true;
         endCard();
     }
@@ -175,6 +178,7 @@ function onCorrect() {
 
 function onIncorrect() {
     if (!incorrect.classList.contains("inactive")) {
+        Animation.click(incorrect);
         cards[activeIndex].isCorrect = false;
         endCard();
     }

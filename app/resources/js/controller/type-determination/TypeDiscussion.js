@@ -11,8 +11,9 @@ class TypeDiscussion extends Controller {
     show() {
         this.view.showCard();
         if (!this.initialized) {
-            // show highlight
+            // show histogramm and legend
             this.view.drawHistogramm();
+            this.view.addLegend();
             this.initialized = true;
         }
     }

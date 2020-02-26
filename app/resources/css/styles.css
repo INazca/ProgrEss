@@ -52,6 +52,7 @@ body {
     background-color: #ffc107;
     border-width: 0;
     color: #0d0d0d;
+    font-weight: 600;
     transition: border-width .1s ease-in, background-color .1s ease-in;
 }
 
@@ -80,11 +81,12 @@ body {
     background-color: #0d47a1;
     border-width: 0;
     color: #fff;
+    font-weight: 600;
 }
 
 .btn-secondary-color:hover {
     background-color: #002171;
-    border: 0;
+    border-width: 0;
     color: #fff;
 }
 
@@ -105,8 +107,25 @@ body {
 
 /* settings for correction buttons */
 .btn-correct {
-    background-color: #1B5E20;
-    border-color: #1B5E20;
+    background-color: #33a02c;
+    border-color: #33a02c;
+}
+
+.btn-correct:hover {
+    background-color: #007000;
+    border-width: 0;
+}
+
+.btn-correct:active {
+    background-color: #007000;
+    border-width: 0;
+    box-shadow: 0 0 0 0;
+}
+
+.btn-correct:focus {
+    background-color: none;
+    border-width: 0;
+    box-shadow: 0 0 0 0;
 }
 
 .btn-incorrect {
@@ -114,14 +133,27 @@ body {
     border-color: #B00020;
 }
 
-.controls-correctness i{
-    color: #fff;
+.btn-incorrect:hover {
+    background-color: #790000;
+    border-width: 0;
+}
+
+.btn-incorrect:active {
+    background-color: #790000;
+    border-width: 0;
+    box-shadow: 0 0 0 0;
+}
+
+.btn-incorrect:focus {
+    background-color: none;
+    border-width: 0;
+    box-shadow: 0 0 0 0;
 }
 
 /* settings for input styles */
 .input-solution {
-    color: #1B5E20;
-    border: 4px solid #1B5E20;
+    color: #33a02c;
+    border: 4px solid #33a02c;
 }
 
 .input-error {
@@ -358,6 +390,7 @@ header {
     left: -5rem;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    line-height: 0;
 }
 
 #controls-next {
@@ -365,20 +398,20 @@ header {
     right: -5rem;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    line-height: 0;
 }
 
 .controls-correctness {
     position: relative;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    margin: 0 5vw;
     bottom: -5rem;
     pointer-events: all;
 }
 
 #controls-submit {
     width: 10rem;
-    position: relative;
+    position: absolute;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     bottom: -5rem;
@@ -394,8 +427,11 @@ header {
     pointer-events: none;
 }
 
-.controls-correctness-wrapper.hidden {
-    display: none;
+.controls-correctness-wrapper .btn-wrapper {
+    pointer-events: none;
+    width: 10rem;
+    display: flex;
+    align-items: flex-end;
 }
 
 .controls-submission-wrapper {
@@ -456,6 +492,8 @@ header {
     flex: 0 1 auto;
 }
 
+/* CodeMirror settings */
+
 .card-content .CodeMirror {
     height: 100%;
     border: 1px solid #0d0d0d;
@@ -463,6 +501,22 @@ header {
     border-radius: .25rem;
     padding: .5rem;
 }
+
+.CodeMirror span {
+    font-family: 'Roboto Mono', 'Consolas';
+}
+
+/* .CodeMirror.cm-s-default .cm-keyword {
+    color: #018571;
+}
+
+.CodeMirror.cm-s-default .cm-type {
+    color: #a6611a;
+}
+
+.CodeMirror.cm-s-default .cm-def {
+    color: #80cdc1;
+} */
 
 .highlighted {
     background-color: #fff350;
@@ -498,6 +552,10 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ddd;
+    border-radius: .25rem;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .legend {
@@ -529,8 +587,11 @@ header {
 
 /* css for type-determination */
 
+.legal-controls .btn-wrapper {
+    width: 12rem;
+}
+
 .controls-legality {
-    margin: 0 2rem;
     width: 10rem;
 }
 
@@ -579,6 +640,11 @@ header {
     height: 100%;
 }
 
+g text {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 .solution {
     display: flex;
     justify-content: center;
@@ -586,14 +652,13 @@ header {
 }
 
 .solution i {
-    color: #1B5E20;
+    color: #33a02c;
     width: fit-content;
 }
 
 .input-solution:disabled {
-    color: #1B5E20;
-    background-color: #b5ffba;
-    border: 4px solid #1B5E20;
+    background-color: #6ad25b;
+    border: 4px solid #33a02c;
 }
 
 /* css for microtasks */
@@ -603,7 +668,7 @@ header {
 }
 
 .editor-container-correct .CodeMirror {
-    border: 4px solid #1B5E20;
+    border: 4px solid #33a02c;
 }
 
 .editor-container-controversial .CodeMirror {
@@ -611,5 +676,11 @@ header {
 }
 
 .CodeMirror.editor-solution {
-    border: 4px solid #1B5E20;
+    border: 4px solid #33a02c;
 }
+
+/* css for material icons */
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }

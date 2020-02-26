@@ -15,6 +15,7 @@ class SurveyViewer {
             submit: {button: submit, isShown: false},
         };
         this.statusBar = initStatusBar();
+        this.header = document.getElementsByClassName("navbar")[0];
     }
 
     updateUI(type, isViewable1, isViewable2, isCorrect) {

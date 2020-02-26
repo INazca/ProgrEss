@@ -37,14 +37,14 @@ class EditorAnalyseView extends EditorView {
 
         legend.classList.add("legend-wrapper");
 
-        this.card.getElementsByClassName("survey-content")[0].insertBefore(legend, this.card.getElementsByClassName("task-wrapper")[0]);
+        this.card.getElementsByClassName("survey-content")[0].append(legend);
     }
 
     showSolution() {
         var solutionMarks = this.card.getElementsByClassName("solution-mark");
 
         for(let i = 0; i < solutionMarks.length; i++) {
-            $(solutionMarks[i]).animate({backgroundColor: "#1B5E20", color: "white", fontSize: "1.6rem"}, this.duration);
+            $(solutionMarks[i]).animate({backgroundColor: "#33a02c", color: "white", fontSize: "1.6rem"}, this.duration);
         }
     }
 

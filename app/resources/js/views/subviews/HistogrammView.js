@@ -2,6 +2,9 @@ import CardView from "../CardView.js";
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
+var colorCorrect = "#33a02c",
+    colorRest = "#a6cee3";
+
 class HistogrammView extends CardView {
 
     constructor(task, expression, histogramm) {
@@ -14,7 +17,7 @@ class HistogrammView extends CardView {
     drawHistogramm() {
         //create the barplot
         var histogramm = d3.select(".histogramm-container"),
-            margin = { top: 20, right: 20, bottom: 20, left: 20 },
+            margin = { top: 20, right: 20, bottom: 30, left: 30 },
             width = document.getElementsByClassName("histogramm-container")[0].offsetWidth - (margin.left + margin.right),
             height = document.getElementsByClassName("histogramm-container")[0].offsetHeight - (margin.top + margin.bottom),
             subgroups = ["correct", "rest"],
@@ -34,7 +37,7 @@ class HistogrammView extends CardView {
                 .range([height, 0]),
             color = d3.scaleOrdinal()
                 .domain(subgroups)
-                .range(['#b5ffba', '#0d47a1']),
+                .range([colorCorrect, colorRest]),
             stackedData = d3.stack()
                 .keys(subgroups)
                 (this.data);
@@ -55,11 +58,25 @@ class HistogrammView extends CardView {
             .data(function (d) { return d; })
             .enter().append("rect")
             .attr("x", function (d) { return x(d.data.group); })
-            .attr("y", function (d) { return y(d[1]); })
+            .attr("y", function () { return y(0);})
             .attr("width", x.bandwidth())
             .transition()
             .duration(2000)
+            .attr("y", function (d) { return y(d[1]); })
             .attr("height", function (d) { return y(d[0]) - y(d[1]); });
+    }
+
+    addLegend() {
+        var legend = document.createElement("small");
+
+        legend.innerHTML = `
+            <div class="legend"><div class="legend-color" style="background-color: ${colorCorrect}"></div> als korrekt gewerteter Anteil</div>
+            <div class="legend"><div class="legend-color" style="background-color: ${colorRest}"></div> restlicher Anteil</div>
+        `;
+
+        legend.classList.add("legend-wrapper");
+
+        this.card.getElementsByClassName("survey-content")[0].append(legend);
     }
 
 }
