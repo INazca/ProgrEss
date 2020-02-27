@@ -202,12 +202,12 @@ function initStatusBar() {
 }
 
 function setupEditorContainers() {
-    // var containers = document.getElementsByClassName("editor-container");
+    var containers = document.getElementsByClassName("editor-container");
 
-    // for(let i = 0; i < containers.length; i++) {
-    //     containers[i].style.height = 500;
-    //     console.log(containers[i].offsetHeight);
-    // }
+    for(let i = 0; i < containers.length; i++) {
+        containers[i].style.maxHeight = (containers[i].offsetHeight - 10) + "px";
+        containers[i].style.maxWidth = (containers[i].offsetWidth - 10) + "px";
+    }
 }
 
 export default SurveyViewer;
