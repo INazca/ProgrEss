@@ -6,8 +6,8 @@ var template = "microtask-discussion";
 
 class EditorDeterminationView extends EditorView {
 
-    constructor(task, discussionSolutions) {
-        super(task, discussionSolutions[0], true, template);
+    constructor(task, discussionSolutions, type) {
+        super(task, discussionSolutions[0], true, type, template);
         this.code2 = discussionSolutions[1];
         this.editorContainer2 = this.card.getElementsByClassName("editor-container")[1];
     }

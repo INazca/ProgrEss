@@ -7,8 +7,8 @@ var template = "type-determination-solve";
 
 class EditorDeterminationView extends EditorView {
 
-    constructor(task, code) {
-        super(task, code, true, template);
+    constructor(task, code, type) {
+        super(task, code, true, type, template);
 
         this.form = this.card.getElementsByClassName("form-group")[0];
         this._input = this.card.getElementsByClassName("type-input")[0];

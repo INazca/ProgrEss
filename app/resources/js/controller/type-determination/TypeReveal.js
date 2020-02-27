@@ -5,7 +5,7 @@ import EditorSolutionView from "../../views/subviews/EditorSolutionView.js";
 class TypeReveal extends Controller {
 
     constructor(data) {
-        super(data, new EditorSolutionView(data.task, data.code, data.solution));
+        super(data, new EditorSolutionView(data.task, data.code, data.solution, data.controlType));
     }
 
     show() {

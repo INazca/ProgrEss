@@ -520,44 +520,44 @@ header {
 }
 
 /* set colors for stages */    
-.status-circle.solve-color {
-    color: #0d47a1;
-    background-color: #0d47a1;
+.solve-color, .status-circle.solve-color {
+    background-color: #03a9f4;
+    border-color: #03a9f4;
 }
 
-.status-circle.solve-color .status-inner-inner-circle{
-    color: #0d47a1;
-    background-color: #0d47a1;
+.solve-color, .status-circle.solve-color .status-inner-inner-circle{
+    background-color: #03a9f4;
+    border-color: #03a9f4;
 }
 
-.status-circle.evaluate-color {
-    color: #0d47a1;
-    background-color: #0d47a1;
+.evaluate-color, .status-circle.evaluate-color {
+    background-color: #f44336;
+    border-color: #f44336;
 }
 
-.status-circle.evaluate-color .status-inner-inner-circle{
-    color: #0d47a1;
-    background-color: #0d47a1;
+.evaluate-color, .status-circle.evaluate-color .status-inner-inner-circle{
+    background-color: #f44336;
+    border-color: #f44336;
 }
 
-.status-circle.discussion-color {
-    color: #0d47a1;
-    background-color: #0d47a1;
+.discussion-color, .status-circle.discussion-color {
+    background-color: #9c27b0;
+    border-color: #9c27b0;
 }
 
-.status-circle.discussion-color .status-inner-inner-circle{
-    color: #0d47a1;
-    background-color: #0d47a1;
+.discussion-color, .status-circle.discussion-color .status-inner-inner-circle{
+    background-color: #9c27b0;
+    border-color: #9c27b0;
 }
 
-.status-circle.reveal-color {
-    color: #0d47a1;
-    background-color: #0d47a1;
+.reveal-color, .status-circle.reveal-color {
+    background-color: #4caf50;
+    border-color: #4caf50;
 }
 
-.status-circle.reveal-color .status-inner-inner-circle{
-    color: #0d47a1;
-    background-color: #0d47a1;
+.reveal-color, .status-circle.reveal-color .status-inner-inner-circle{
+    background-color: #4caf50;
+    border-color: #4caf50;
 }
 
 /* breakpoint */
@@ -619,6 +619,11 @@ header {
     max-width: 900px;
     height: 100%;
     border-radius: 1.5rem;
+    border-width: 1.5rem;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-style: solid;
     box-shadow: 0px 0px 9px -3px rgba(0,0,0,0.53);
     background-color: #fff;
     margin: 0 auto;
@@ -639,7 +644,10 @@ header {
 .task-description {
     font-weight: 600;
     font-size: 1rem;
-    border-bottom: 2px solid #ffc107;
+    background-color: inherit;
+    border-width: 0;
+    border-bottom-width: 2px;
+    border-style: solid;
     flex: 0 1 auto;
     margin-bottom: .5rem;
 }

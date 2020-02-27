@@ -5,7 +5,7 @@ import EditorAnalyseView from "../../views/subviews/EditorAnalyseView.js";
 class SyntaxReveal extends Controller {
 
     constructor(data) {
-        super(data, new EditorAnalyseView(data.task, data.code, true));
+        super(data, new EditorAnalyseView(data.task, data.code, data.controlType));
 
         this.show = function () {
             this.view.showCard();

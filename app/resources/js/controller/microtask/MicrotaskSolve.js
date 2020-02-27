@@ -6,7 +6,7 @@ import EditorView from "../../views/subviews/EditorView.js";
 class MicrotaskSolve extends Controller {
 
     constructor(data) {
-        super(data, new EditorView(data.task, data.code, false));
+        super(data, new EditorView(data.task, data.code, false, data.controlType));
     }
 
     show() {

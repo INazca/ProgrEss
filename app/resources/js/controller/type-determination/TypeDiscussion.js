@@ -5,7 +5,7 @@ import HistogrammView from "../../views/subviews/HistogrammView.js";
 class TypeDiscussion extends Controller {
 
     constructor(data) {
-        super(data, new HistogrammView(data.task, data.expression, data.histogramm));
+        super(data, new HistogrammView(data.task, data.expression, data.histogramm, data.controlType));
     }
 
     show() {

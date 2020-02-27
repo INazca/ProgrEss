@@ -87,7 +87,7 @@ class MicrotaskEvaluate {
 
 class MicrotaskDiscussion {
     constructor(task, discussionSolutions) {
-        this._controlType = "discuss";
+        this._controlType = "discussion";
         this._task = task;
         this._discussionSolutions = discussionSolutions;
     }

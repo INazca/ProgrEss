@@ -6,8 +6,8 @@ var template = "syntax-highlighting-solve";
 
 class EditorMarkView extends EditorView {
 
-    constructor(task, code) {
-        super(task, code, true, template);
+    constructor(task, code, type) {
+        super(task, code, true, type, template);
 
         this._highlightButton = this.card.getElementsByClassName("highlight-tool")[0];
         this._eraseButton = this.card.getElementsByClassName("erase-tool")[0];

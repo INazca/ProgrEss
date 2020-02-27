@@ -4,8 +4,8 @@ import CardView from "../CardView.js";
 
 class EditorView extends CardView {
     
-    constructor(task, code, readOnly, template) {
-        super(task, template || "microtask-solve");
+    constructor(task, code, readOnly, type, template) {
+        super(task, type, template || "microtask-solve");
 
         this.editorContainer = this.card.getElementsByClassName("editor-container")[0];
         this.code = code;

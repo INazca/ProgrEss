@@ -6,7 +6,7 @@ import EditorView from "../../views/subviews/EditorView.js";
 class MicrotaskEvaluation extends Controller {
 
     constructor(data) {
-        super(data, new EditorView(data.task, data.code, true));
+        super(data, new EditorView(data.task, data.code, true, data.controlType));
 
         this._isCorrect = true;
     }

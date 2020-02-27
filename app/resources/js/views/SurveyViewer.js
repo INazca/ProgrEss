@@ -79,7 +79,7 @@ class SurveyViewer {
             } else {
                 this.controls.incorrect.button.classList.add("inactive");
             }
-        } else if (type === "discuss") {
+        } else if (type === "discussion") {
             showControls(this, false, false, false, false);
 
             this.resetStatusBar();

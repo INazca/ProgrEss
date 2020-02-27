@@ -3,12 +3,13 @@ import CardView from "../CardView.js";
 /* eslint-env browser */
 
 var colorCorrect = "#33a02c",
-    colorRest = "#a6cee3";
+    colorRest = "#a6cee3",
+    template = "type-determination-discussion";
 
 class HistogrammView extends CardView {
 
-    constructor(task, expression, histogramm) {
-        super(task, "type-determination-discussion");
+    constructor(task, expression, histogramm, type) {
+        super(task, type, template);
 
         this.card.getElementsByClassName("expression")[0].innerHTML = expression;
         this.data = histogramm;

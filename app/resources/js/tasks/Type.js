@@ -103,7 +103,7 @@ class TypeEvaluate {
 
 class TypeDiscussion {
     constructor(task, expression, histogramm) {
-        this._controlType = "discuss";
+        this._controlType = "discussion";
         this._task = task;
         this._expression = expression;
         this._histogramm = histogramm;

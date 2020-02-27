@@ -6,8 +6,8 @@ var template = "type-determination-evaluate";
 
 class EditorSolutionView extends EditorView {
 
-    constructor(task, code, solution) {
-        super(task, code, true, template);
+    constructor(task, code, solution, type) {
+        super(task, code, true, type, template);
 
         this.solution = this.card.getElementsByClassName("solution-display")[0];
         this.solution.value = solution;

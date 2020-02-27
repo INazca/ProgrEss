@@ -3,8 +3,8 @@ import EditorView from "../subviews/EditorView.js";
 
 class EditorAnalyseView extends EditorView {
 
-    constructor(task, code) {
-        super(task, code, true);
+    constructor(task, code, type) {
+        super(task, code, true, type);
         this.duration = 2000;
     }
 

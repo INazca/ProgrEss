@@ -7,7 +7,7 @@ import Animation from "../../utils/Animation.js";
 class TypeSolve extends Controller {
 
     constructor(data) {
-        super(data, new EditorDeterminationView(data.task, data.code));
+        super(data, new EditorDeterminationView(data.task, data.code, data.controlType));
 
         this.isLegal = true;
 

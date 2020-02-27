@@ -93,7 +93,7 @@ class SyntaxEvaluate {
 
 class SyntaxDiscussion {
     constructor(task, code, heatmap) {
-        this._controlType = "discuss";
+        this._controlType = "discussion";
         this._task = task;
         this._code = code;
         this._heatmap = heatmap;
