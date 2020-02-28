@@ -140,36 +140,69 @@ header {
     background-color: #c79100;
     border-width: 0;
     color: #0d0d0d;
-    box-shadow: 0 0 0 0;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
 }
 
 .btn-primary-color:focus {
-    background-color: none;
     border-width: 0;
     color: #0d0d0d;
-    box-shadow: 0 0 0 0;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
 }
 
+/* togglable buttons */
 .btn-togglable {
     height: 2.5rem;
+    border-width: 0;
+    border-style: solid;
+    color: white;
 }
 
 .btn-primary-color-active {
-    border: 4px solid #c79100;
-}
-
-.btn-primary-color-active:hover {
-    background-color: #c79100;
-}
-
-.btn-primary-color-active:active {
-    background-color: #c79100;
-    box-shadow: 0 0 0 0;
-}
-
-.btn-primary-color-active:focus {
     border-width: 4px;
-    box-shadow: 0 0 0 0;
+}
+
+/* expression legal */
+.expression-legal {
+    background-color: #1976d2;
+    border-color: #004ba0;
+}
+
+.expression-legal:hover {
+    background-color: #004ba0;
+    color: white;
+}
+
+.expression-legal:active {
+    color: white;
+    background-color: #004ba0;
+    border-width: 4px;
+}
+
+.expression-legal:focus {
+    color: white;
+    border-width: 4px;
+}
+
+/* expression illegal */
+.expression-illegal {
+    background-color: #B00020;
+    border-color: #790000;
+}
+
+.expression-illegal:hover {
+    background-color: #790000;
+    color: white;
+}
+
+.expression-illegal:active {
+    color: white;
+    background-color: #790000;
+    border-width: 4px;
+}
+
+.expression-illegal:focus {
+    color: white;
+    border-width: 4px;
 }
 
 /* secondary */
@@ -215,13 +248,13 @@ header {
 .btn-correct:active {
     background-color: #007000;
     border-width: 0;
-    box-shadow: 0 0 0 0;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
 }
 
 .btn-correct:focus {
     background-color: none;
     border-width: 0;
-    box-shadow: 0 0 0 0;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* incorrect */
@@ -238,13 +271,13 @@ header {
 .btn-incorrect:active {
     background-color: #790000;
     border-width: 0;
-    box-shadow: 0 0 0 0;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
 }
 
 .btn-incorrect:focus {
     background-color: none;
     border-width: 0;
-    box-shadow: 0 0 0 0;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* breakpoint */
@@ -521,23 +554,23 @@ header {
 
 /* set colors for stages */    
 .solve-color, .status-circle.solve-color {
-    background-color: #03a9f4;
-    border-color: #03a9f4;
+    background-color: #1976d2;
+    border-color: #1976d2;
 }
 
 .solve-color, .status-circle.solve-color .status-inner-inner-circle{
-    background-color: #03a9f4;
-    border-color: #03a9f4;
+    background-color: #1976d2;
+    border-color: #1976d2;
 }
 
 .evaluate-color, .status-circle.evaluate-color {
-    background-color: #f44336;
-    border-color: #f44336;
+    background-color: #c2185b;
+    border-color: #c2185b;
 }
 
 .evaluate-color, .status-circle.evaluate-color .status-inner-inner-circle{
-    background-color: #f44336;
-    border-color: #f44336;
+    background-color: #c2185b;
+    border-color: #c2185b;
 }
 
 .discussion-color, .status-circle.discussion-color {
@@ -661,6 +694,7 @@ header {
     border-style: solid;
     flex: 0 1 auto;
     margin-bottom: .5rem;
+    padding-bottom: .5rem;
 }
 
 .tool-description {

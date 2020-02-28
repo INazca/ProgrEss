@@ -4,7 +4,8 @@
 class TypeDetermination {
 
     constructor(code, highlight, waitTime, evaluations, expression, histogramm, solution){
-        this.task = "Bestimmen Sie den Typ des Rückgabewertes für die im Code markierte Stelle!";
+        this.task = `Bestimmen Sie, ob folgender markierter Ausdruck zulässig ist, d.h. keine Fehlermeldungen auslöst, und geben Sie,
+        sofern dies zutrifft, dessen Rückgabe-Typ an!`;
         this.solve = new TypeSolve(this.task, code, highlight, waitTime);
         this.evaluate = [];
         evaluations.forEach(evaluation => {
