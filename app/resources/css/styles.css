@@ -584,7 +584,15 @@ header {
     }
 
     .stage-text {
-        font-size: .8rem;
+        font-size: .7rem;
+    }
+
+    .status-wrapper {
+        width: 4vw;
+    }
+
+    .stage {
+        width: 4vw;
     }
 }
 
@@ -627,9 +635,12 @@ header {
     box-shadow: 0px 0px 9px -3px rgba(0,0,0,0.53);
     background-color: #fff;
     margin: 0 auto;
+    display: flex;
+    flex-flow: column;
 }
 
 .survey-content-wrapper {
+    flex: 1 1 auto;
     height: 100%;
     padding: 2rem;
 }
@@ -668,6 +679,29 @@ header {
     flex: 0 1 auto;
 }
 
+.edited-by {
+    height: 2.5rem;
+    padding: 0 1rem 0 1rem;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 6vh; 
+    border-radius: .25rem;
+    border-bottom-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.edited-by .text {
+    color: white;
+    font-weight: 600;
+}
+
+.edited-by .material-icons {
+    font-size: 1.8rem;
+}
+
 /* breakpoint */
 @media only screen and (min-width:1400px) {
 
@@ -676,7 +710,7 @@ header {
     }
 
     .survey-content-wrapper {
-        padding: 3rem;
+        padding: 2.5rem;
     }
     
     .task-description {

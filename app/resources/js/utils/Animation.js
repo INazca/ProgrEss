@@ -33,6 +33,10 @@ class Animation {
     hideBottom(element) {
         $(element).animate({bottom: "-5rem"}, 1000);
     }
+
+    showFaint(element) {
+        $(element).show("faint", 1000);
+    }
 }
 
 function onClicked(element, width, height) {

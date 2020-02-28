@@ -1,3 +1,5 @@
+import Animation from "../utils/Animation.js";
+
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
@@ -5,9 +7,13 @@ class CardView {
     
     constructor(task, type, template) {
         this.template = template;
+        this.type = type;
+        if(type === "evaluate-correctness") {
+            this.type = "evaluate";
+        }
         
         //create card as div node with correct data (not added to HTML)
-        this.card = initCard(task, document.getElementById(this.template), type);
+        this.card = initCard(task, document.getElementById(this.template), this.type);
     }
 
     showCard() {
@@ -20,6 +26,26 @@ class CardView {
 
     hideCardRight() {
         $(this.card).animate({left: "100%"}, "slow");
+    }
+
+    addEditedBy(editor) {
+        var display = document.createElement("div");
+
+        display.classList.add("edited-by");
+        display.classList.add(this.type + "-color");
+        if(editor === "deine Lösung") {
+            display.classList.add("hidden");
+        }
+
+        display.innerHTML = `<i class="material-icons md-light">person</i><span class="text">: ${editor}</span>`;
+
+        this.card.getElementsByClassName("card-content")[0].append(display);
+
+        this.editedBy = display;
+    }
+
+    showEditedBy() {
+        this.editedBy.classList.remove("hidden");
     }
 
     get node() {
@@ -36,9 +62,6 @@ function initCard(task, template, taskType) {
     card.classList.remove("hidden");
 
     //adjust colors
-    if(type === "evaluate-correctness") {
-        type = "evaluate";
-    }
     card.getElementsByClassName("card-content")[0].classList.add(type + "-color");
     card.getElementsByClassName("task-description")[0].classList.add(type + "-color");
 

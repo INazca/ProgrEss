@@ -6,27 +6,28 @@ import EditorSolutionView from "../../views/subviews/EditorSolutionView.js";
 class TypeEvaluation extends Controller {
 
     constructor(data) {
-        super(data, new EditorSolutionView(data.task, data.code, data.evaluation, data.controlType));
+        super(data, new EditorSolutionView(data.task, data.code, data.evaluation.type, data.controlType));
 
         this._isCorrect = true;
+    }
 
-        this.show = function () {
-            this.view.showCard();
-            if (!this.initialized) {
-                this.view.initEditor();
+    show() {
+        this.view.showCard();
+        if (!this.initialized) {
+            this.view.initEditor();
 
-                // show highlight
-                this.view.drawMark(this.data.highlight, "highlighted");
-                this.initialized = true;
-            }
-        };
+            // show highlight
+            this.view.drawMark(this.data.highlight, "highlighted");
+            this.view.addEditedBy("Lösung von Teilnehmer " + this.data.evaluation.editor);
+            this.initialized = true;
+        }
+    }
 
-        this.end = function () {
-            this.view.hideCardLeft();
-            this._viewable = true;
-            this.data.controlType = this.data.controlType + "-done";
-            this.data.submition = this._isCorrect;
-        };
+    end() {
+        this.view.hideCardLeft();
+        this._viewable = true;
+        this.data.controlType = this.data.controlType + "-done";
+        this.data.submition = this._isCorrect;
     }
 
     get isCorrect() {

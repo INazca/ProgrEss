@@ -6,7 +6,7 @@ import EditorView from "../../views/subviews/EditorView.js";
 class MicrotaskEvaluation extends Controller {
 
     constructor(data) {
-        super(data, new EditorView(data.task, data.code, true, data.controlType));
+        super(data, new EditorView(data.task, data.evaluation.code, true, data.controlType));
 
         this._isCorrect = true;
     }
@@ -15,6 +15,9 @@ class MicrotaskEvaluation extends Controller {
         this.view.showCard();
         if (!this.initialized) {
             this.view.initEditor();
+
+            // display the user who edited the shown solution
+            this.view.addEditedBy("Lösung von Teilnehmer " + this.data.evaluation.editor);
             this.initialized = true;
         }
     }

@@ -57,10 +57,10 @@ class MicrotaskSolve {
 }
 
 class MicrotaskEvaluate {
-    constructor(task, code) {
+    constructor(task, evaluation) {
         this._controlType = "evaluate-correctness";
         this._task = task;
-        this._code = code;
+        this._evaluation = evaluation;
         this._isCorrect = true;
     }
 
@@ -72,8 +72,8 @@ class MicrotaskEvaluate {
         return this._task;
     }
 
-    get code() {
-        return this._code;
+    get evaluation() {
+        return this._evaluation;
     }
 
     set controlType(type) {

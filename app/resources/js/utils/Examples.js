@@ -59,8 +59,8 @@ const Examples = {
         task: "Eine Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!",
         code: codeString1,
         highlights: [
-            [
-                {
+            {
+                list: [{
                     anchor: { line: 2, ch: 4 },
                     head: { line: 2, ch: 25 },
                 },
@@ -68,9 +68,11 @@ const Examples = {
                     anchor: { line: 5, ch: 8 },
                     head: { line: 5, ch: 33 },
                 },
-            ],
-            [
-                {
+                ],
+                editor: "12",
+            },
+            {
+                list: [{
                     anchor: { line: 4, ch: 4 },
                     head: { line: 4, ch: 10 },
                 },
@@ -78,7 +80,9 @@ const Examples = {
                     anchor: { line: 5, ch: 8 },
                     head: { line: 5, ch: 33 },
                 },
-            ],
+                ],
+                editor: "29",
+            },
         ],
         heatmap: {
             light: [
@@ -113,7 +117,10 @@ const Examples = {
             anchor: { line: 6, ch: 11 },
             head: { line: 6, ch: 30 },
         },
-        evaluations: ["Object", "String"],
+        evaluations: [
+            {type: "Object", editor: "14"}, 
+            {type: "String", editor: "31"}
+        ],
         expression: "this.isSth == isSth",
         histogramm: [
             {
@@ -137,7 +144,7 @@ const Examples = {
     microtask: {
         task: "Implementieren Sie die Methode setIsSth(boolean isSth)!",
         code: codeString3,
-        evaluations: [evaluationCode1, evaluationCode2],
+        evaluations: [{code: evaluationCode1, editor: "5"}, {code: evaluationCode2, editor: "13"}],
         discussionSolutions: [evaluationCode1, evaluationCode2],
         solution: evaluationCode1,
     },

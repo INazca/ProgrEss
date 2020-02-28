@@ -16,13 +16,6 @@ class SyntaxMark extends Controller {
         //register listeners for controller
         this.highlightButton.addEventListener("click", onHighlight.bind(this, this.view));
         this.eraseButton.addEventListener("click", onErase.bind(this, this.view));
-
-        this.end = function () {
-            this._viewable = true;
-            this.view.hideCardLeft();
-            this.view.editable = false;
-            this.data.controlType = this.data.controlType + "-done";
-        };
     }
 
     show() {
@@ -30,7 +23,17 @@ class SyntaxMark extends Controller {
         if (!this.initialized) {
             this.view.initEditor();
             this.initialized = true;
+        } else {
+            this.view.showEditedBy();
         }
+    }
+
+    end() {
+        this._viewable = true;
+        this.view.hideCardLeft();
+        this.view.addEditedBy("deine Lösung");
+        this.view.editable = false;
+        this.data.controlType = this.data.controlType + "-done";
     }
 }
 
