@@ -2,7 +2,9 @@
 /* eslint-env browser */
 import Animation from "../utils/Animation.js";
 
-var cardsContainer = document.getElementById("cards-container");
+var cardsContainer = document.getElementById("cards-container"),
+    typeIconDisplay = document.getElementsByClassName("type-icon")[0],
+    typeNameDisplay = document.getElementsByClassName("type-display")[0];
 
 class SurveyViewer {
 
@@ -18,7 +20,10 @@ class SurveyViewer {
         this.header = document.getElementsByClassName("navbar")[0];
     }
 
-    updateUI(type, isViewable1, isViewable2, isCorrect) {
+    updateUI(type, isViewable1, isViewable2, isCorrect, taskType) {
+
+        updateTypeDisplay(taskType);
+
         if (type === "solve") {
             showControls(this, false, false, false, true);
 
@@ -207,6 +212,19 @@ function setupEditorContainers() {
     for(let i = 0; i < containers.length; i++) {
         containers[i].style.maxHeight = (containers[i].offsetHeight - 10) + "px";
         containers[i].style.maxWidth = (containers[i].offsetWidth - 10) + "px";
+    }
+}
+
+function updateTypeDisplay(type) {
+    if (type === "syntax") {
+        typeIconDisplay.innerHTML = "brush";
+        typeNameDisplay.innerHTML = "Syntax Highlighting";
+    } else if (type === "type") {
+        typeIconDisplay.innerHTML = "category";
+        typeNameDisplay.innerHTML = "Type Bestimmung";
+    } else if (type === "microtask") {
+        typeIconDisplay.innerHTML = "double_arrow";
+        typeNameDisplay.innerHTML = "Microtask";
     }
 }
 

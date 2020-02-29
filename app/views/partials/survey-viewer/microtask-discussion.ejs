@@ -5,13 +5,25 @@
 
                 <!-- task description and hints -->
                 <p class="task-description">Hier sollte eine Aufgabenstellung für eine Microtask-Aufgabe stehen!</p>
+                <small class="tools-description text-muted">Es wird hier sowohl die am häufigsten als richtig gewertete, sowie die kontroverseste eingereichte Lösung angezeigt</small>
 
                 <!-- editor -->
                 <div class="task-wrapper">
-                    <div class="editor-container editor-container-correct editor-container-md">
+                    <div class="editors">
+                        <div class="editor-container editor-container-correct editor-container-md">
+                        </div>
+                        <div class="editor-container editor-container-controversial editor-container-md">
+                        </div>
                     </div>
-                    <div
-                        class="editor-container editor-container-controversial editor-container-md">
+                    <div class="progress-bars">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 0;" aria-valuenow="0"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 0;" aria-valuenow="0"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
                     </div>
                 </div>
 

@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
+var type = "type";
+
 class TypeDetermination {
 
     constructor(code, highlight, waitTime, evaluations, expression, histogramm, solution){
@@ -15,7 +17,7 @@ class TypeDetermination {
         this.reveal = new TypeReveal(this.task, code, highlight, solution);
 
         this.typeData = {
-            type: "type",
+            type: type,
             solve: this.solve,
             evaluate: this.evaluate,
             discussion: this.discussion,
@@ -52,6 +54,10 @@ class TypeSolve {
 
     get highlight() {
         return this._highlight;
+    }
+
+    get type() {
+        return type;
     }
 
     set controlType(type) {
@@ -93,6 +99,10 @@ class TypeEvaluate {
         return this._evaluation;
     }
 
+    get type() {
+        return type;
+    }
+
     set controlType(type) {
         this._controlType = type;
     }
@@ -124,6 +134,10 @@ class TypeDiscussion {
 
     get histogramm() {
         return this._histogramm;
+    }
+
+    get type() {
+        return type;
     }
 
     set controlType(type) {
@@ -158,6 +172,10 @@ class TypeReveal {
 
     get solution() {
         return this._solution;
+    }
+
+    get type() {
+        return type;
     }
 
     set controlType(type) {

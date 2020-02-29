@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
+var type = "microtask";
+
 class Microtask {
 
     constructor(task, code, waitTime, evaluations, discussionSolutions, solution){
@@ -13,7 +15,7 @@ class Microtask {
         this.reveal = new MicrotaskReveal(task, solution);
 
         this.typeData = {
-            type: "microtask",
+            type: type,
             solve: this.solve,
             evaluate: this.evaluate,
             discussion: this.discussion,
@@ -47,6 +49,10 @@ class MicrotaskSolve {
         return this._code;
     }
 
+    get type() {
+        return type;
+    }
+
     set controlType(type) {
         this._controlType = type;
     }
@@ -76,6 +82,10 @@ class MicrotaskEvaluate {
         return this._evaluation;
     }
 
+    get type() {
+        return type;
+    }
+
     set controlType(type) {
         this._controlType = type;
     }
@@ -103,6 +113,10 @@ class MicrotaskDiscussion {
     get discussionSolutions() {
         return this._discussionSolutions;
     }
+
+    get type() {
+        return type;
+    }
 }
 
 class MicrotaskReveal {
@@ -122,6 +136,10 @@ class MicrotaskReveal {
 
     get solution() {
         return this._solution;
+    }
+
+    get type() {
+        return type;
     }
 }
 

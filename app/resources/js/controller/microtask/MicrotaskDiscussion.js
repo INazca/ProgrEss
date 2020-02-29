@@ -13,6 +13,7 @@ class MicrotaskDiscussion extends Controller {
         this.view.showCard();
         if (!this.initialized) {
             this.view.initEditor();
+            this.view.initCorrectness();
             this.initialized = true;
         }
     }

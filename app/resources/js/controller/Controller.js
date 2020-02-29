@@ -45,6 +45,10 @@ class Controller {
     get viewable() {
         return this._viewable;
     }
+
+    get type() {
+        return this.data.type;
+    }
 }
 
 export default Controller;

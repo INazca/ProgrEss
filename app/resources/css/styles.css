@@ -101,7 +101,6 @@ header {
 /* css for material icons */
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
 
 
@@ -310,8 +309,8 @@ header {
 
 /* inputs for showing a solution */
 .solution-display {
-    color: inherit;
-    font-weight: 600;
+    color: white;
+    font-weight: 800;
     text-align: center;
 }
 
@@ -553,44 +552,70 @@ header {
 }
 
 /* set colors for stages */    
-.solve-color, .status-circle.solve-color {
+.solve-color, .solve-color-btn, .status-circle.solve-color, .status-circle.solve-color .status-inner-inner-circle, .solve-color-btn:focus {
     background-color: #1976d2;
     border-color: #1976d2;
 }
 
-.solve-color, .status-circle.solve-color .status-inner-inner-circle{
-    background-color: #1976d2;
-    border-color: #1976d2;
+.solve-color-btn:hover, .solve-color-btn:active {
+    background-color: #004ba0;
 }
 
-.evaluate-color, .status-circle.evaluate-color {
+.evaluate-color, .evaluate-color-btn, .status-circle.evaluate-color, .status-circle.evaluate-color .status-inner-inner-circle, .evaluate-color-btn:focus, .solution-display.evaluate-color:disabled {
     background-color: #c2185b;
     border-color: #c2185b;
 }
 
-.evaluate-color, .status-circle.evaluate-color .status-inner-inner-circle{
-    background-color: #c2185b;
-    border-color: #c2185b;
+.evaluate-color-btn:hover, .evaluate-color-btn:active {
+    background-color: #8c0032;
 }
 
-.discussion-color, .status-circle.discussion-color {
-    background-color: #9c27b0;
-    border-color: #9c27b0;
+.discussion-color, .status-circle.discussion-color, .status-circle.discussion-color .status-inner-inner-circle {
+    background-color: #ff5722;
+    border-color: #ff5722;
 }
 
-.discussion-color, .status-circle.discussion-color .status-inner-inner-circle{
-    background-color: #9c27b0;
-    border-color: #9c27b0;
+.editor-container.discussion-color .CodeMirror {
+    border-color: #ff5722;
 }
 
-.reveal-color, .status-circle.reveal-color {
+.reveal-color, .status-circle.reveal-color, .status-circle.reveal-color .status-inner-inner-circle, .progress-bar, .solution-display.reveal-color:disabled {
     background-color: #4caf50;
     border-color: #4caf50;
 }
 
-.reveal-color, .status-circle.reveal-color .status-inner-inner-circle{
-    background-color: #4caf50;
+.CodeMirror.editor-solution, .editor-container.reveal-color .CodeMirror {
     border-color: #4caf50;
+}
+
+/* type display */
+.type-display-wrapper {
+    position: absolute;
+    right: 0;
+    font-size: .8rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    margin-right: 1rem;
+    width: 8rem;
+    height: 100%;
+}
+
+.type-display-wrapper i {
+    background-color: #666;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type-display-wrapper i.material-icons {
+    color: #eee;
+    font-size: 1.7rem;
 }
 
 /* breakpoint */
@@ -621,11 +646,11 @@ header {
     }
 
     .status-wrapper {
-        width: 4vw;
+        width: 4.3vw;
     }
 
     .stage {
-        width: 4vw;
+        width: 4.3vw;
     }
 }
 
@@ -762,7 +787,6 @@ header {
 
 .editor-container {
     height: 100%;
-    max-height: 500px;
     flex: 1 1 auto;
 }
 
@@ -968,12 +992,50 @@ g text {
 
 
 /* microtask editors */
+#microtask-discussion .task-wrapper{
+    flex-flow: column;
+    padding: 1vh 0;
+}
+
+.editors {
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.progress-bars {
+    flex: 0 1 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .editor-container-md {
     margin: 0 2vw;
+    width: 100%;
+    height: 100%;
+    flex: 1 1 auto;
+}
+
+.progress {
+    width: 100%;
+    height: .7rem;
+    margin: .9rem 4vw 0 4vw;
+    background-color: #B00020;
+}
+
+.progress-bar {
+    font-size: .6rem;
+}
+
+.editor-container {
+    border-radius: .25rem;
 }
 
 .editor-container-correct .CodeMirror {
-    border: 4px solid #33a02c;
+    border-width: 4px;
+    border-style:  solid;
 }
 
 .editor-container-controversial .CodeMirror {
@@ -981,9 +1043,6 @@ g text {
 }
 
 .CodeMirror.editor-solution {
-    border: 4px solid #33a02c;
-}
-
-#microtask-discussion .task-wrapper {
-    padding: 1vh 0;
+    border-width: 4px;
+    border-style: solid;
 }

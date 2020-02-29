@@ -145,7 +145,7 @@ const Examples = {
         task: "Implementieren Sie die Methode setIsSth(boolean isSth)!",
         code: codeString3,
         evaluations: [{code: evaluationCode1, editor: "5"}, {code: evaluationCode2, editor: "13"}],
-        discussionSolutions: [evaluationCode1, evaluationCode2],
+        discussionSolutions: [{code: evaluationCode1, percentage: 81}, {code: evaluationCode2, percentage: 47}],
         solution: evaluationCode1,
     },
 };

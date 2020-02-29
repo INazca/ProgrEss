@@ -25,7 +25,6 @@ class SyntaxEvaluation extends SyntaxMark {
         this.view.hideCardLeft();
         this.view.editable = false;
         this.data.controlType = this.data.controlType + "-done";
-        console.log("lol");
     }
 }
 

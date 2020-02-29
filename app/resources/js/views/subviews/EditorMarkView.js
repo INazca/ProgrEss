@@ -11,6 +11,7 @@ class EditorMarkView extends EditorView {
 
         this._highlightButton = this.card.getElementsByClassName("highlight-tool")[0];
         this._eraseButton = this.card.getElementsByClassName("erase-tool")[0];
+        adjustColor(this._highlightButton, this._eraseButton, type);
     }
 
     highlight(selection) {
@@ -129,6 +130,11 @@ function isBetween(selection1, selection2) {
         }
     }
     return false;
+}
+
+function adjustColor(button1, button2, type) {
+    button1.classList.add(type + "-color-btn");
+    button2.classList.add(type + "-color-btn");
 }
 
 export default EditorMarkView;

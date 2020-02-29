@@ -120,11 +120,11 @@ function showCard(index) {
 
     //activate buttons for switching cards, choose the right cases
     if (index === 0) {
-        view.updateUI(cards[index].controlType, false, cards[index + 1].viewable, isCorrect);
+        view.updateUI(cards[index].controlType, false, cards[index + 1].viewable, isCorrect, cards[index].type);
     } else if (index === cards.length - 1) {
-        view.updateUI(cards[index].controlType, cards[index - 1].viewable, false, isCorrect);
+        view.updateUI(cards[index].controlType, cards[index - 1].viewable, false, isCorrect, cards[index].type);
     } else {
-        view.updateUI(cards[index].controlType, cards[index - 1].viewable, cards[index + 1].viewable, isCorrect);
+        view.updateUI(cards[index].controlType, cards[index - 1].viewable, cards[index + 1].viewable, isCorrect, cards[index].type);
     }
 }
 

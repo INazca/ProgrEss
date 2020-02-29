@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
+var type = "syntax";
+
 class SyntaxHighlighting {
 
     constructor(task, code, waitTime, evaluationHighlights, heatmap, solution){
@@ -13,7 +15,7 @@ class SyntaxHighlighting {
         this.reveal = new SyntaxReveal(task, code, solution);
 
         this.syntaxData = {
-            type: "syntax",
+            type: type,
             solve: this.solve,
             evaluate: this.evaluate,
             discussion: this.discussion,
@@ -46,6 +48,10 @@ class SyntaxSolve {
 
     get code() {
         return this._code;
+    }
+
+    get type() {
+        return type;
     }
 
     set controlType(type) {
@@ -82,6 +88,10 @@ class SyntaxEvaluate {
         return this._highlights;
     }
 
+    get type() {
+        return type;
+    }
+
     set controlType(type) {
         this._controlType = type;
     }
@@ -114,6 +124,10 @@ class SyntaxDiscussion {
     get heatmap() {
         return this._heatmap;
     }
+
+    get type() {
+        return type;
+    }
 }
 
 class SyntaxReveal {
@@ -138,6 +152,10 @@ class SyntaxReveal {
 
     get solution() {
         return this._solution;
+    }
+
+    get type() {
+        return type;
     }
 }
 
