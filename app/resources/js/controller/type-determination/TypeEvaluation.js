@@ -6,7 +6,7 @@ import EditorSolutionView from "../../views/subviews/EditorSolutionView.js";
 class TypeEvaluation extends Controller {
 
     constructor(data) {
-        super(data, new EditorSolutionView(data.task, data.code, data.evaluation.type, data.controlType));
+        super(data, new EditorSolutionView(`<span class="evaluate-font-color">Verbessern Sie wenn nötig die folgende Lösung zu: </span>` + data.task, data.code, data.evaluation.type, data.controlType));
 
         this._isCorrect = true;
     }

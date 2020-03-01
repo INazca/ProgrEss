@@ -6,8 +6,8 @@ import Animation from "../../utils/Animation.js";
 
 class SyntaxMark extends Controller {
 
-    constructor(data) {
-        super(data, new EditorMarkView(data.task, data.code, data.controlType));
+    constructor(data, task) {
+        super(data, new EditorMarkView(task || data.task, data.code, data.controlType));
 
         //register control buttons for this card
         this.highlightButton = this.view.highlightButton;

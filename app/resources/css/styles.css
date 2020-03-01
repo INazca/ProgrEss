@@ -570,6 +570,10 @@ header {
     background-color: #8c0032;
 }
 
+.evaluate-font-color {
+    color: #c2185b;
+}
+
 .discussion-color, .status-circle.discussion-color, .status-circle.discussion-color .status-inner-inner-circle {
     background-color: #ff5722;
     border-color: #ff5722;
