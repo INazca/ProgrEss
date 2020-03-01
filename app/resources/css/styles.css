@@ -584,7 +584,7 @@ header {
     border-color: #4caf50;
 }
 
-.CodeMirror.editor-solution, .editor-container.reveal-color .CodeMirror {
+.card-content .CodeMirror.editor-solution, .editor-container.reveal-color .CodeMirror {
     border-color: #4caf50;
 }
 

@@ -1,152 +1,151 @@
 /* eslint-env browser */
 //this data will later be given by the survey with a corresponding JSON
 
-var codeString1 = `public class Object {
-    private static final int CONSTANT = 4;
-    private int variable;
-    
-    public Object(int variable) {
-        this.variable = variable;
+var codeString1 = `public int[] getArray(int start, int end) {
+    int[] array = new int[end - start + 1];
+    for(int i = 0; i <= end - start; i++) {
+        array[i] = start + i;
+    }
+    return array;
+}`,
+    codeString2 = `public void printValues(int start, int end) {
+    int[] array = getArray(start, end);
+
+    for(int i = 0; i < array.length; i++) {
+        System.out.println((array));
+    }
+}
+
+private int[] getArray(int start, int end) {
+    int[] array = new int[end - start + 1];
+    for(int i = 0; i <= end - start; i++) {
+        array[i] = start + i;
+    }
+    return array;
+}`,
+    codeString3 = `public int arraySum(int[] array) {
+    //Ergänzen Sie hier Ihre Lösung
+}`,
+    evaluationCode1 = `public int arraySum(int[] array) {
+    for(int i = 0; array.length(); i++) {
+        System.out.println(array[i]);
     }
 }`,
-    codeString2 = `public class Example {
-    private boolean isSth;
-
-    public Example(boolean isSth) {
-        this.isSth = isSth;
-
-        if(this.isSth == isSth) {
-            System.out.println("Example!");
-        }
+    evaluationCode2 = `public int arraySum(int[] array) {
+    int sum = 0;
+    for(int i = 0; array.length; i++) {
+        sum += array[i];
     }
+    return sum;
 }`,
-    codeString3 = `public class Example {
-    private boolean isSth;
+    discussionCode2 = `public int arraySum(int[] array) {
+    int sum = 0;
 
-    public Example(boolean isSth) {
-        this.isSth = isSth;
+    for(int i = 0; array.length(); i++) {
+        sum += array[i];
     }
 
-    private void setIsSth(boolean isSth) {
-
-    }
-}`,
-    evaluationCode1 = `public class Example {
-    private boolean isSth;
-
-    public Example(boolean isSth) {
-        this.isSth = isSth;
-    }
-
-    private void setIsSth(boolean isSth) {
-        this.isSth = isSth;
-    }
-}`,
-    evaluationCode2 = `public class Example {
-    private boolean isSth;
-
-    public Example(boolean isSth) {
-        this.isSth = isSth;
-    }
-
-    private void setIsSth(boolean isSth) {
-        return isSth;
-    }
+    return sum;
 }`;
 
 const Examples = {
     syntax: {
-        task: "Eine Syntax-Highlighting-Aufgabe mit Dummy-Anweisung!",
+        task: "Markieren Sie alle Zeilen der folgenden Methode, in denen innerhalb eines Arrays Werte zugewiesen werden!",
         code: codeString1,
         highlights: [
             {
                 list: [{
-                    anchor: { line: 2, ch: 4 },
-                    head: { line: 2, ch: 25 },
+                    anchor: { line: 1, ch: 4 },
+                    head: { line: 1, ch: 43 },
                 },
                 {
-                    anchor: { line: 5, ch: 8 },
-                    head: { line: 5, ch: 33 },
+                    anchor: { line: 3, ch: 8 },
+                    head: { line: 3, ch: 29 },
                 },
                 ],
-                editor: "12",
+                editor: "5",
             },
             {
                 list: [{
-                    anchor: { line: 4, ch: 4 },
-                    head: { line: 4, ch: 10 },
-                },
-                {
-                    anchor: { line: 5, ch: 8 },
-                    head: { line: 5, ch: 33 },
+                    anchor: { line: 3, ch: 8 },
+                    head: { line: 3, ch: 29 },
                 },
                 ],
-                editor: "29",
+                editor: "51",
             },
         ],
         heatmap: {
             light: [
                 {
-                    anchor: { line: 4, ch: 18 },
-                    head: { line: 4, ch: 30 },
+                    anchor: { line: 5, ch: 4 },
+                    head: { line: 5, ch: 17 },
                 },
             ],
             medium: [
                 {
-                    anchor: { line: 2, ch: 4 },
-                    head: { line: 2, ch: 25 },
+                    anchor: { line: 1, ch: 4 },
+                    head: { line: 1, ch: 43 },
                 },
             ],
             strong: [
                 {
-                    anchor: { line: 5, ch: 8 },
-                    head: { line: 5, ch: 33 },
+                    anchor: { line: 3, ch: 8 },
+                    head: { line: 3, ch: 29 },
                 },
             ],
         },
         solution: [
             {
-                anchor: { line: 5, ch: 8 },
-                head: { line: 5, ch: 33 },
+                anchor: { line: 1, ch: 4 },
+                head: { line: 1, ch: 43 },
+            },
+            {
+                anchor: { line: 3, ch: 8 },
+                head: { line: 3, ch: 29 },
             },
         ],
     },
     type: {
         code: codeString2,
         highlight: {
-            anchor: { line: 6, ch: 11 },
-            head: { line: 6, ch: 30 },
+            anchor: { line: 4, ch: 28 },
+            head: { line: 4, ch: 33 },
         },
         evaluations: [
-            {type: "Object", editor: "14"}, 
-            {type: "String", editor: "31"}
+            {type: "int[]", editor: "14"}, 
+            {type: "String", editor: "37"},
         ],
         expression: "this.isSth == isSth",
         histogramm: [
             {
-                group: "boolean",
-                correct: 15,
+                group: "int[]",
+                correct: 26,
                 rest: 5,
+            },
+            {
+                group: "int",
+                correct: 6,
+                rest: 13,
             },
             {
                 group: "String",
-                correct: 3,
-                rest: 5,
-            },
-            {
-                group: "Object",
-                correct: 5,
+                correct: 1,
                 rest: 6,
             },
+            {
+                group: "illegal",
+                correct: 0,
+                rest: 3,
+            },
         ],
-        solution: "boolean",
+        solution: "int[]",
     },
     microtask: {
-        task: "Implementieren Sie die Methode setIsSth(boolean isSth)!",
+        task: "Implementieren Sie die Methode \"public int arraySum(int[] array)\", die alle im übergebenen Array enthaltenen Werte zu einem Gesamtwert aufsummiert und zurückgibt!",
         code: codeString3,
         evaluations: [{code: evaluationCode1, editor: "5"}, {code: evaluationCode2, editor: "13"}],
-        discussionSolutions: [{code: evaluationCode1, percentage: 81}, {code: evaluationCode2, percentage: 47}],
-        solution: evaluationCode1,
+        discussionSolutions: [{code: evaluationCode2, percentage: 84}, {code: discussionCode2, percentage: 44}],
+        solution: evaluationCode2,
     },
 };
 

@@ -31,8 +31,8 @@ class EditorAnalyseView extends EditorView {
 
         legend.innerHTML = `
             <div class="legend"><div class="legend-color light"></div> wurde mindestens 1x markiert</div>
-            <div class="legend"><div class="legend-color medium"></div> wurde häufig markiert</div>
-            <div class="legend"><div class="legend-color strong"></div> wurde sehr häufig markiert</div>
+            <div class="legend"><div class="legend-color medium"></div> wurde von mindestens 50% der Teilnehmer markiert</div>
+            <div class="legend"><div class="legend-color strong"></div> wurde von mindestens 80% der Teilnehmer markiert</div>
         `;
 
         legend.classList.add("legend-wrapper");

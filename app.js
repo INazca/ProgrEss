@@ -19,7 +19,7 @@ app.get("/", function (req, res) {
 //if the user connects on a valid code then he will be given the needed information for taking part in a survey
 //the code is representative for the id of the study participant
 app.get("/:code", function (req, res) {
-    res.render("survey-viewer", {title: "Example Survey Feb 2020"});
+    res.render("survey-viewer", {title: "Arrays survey - OOP20"});
 });
 
 app.listen(ServerConst.port, function () {
