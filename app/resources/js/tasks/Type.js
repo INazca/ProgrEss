@@ -6,7 +6,7 @@ var type = "type";
 class TypeDetermination {
 
     constructor(code, highlight, waitTime, evaluations, expression, histogramm, solution){
-        this.task = `Bestimmen Sie, ob folgender markierter Ausdruck zulässig ist, d.h. keine Fehlermeldungen auslöst, und geben Sie,
+        this.task = `<span class="bold">Aufgabe 2:</span> Bestimmen Sie, ob folgender markierter Ausdruck zulässig ist, d.h. keine Fehlermeldungen auslöst, und geben Sie,
         sofern dies zutrifft, dessen Rückgabe-Typ an!`;
         this.solve = new TypeSolve(this.task, code, highlight, waitTime);
         this.evaluate = [];

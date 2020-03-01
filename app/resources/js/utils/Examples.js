@@ -50,7 +50,7 @@ private int[] getArray(int start, int end) {
 
 const Examples = {
     syntax: {
-        task: "Markieren Sie alle Zeilen der folgenden Methode, in denen innerhalb eines Arrays Werte zugewiesen werden!",
+        task: `<span class="bold">Aufgabe 1:</span> Markieren Sie alle Zeilen der folgenden Methode, in denen innerhalb eines Arrays Werte zugewiesen werden!`,
         code: codeString1,
         highlights: [
             {
@@ -141,7 +141,7 @@ const Examples = {
         solution: "int[]",
     },
     microtask: {
-        task: "Implementieren Sie die Methode \"public int arraySum(int[] array)\", die alle im übergebenen Array enthaltenen Werte zu einem Gesamtwert aufsummiert und zurückgibt!",
+        task: `<span class="bold">Aufgabe 3:</span> Implementieren Sie die Methode \"public int arraySum(int[] array)\", die alle im übergebenen Array enthaltenen Werte zu einem Gesamtwert aufsummiert und zurückgibt!`,
         code: codeString3,
         evaluations: [{code: evaluationCode1, editor: "5"}, {code: evaluationCode2, editor: "13"}],
         discussionSolutions: [{code: evaluationCode2, percentage: 84}, {code: discussionCode2, percentage: 44}],

@@ -66,6 +66,10 @@ header {
     border-radius: 0.25rem;
 }
 
+.bold {
+    font-weight: 800;
+}
+
 
 
 /* colors */

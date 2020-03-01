@@ -5,7 +5,7 @@ import SyntaxMark from "../../controller/syntax-highlighting/SyntaxMark.js";
 class SyntaxEvaluation extends SyntaxMark {
 
     constructor(data) {
-        super(data, `<span class="evaluate-font-color">Verbessern Sie wenn nötig die folgende Lösung zu: </span>` + data.task);
+        super(data, `<div class="evaluate-font-color">Verbessern Sie wenn nötig die folgende Lösung zu: </div>` + data.task);
     }
 
     show() {
