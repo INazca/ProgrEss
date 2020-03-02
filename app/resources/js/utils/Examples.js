@@ -27,13 +27,13 @@ private int[] getArray(int start, int end) {
     //Ergänzen Sie hier Ihre Lösung
 }`,
     evaluationCode1 = `public int arraySum(int[] array) {
-    for(int i = 0; array.length(); i++) {
+    for(int i = 0; i < array.length(); i++) {
         System.out.println(array[i]);
     }
 }`,
     evaluationCode2 = `public int arraySum(int[] array) {
     int sum = 0;
-    for(int i = 0; array.length; i++) {
+    for(int i = 0; i < array.length; i++) {
         sum += array[i];
     }
     return sum;
@@ -41,7 +41,7 @@ private int[] getArray(int start, int end) {
     discussionCode2 = `public int arraySum(int[] array) {
     int sum = 0;
 
-    for(int i = 0; array.length(); i++) {
+    for(int i = 0; i < array.length(); i++) {
         sum += array[i];
     }
 
@@ -115,7 +115,7 @@ const Examples = {
             {type: "int[]", editor: "14"}, 
             {type: "String", editor: "37"},
         ],
-        expression: "this.isSth == isSth",
+        expression: "array",
         histogramm: [
             {
                 group: "int[]",
