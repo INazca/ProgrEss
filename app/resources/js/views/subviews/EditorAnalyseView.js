@@ -44,7 +44,7 @@ class EditorAnalyseView extends EditorView {
         var solutionMarks = this.card.getElementsByClassName("solution-mark");
 
         for(let i = 0; i < solutionMarks.length; i++) {
-            $(solutionMarks[i]).animate({backgroundColor: "#33a02c", color: "white", fontSize: "1.6rem"}, this.duration);
+            $(solutionMarks[i]).animate({backgroundColor: "#2e7d32", color: "white", fontSize: "1.6rem"}, this.duration);
         }
     }
 

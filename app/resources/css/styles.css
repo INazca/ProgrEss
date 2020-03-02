@@ -188,18 +188,18 @@ header {
 
 /* expression illegal */
 .expression-illegal {
-    background-color: #B00020;
-    border-color: #790000;
+    background-color: #c62828;
+    border-color: #8e0000;
 }
 
 .expression-illegal:hover {
-    background-color: #790000;
+    background-color: #8e0000;
     color: white;
 }
 
 .expression-illegal:active {
     color: white;
-    background-color: #790000;
+    background-color: #8e0000;
     border-width: 4px;
 }
 
@@ -239,17 +239,17 @@ header {
 /* settings for correction buttons */
 /* correct */
 .btn-correct {
-    background-color: #33a02c;
-    border-color: #33a02c;
+    background-color: #00701a;
+    border-color: #00701a;
 }
 
 .btn-correct:hover {
-    background-color: #007000;
+    background-color: #004300;
     border-width: 0;
 }
 
 .btn-correct:active {
-    background-color: #007000;
+    background-color: #004300;
     border-width: 0;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
 }
@@ -262,17 +262,17 @@ header {
 
 /* incorrect */
 .btn-incorrect {
-    background-color: #B00020;
-    border-color: #B00020;
+    background-color: #ba000d;
+    border-color: #ba000d;
 }
 
 .btn-incorrect:hover {
-    background-color: #790000;
+    background-color: #820000;
     border-width: 0;
 }
 
 .btn-incorrect:active {
-    background-color: #790000;
+    background-color: #820000;
     border-width: 0;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
 }
@@ -302,13 +302,13 @@ header {
 }
 
 .input-solution {
-    color: #33a02c;
-    border: 4px solid #33a02c;
+    color: #2e7d32;
+    border: 4px solid #2e7d32;
 }
 
 .input-error {
-    color: #B00020;
-    border: 4px solid #B00020;
+    color: #c62828;
+    border: 4px solid #c62828;
 }
 
 /* inputs for showing a solution */
@@ -331,12 +331,12 @@ header {
 }
 
 .solution i {
-    color: #33a02c;
+    color: #2e7d32;
     width: fit-content;
 }
 
 .input-solution:disabled {
-    border: 4px solid #33a02c;
+    border: 4px solid #2e7d32;
 }
 
 /* breakpoint */
@@ -588,12 +588,12 @@ header {
 }
 
 .reveal-color, .status-circle.reveal-color, .status-circle.reveal-color .status-inner-inner-circle, .progress-bar, .solution-display.reveal-color:disabled {
-    background-color: #4caf50;
-    border-color: #4caf50;
+    background-color: #2e7d32;
+    border-color: #2e7d32;
 }
 
 .card-content .CodeMirror.editor-solution, .editor-container.reveal-color .CodeMirror {
-    border-color: #4caf50;
+    border-color: #2e7d32;
 }
 
 /* type display */
@@ -1030,7 +1030,7 @@ g text {
     width: 100%;
     height: .7rem;
     margin: .9rem 4vw 0 4vw;
-    background-color: #B00020;
+    background-color: #c62828;
 }
 
 .progress-bar {

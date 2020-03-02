@@ -6,7 +6,7 @@ import EditorView from "../../views/subviews/EditorView.js";
 class MicrotaskEvaluation extends Controller {
 
     constructor(data) {
-        super(data, new EditorView(`<div class="evaluate-font-color">Verbessern Sie wenn nötig die folgende Lösung zu: </div>` + data.task, data.evaluation.code, true, data.controlType));
+        super(data, new EditorView(`<div class="evaluate-font-color">Bewerten Sie die folgende Lösung zu: </div>` + data.task, data.evaluation.code, true, data.controlType));
 
         this._isCorrect = true;
     }

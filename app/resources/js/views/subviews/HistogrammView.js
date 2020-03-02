@@ -2,8 +2,8 @@ import CardView from "../CardView.js";
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
-var colorCorrect = "#33a02c",
-    colorRest = "#a6cee3",
+var colorCorrect = "#276419",
+    colorRest = "#de77ae",
     template = "type-determination-discussion";
 
 class HistogrammView extends CardView {

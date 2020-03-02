@@ -133,7 +133,7 @@ const Examples = {
                 rest: 6,
             },
             {
-                group: "illegal",
+                group: "unzulässig",
                 correct: 0,
                 rest: 3,
             },
