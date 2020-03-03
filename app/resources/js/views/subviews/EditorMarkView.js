@@ -14,8 +14,15 @@ class EditorMarkView extends EditorView {
         adjustColor(this._highlightButton, this._eraseButton, type);
     }
 
-    highlight(selection) {
-        var marks = this.editor.findMarks(selection.anchor, selection.head);
+    highlight(unformattedSelection) {
+        var selection = formatSelection(unformattedSelection),
+            formattedAnchor = Object.assign({}, selection.anchor),
+            formattedHead = Object.assign({}, selection.head),
+            marks;
+            
+        formattedAnchor.ch = formattedAnchor.ch - 1;
+        formattedHead.ch = formattedHead.ch + 1;
+        marks = this.editor.findMarks(formattedAnchor, formattedHead);
 
         //check if marks would cross another, if so then connect to a new mark complemented by the selection
         if(marks.length === 0) {
@@ -41,8 +48,9 @@ class EditorMarkView extends EditorView {
         }
     }
 
-    erase(selection) {
-        var marks = this.editor.findMarks(selection.anchor, selection.head);
+    erase(unformattedSelection) {
+        var selection = formatSelection(unformattedSelection),
+            marks = this.editor.findMarks(selection.anchor, selection.head);
 
         if(marks.length > 0) {
             let mark = marks[0],
@@ -96,7 +104,7 @@ class EditorMarkView extends EditorView {
 function isBefore(cursor1, cursor2) {
     if(cursor1.line < cursor2.line) {
         return true;
-    } else if(cursor1.line === cursor2.line && cursor1.ch < cursor2.ch) {
+    } else if(cursor1.line === cursor2.line && cursor1.ch <= cursor2.ch) {
         return true;
     } 
     return false;
@@ -130,6 +138,19 @@ function isBetween(selection1, selection2) {
         }
     }
     return false;
+}
+
+function formatSelection(oldSelection) {
+    var newSelection = {};
+
+    if(isBefore(oldSelection.head, oldSelection.anchor)) {
+        newSelection.anchor = oldSelection.head;
+        newSelection.head = oldSelection.anchor;
+    } else {
+        newSelection = oldSelection;
+    }
+
+    return newSelection;
 }
 
 function adjustColor(button1, button2, type) {
