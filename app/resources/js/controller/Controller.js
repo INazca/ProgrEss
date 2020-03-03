@@ -1,9 +1,12 @@
+import { Event, Observable } from "../utils/Observable.js";
+
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
-class Controller {
+class Controller extends Observable{
 
     constructor(data, view) {
+        super();
         this.data = data;
         this.view = view;
         this._viewable = false;

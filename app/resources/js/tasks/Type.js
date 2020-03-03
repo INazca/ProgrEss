@@ -60,6 +60,10 @@ class TypeSolve {
         return type;
     }
 
+    get waitTime() {
+        return this._waitTime;
+    }
+
     set controlType(type) {
         this._controlType = type;
     }

@@ -17,6 +17,7 @@ import MicrotaskEvaluation from "./controller/microtask/MicrotaskEvaluation.js";
 import MicrotaskDiscussion from "./controller/microtask/MicrotaskDiscussion.js";
 import MicrotaskReveal from "./controller/microtask/MicrotaskReveal.js";
 import Animation from "./utils/Animation.js";
+import WaitPhase from "./controller/WaitPhase.js";
 
 var prev,
     next,
@@ -63,23 +64,37 @@ function listenForContinue() {
 }
 
 function parseData() {
-    survey.push(new Syntax(Examples.syntax.task, Examples.syntax.code, 5, Examples.syntax.highlights, Examples.syntax.heatmap, Examples.syntax.solution));
-    survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 10, Examples.type.evaluations, Examples.type.expression, Examples.type.histogramm, Examples.type.solution));
-    survey.push(new Microtask(Examples.microtask.task, Examples.microtask.code, 20, Examples.microtask.evaluations, Examples.microtask.discussionSolutions, Examples.microtask.solution));
+    survey.push(new Syntax(Examples.syntax.task, Examples.syntax.code, 0, Examples.syntax.highlights, Examples.syntax.heatmap, Examples.syntax.solution));
+    survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 10000, Examples.type.evaluations, Examples.type.expression, Examples.type.histogramm, Examples.type.solution));
+    survey.push(new Microtask(Examples.microtask.task, Examples.microtask.code, 15000, Examples.microtask.evaluations, Examples.microtask.discussionSolutions, Examples.microtask.solution));
 }
 
 function initSurvey() {
     createCards();
     view.updateHTML(cards);
+
+    //this function starts the survey and shows the first view instantly
+    endCard();
 }
 
 function createCards() {
+
+    cards.push(new WaitPhase("Bitte warten Sie, bis die Umfrage startet..."));
+
     survey.forEach(type => {
         var task = type.data;
 
         //create cards if the task type is syntax highlighting
         if (task.type === "syntax") {
             cards.push(new SyntaxMark(task.solve));
+
+            //create waitPhase
+            if (task.solve.waitTime > 0) {
+                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", task.solve.waitTime);
+                waitPhase.addEventListener("waitEnd", endCard);
+                cards.push(waitPhase);
+            }
+
             task.evaluate.forEach(evaluation => {
                 cards.push(new SyntaxEvaluation(evaluation));
             });
@@ -90,6 +105,14 @@ function createCards() {
         //create cards if the task type is type determination
         if (task.type === "type") {
             cards.push(new TypeSolve(task.solve));
+
+            //create waitPhase
+            if (task.solve.waitTime > 0) {
+                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", task.solve.waitTime);
+                waitPhase.addEventListener("waitEnd", endCard);
+                cards.push(waitPhase);
+            }
+
             task.evaluate.forEach(evaluation => {
                 cards.push(new TypeEvaluation(evaluation));
             });
@@ -100,6 +123,14 @@ function createCards() {
         //create cards if the task type is microtask
         if (task.type === "microtask") {
             cards.push(new MicrotaskSolve(task.solve));
+
+            //create waitPhase
+            if (task.solve.waitTime > 0) {
+                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", task.solve.waitTime);
+                waitPhase.addEventListener("waitEnd", endCard);
+                cards.push(waitPhase);
+            }
+
             task.evaluate.forEach(evaluation => {
                 cards.push(new MicrotaskEvaluation(evaluation));
             });

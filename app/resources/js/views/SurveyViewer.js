@@ -24,7 +24,9 @@ class SurveyViewer {
 
         updateTypeDisplay(taskType);
 
-        if (type === "solve") {
+        if (type === "wait") {
+            showControls(this, false, false, false, false);
+        } else if (type === "solve") {
             showControls(this, false, false, false, true);
 
             this.resetStatusBar();
