@@ -397,6 +397,7 @@ header {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     line-height: 0;
+    z-index: 2;
 }
 
 #controls-next {
@@ -405,6 +406,7 @@ header {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     line-height: 0;
+    z-index: 2;
 }
 
 .controls-correctness {
@@ -413,6 +415,7 @@ header {
     border-bottom-right-radius: 0;
     bottom: -5rem;
     pointer-events: all;
+    z-index: 2;
 }
 
 #controls-submit {
@@ -422,6 +425,7 @@ header {
     border-bottom-right-radius: 0;
     bottom: -5rem;
     pointer-events: all;
+    z-index: 2;
 }
 
 .controls-correctness-wrapper {
