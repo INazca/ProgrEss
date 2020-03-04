@@ -39,18 +39,20 @@ class SurveyViewer {
 
             this.controls.prev.button.disabled = !isViewable1;
             this.controls.next.button.disabled = !isViewable2;
-        } else if (type === "evaluate") {
-            showControls(this, true, true, false, true);
+        } 
+        // else if (type === "evaluate") {
+        //     showControls(this, true, true, false, true);
 
-            this.controls.prev.button.disabled = !isViewable1;
-            this.controls.next.button.disabled = !isViewable2;
+        //     this.controls.prev.button.disabled = !isViewable1;
+        //     this.controls.next.button.disabled = !isViewable2;
 
-            this.resetStatusBar();
-            this.statusBar.evaluate.stage.classList.remove("hidden");
-            this.statusBar.evaluate.circles[0].classList.add("status-circle-active");
-            this.statusBar.evaluate.circles[0].classList.add("evaluate-color");
-            this.statusBar.evaluate.circles[1].classList.remove("hidden");
-        } else if (type === "evaluate-correctness") {
+        //     this.resetStatusBar();
+        //     this.statusBar.evaluate.stage.classList.remove("hidden");
+        //     this.statusBar.evaluate.circles[0].classList.add("status-circle-active");
+        //     this.statusBar.evaluate.circles[0].classList.add("evaluate-color");
+        //     this.statusBar.evaluate.circles[1].classList.remove("hidden");
+        // } 
+            else if (type === "evaluate") {
             showControls(this, true, true, true, false);
 
             this.controls.prev.button.disabled = !isViewable1;
@@ -66,12 +68,14 @@ class SurveyViewer {
             this.statusBar.evaluate.circles[0].classList.add("status-circle-active");
             this.statusBar.evaluate.circles[0].classList.add("evaluate-color");
             this.statusBar.evaluate.circles[1].classList.remove("hidden");
-        } else if (type === "evaluate-done") {
-            showControls(this, true, true, false, false);
+        } 
+        // else if (type === "evaluate-done") {
+        //     showControls(this, true, true, false, false);
 
-            this.controls.prev.button.disabled = !isViewable1;
-            this.controls.next.button.disabled = !isViewable2;
-        } else if (type === "evaluate-correctness-done") {
+        //     this.controls.prev.button.disabled = !isViewable1;
+        //     this.controls.next.button.disabled = !isViewable2;
+        // } 
+        else if (type === "evaluate-done") {
             showControls(this, true, true, true, false);
 
             this.controls.prev.button.disabled = !isViewable1;

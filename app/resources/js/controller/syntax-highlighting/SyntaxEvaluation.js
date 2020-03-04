@@ -5,7 +5,7 @@ import SyntaxMark from "../../controller/syntax-highlighting/SyntaxMark.js";
 class SyntaxEvaluation extends SyntaxMark {
 
     constructor(data) {
-        super(data, `<div class="evaluate-font-color">Verbessern Sie wenn nötig die folgende Lösung zu: </div>` + data.task);
+        super(data, `<div class="evaluate-font-color">Bewerten Sie die Lösung von Teilnehmer ${data.highlights.editor}</div>` + data.task);
     }
 
     show() {
@@ -15,6 +15,7 @@ class SyntaxEvaluation extends SyntaxMark {
 
                 //add highlights to view
                 highlight(this.view, this.data.highlights.list);
+                this.view.editable = false;
                 this.view.addEditedBy("Lösung von Teilnehmer " + this.data.highlights.editor);
                 this.initialized = true;
             }

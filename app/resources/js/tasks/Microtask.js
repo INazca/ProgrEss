@@ -68,7 +68,7 @@ class MicrotaskSolve {
 
 class MicrotaskEvaluate {
     constructor(task, evaluation) {
-        this._controlType = "evaluate-correctness";
+        this._controlType = "evaluate";
         this._task = task;
         this._evaluation = evaluation;
         this._isCorrect = true;

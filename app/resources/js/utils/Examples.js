@@ -112,8 +112,8 @@ const Examples = {
             head: { line: 4, ch: 33 },
         },
         evaluations: [
-            {type: "int[]", editor: "14"}, 
-            {type: "String", editor: "37"},
+            {isLegal: true, type: "int[]", editor: "14"}, 
+            {isLegal: true, type: "String", editor: "37"},
         ],
         expression: "array",
         histogramm: [
@@ -138,7 +138,7 @@ const Examples = {
                 rest: 3,
             },
         ],
-        solution: "int[]",
+        solution: {isLegal: true, type: "int[]"},
     },
     microtask: {
         task: `<span class="bold">Aufgabe 3:</span> Implementieren Sie die Methode \"public int arraySum(int[] array)\", die alle im übergebenen Array enthaltenen Werte zu einem Gesamtwert aufsummiert und zurückgibt!`,

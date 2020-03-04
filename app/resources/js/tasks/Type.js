@@ -6,8 +6,8 @@ var type = "type";
 class TypeDetermination {
 
     constructor(code, highlight, waitTime, evaluations, expression, histogramm, solution){
-        this.task = `<span class="bold">Aufgabe 2:</span> Bestimmen Sie, ob folgender markierter Ausdruck zulässig ist, d.h. keine Fehlermeldungen auslöst, und geben Sie,
-        sofern dies zutrifft, dessen Rückgabe-Typ an!`;
+        this.task = `<span class="bold">Aufgabe 2:</span> Bestimmen Sie nur für den, im Folgenden markierten, Ausdruck, ob dieser zulässig ist, d.h. keine Fehlermeldungen auslöst, und geben Sie,
+        sofern sofern zulässig, dessen Rückgabe-Typ an!`;
         this.solve = new TypeSolve(this.task, code, highlight, waitTime);
         this.evaluate = [];
         evaluations.forEach(evaluation => {
@@ -75,7 +75,7 @@ class TypeSolve {
 
 class TypeEvaluate {
     constructor(task, code, highlight, evaluation) {
-        this._controlType = "evaluate-correctness";
+        this._controlType = "evaluate";
         this._task = task;
         this._code = code;
         this._highlight = highlight;

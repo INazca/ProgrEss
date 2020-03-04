@@ -65,8 +65,8 @@ function listenForContinue() {
 
 function parseData() {
     survey.push(new Syntax(Examples.syntax.task, Examples.syntax.code, 0, Examples.syntax.highlights, Examples.syntax.heatmap, Examples.syntax.solution));
-    survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 10000, Examples.type.evaluations, Examples.type.expression, Examples.type.histogramm, Examples.type.solution));
-    survey.push(new Microtask(Examples.microtask.task, Examples.microtask.code, 15000, Examples.microtask.evaluations, Examples.microtask.discussionSolutions, Examples.microtask.solution));
+    survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 0, Examples.type.evaluations, Examples.type.expression, Examples.type.histogramm, Examples.type.solution));
+    survey.push(new Microtask(Examples.microtask.task, Examples.microtask.code, 0, Examples.microtask.evaluations, Examples.microtask.discussionSolutions, Examples.microtask.solution));
 }
 
 function initSurvey() {

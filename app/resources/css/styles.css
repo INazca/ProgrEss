@@ -162,6 +162,11 @@ header {
 
 .btn-primary-color-active {
     border-width: 4px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2), 0 0 30px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-primary-color-active:disabled {
+    opacity: 1;
 }
 
 /* expression legal */
@@ -581,6 +586,7 @@ header {
 
 .evaluate-font-color {
     color: #c2185b;
+    font-weight: 800;
 }
 
 .discussion-color, .status-circle.discussion-color, .status-circle.discussion-color .status-inner-inner-circle {

@@ -46,13 +46,13 @@ class TypeSolve extends Controller {
 
 function onLegal(view) {
     Animation.click(this.legalButton);
-    view.showForm();
+    view.enableForm();
     this.isLegal = true;
 }
 
 function onIllegal(view) {
     Animation.click(this.illegalButton);
-    view.hideForm();
+    view.disableForm();
     this.isLegal = false;
 }
 

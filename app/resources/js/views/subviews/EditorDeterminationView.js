@@ -16,14 +16,16 @@ class EditorDeterminationView extends EditorView {
         this._illegalButton = this.card.getElementsByClassName("expression-illegal")[0];
     }
 
-    showForm() {
-        $(this.form).show(1000);
+    enableForm() {
+        this._input.disabled = false;
+        this._input.value = "";
         this._legalButton.classList.add("btn-primary-color-active");
         this._illegalButton.classList.remove("btn-primary-color-active");
     }
 
-    hideForm() {
-        $(this.form).hide(1000);
+    disableForm() {
+        this._input.disabled = true;
+        this._input.value = "unzulässig";
         this._illegalButton.classList.add("btn-primary-color-active");
         this._legalButton.classList.remove("btn-primary-color-active");
     }
