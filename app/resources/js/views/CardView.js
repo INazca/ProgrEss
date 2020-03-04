@@ -80,6 +80,10 @@ function initCard(task, template, taskType) {
     //add the task description to the node
     card.getElementsByClassName("task-description")[0].innerHTML = task;
 
+    if(taskType !== "solve" && taskType !== "wait") {
+        card.getElementsByClassName("task-description")[0].classList.add("text-muted");
+    }
+
     return card;
 }
 
