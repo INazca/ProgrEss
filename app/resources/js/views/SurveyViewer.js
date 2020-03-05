@@ -3,6 +3,7 @@
 import Animation from "../utils/Animation.js";
 
 var cardsContainer = document.getElementById("cards-container"),
+    typeDisplay = document.getElementsByClassName("type-display-wrapper")[0],
     typeIconDisplay = document.getElementsByClassName("type-icon")[0],
     typeNameDisplay = document.getElementsByClassName("type-display")[0];
 
@@ -18,11 +19,14 @@ class SurveyViewer {
         };
         this.statusBar = initStatusBar();
         this.header = document.getElementsByClassName("navbar")[0];
+        this.currentTaskType = "";
     }
 
     updateUI(type, isViewable1, isViewable2, isCorrect, taskType) {
 
-        updateTypeDisplay(taskType);
+        if(type !== "wait") {
+            updateTypeDisplay(this, taskType);
+        }
 
         if (type === "wait") {
             showControls(this, false, false, false, false);
@@ -221,7 +225,17 @@ function setupEditorContainers() {
     }
 }
 
-function updateTypeDisplay(type) {
+function updateTypeDisplay(self, type) {   
+    if(self.currentTaskType === "") {
+        updateTypeDisplayContent(type);
+        setFlex(typeDisplay);
+    } else if(type !== self.currentTaskType) {
+        $(typeDisplay).hide("fade", {duration: 1000, complete: setFlex.bind(this, updateTypeDisplayContent.bind(this, type))});
+    }
+    self.currentTaskType = type;
+}
+
+function updateTypeDisplayContent(type) {
     if (type === "syntax") {
         typeIconDisplay.innerHTML = "brush";
         typeNameDisplay.innerHTML = "Syntax Highlighting";
@@ -232,6 +246,12 @@ function updateTypeDisplay(type) {
         typeIconDisplay.innerHTML = "double_arrow";
         typeNameDisplay.innerHTML = "Microtask";
     }
+
+    $(typeDisplay).show("fade", {duration: 1000, complete: setFlex.bind(this, typeDisplay)});
+}
+
+function setFlex(element) {
+    $(element).css("display", "flex");
 }
 
 export default SurveyViewer;

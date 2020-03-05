@@ -615,7 +615,7 @@ header {
 .type-display-wrapper {
     position: absolute;
     right: 0;
-    font-size: .8rem;
+    font-size: .7rem;
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -626,11 +626,25 @@ header {
     height: 100%;
 }
 
+.type-display-wrapper.hidden {
+    display: none;
+}
+
+.type-display {
+    font-size: .6rem;
+    height: 2rem;
+    color: #666;
+}
+
+.type-display-description {
+    color: #666;
+}
+
 .type-display-wrapper i {
-    background-color: #666;
+    background-color: #BBB;
     border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -638,7 +652,7 @@ header {
 
 .type-display-wrapper i.material-icons {
     color: #eee;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 
 /* breakpoint */
