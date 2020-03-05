@@ -1,19 +1,22 @@
-import Animation from "../utils/Animation.js";
+import { Event, Observable } from "../utils/Observable.js";
 
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 
-class CardView {
+class CardView extends Observable{
 
     constructor(task, type, template) {
+        super();
         this.template = template;
         this.type = type;
+        
         if (type === "evaluate-correctness") {
             this.type = "evaluate";
         }
 
         //create card as div node with correct data (not added to HTML)
         this.card = initCard(task, document.getElementById(this.template), this.type);
+        this.taskDescription = this.card.getElementsByClassName("task-description")[0];
     }
 
     showCard() {
@@ -54,6 +57,15 @@ class CardView {
 
     showEditedBy() {
         this.editedBy.classList.remove("hidden");
+    }
+
+    addHint(hint) {
+        var hintEl = document.createElement("small");
+
+        hintEl.classList.add("text-muted");
+        hintEl.innerHTML = hint;
+
+        this.taskDescription.parentNode.insertBefore(hintEl, this.taskDescription.nextSibling);
     }
 
     get node() {

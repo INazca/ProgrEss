@@ -23,17 +23,17 @@ class SyntaxDiscussion extends Controller {
 
 function heatmap(view, heatmap) {
     Object.keys(heatmap).forEach(function(key) {
-        heatmap[key].forEach(selection => {
-            view.drawMark(selection, "heat-light");
+        heatmap[key].forEach(line => {
+            view.drawLineMark(line, "heat-light");
         });
         if(key === "medium" || key === "strong") {
-            heatmap[key].forEach(selection => {
-                view.drawMark(selection, "heat-medium");
+            heatmap[key].forEach(line => {
+                view.drawLineMark(line, "heat-medium");
             });
         }
         if(key === "strong") {
-            heatmap[key].forEach(selection => {
-                view.drawMark(selection, "heat-strong");
+            heatmap[key].forEach(line => {
+                view.drawLineMark(line, "heat-strong");
             });
         }
     });

@@ -54,56 +54,20 @@ const Examples = {
         code: codeString1,
         highlights: [
             {
-                list: [{
-                    anchor: { line: 1, ch: 4 },
-                    head: { line: 1, ch: 43 },
-                },
-                {
-                    anchor: { line: 3, ch: 8 },
-                    head: { line: 3, ch: 29 },
-                },
-                ],
+                list: [1,3],
                 editor: "5",
             },
             {
-                list: [{
-                    anchor: { line: 3, ch: 8 },
-                    head: { line: 3, ch: 29 },
-                },
-                ],
+                list: [1],
                 editor: "51",
             },
         ],
         heatmap: {
-            light: [
-                {
-                    anchor: { line: 5, ch: 4 },
-                    head: { line: 5, ch: 17 },
-                },
-            ],
-            medium: [
-                {
-                    anchor: { line: 1, ch: 4 },
-                    head: { line: 1, ch: 43 },
-                },
-            ],
-            strong: [
-                {
-                    anchor: { line: 3, ch: 8 },
-                    head: { line: 3, ch: 29 },
-                },
-            ],
+            light: [5],
+            medium: [1],
+            strong: [3],
         },
-        solution: [
-            {
-                anchor: { line: 1, ch: 4 },
-                head: { line: 1, ch: 43 },
-            },
-            {
-                anchor: { line: 3, ch: 8 },
-                head: { line: 3, ch: 29 },
-            },
-        ],
+        solution: [1,3],
     },
     type: {
         code: codeString2,

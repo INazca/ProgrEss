@@ -21,8 +21,8 @@ class SyntaxReveal extends Controller {
 }
 
 function solution(view, solution) {
-    solution.forEach(selection => {
-        view.drawMark(selection, "solution-mark");
+    solution.forEach(line => {
+        view.drawLineMark(line, "solution-mark");
     });
 
     view.showSolution();

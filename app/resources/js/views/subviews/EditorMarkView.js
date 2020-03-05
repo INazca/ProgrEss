@@ -1,95 +1,47 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 import EditorView from "../subviews/EditorView.js";
+import Observable, { Event } from "../../utils/Observable.js";
 
-var template = "syntax-highlighting-solve";
-
-class EditorMarkView extends EditorView {
+class EditorMarkView extends EditorView{
 
     constructor(task, code, type) {
-        super(task, code, true, type, template);
+        super(task, code, true, type);
 
-        this._highlightButton = this.card.getElementsByClassName("highlight-tool")[0];
-        this._eraseButton = this.card.getElementsByClassName("erase-tool")[0];
+        this.checkBoxes = [];
         adjustColor(this._highlightButton, this._eraseButton, type);
     }
 
-    highlight(unformattedSelection) {
-        var selection = formatSelection(unformattedSelection),
-            formattedAnchor = Object.assign({}, selection.anchor),
-            formattedHead = Object.assign({}, selection.head),
-            marks;
-            
-        formattedAnchor.ch = formattedAnchor.ch - 1;
-        formattedHead.ch = formattedHead.ch + 1;
-        marks = this.editor.findMarks(formattedAnchor, formattedHead);
+    initEditor() {
+        this.editor = registerEditor(this.editorContainer, this.code, this.readOnly);
+        
+        for(let i = 0; i < this.editor.lineCount(); i++) {
+            let checkBoxWrapper = document.createElement("div");
 
-        //check if marks would cross another, if so then connect to a new mark complemented by the selection
-        if(marks.length === 0) {
-            this.editor.markText(selection.anchor, selection.head, {className: "highlighted"});
-        } else {
-            let mark = marks[0],
-                markDimensions = mark.find();
+            checkBoxWrapper.classList.add("form-group", "form-check");
+            checkBoxWrapper.innerHTML = `<input type="checkbox" class="form-check-input">`;
 
-            if (isBefore(selection.anchor, markDimensions.from) && isAfter(selection.head, markDimensions.to)) {
-                mark.clear();
-                this.editor.markText(selection.anchor, selection.head, {className: "highlighted"});
-            } else if(isBefore(selection.anchor, markDimensions.from)) {
-                let markEnd = markDimensions.to;
+            checkBoxWrapper.addEventListener("click", onMark.bind(this, checkBoxWrapper, i));
 
-                mark.clear();
-                this.editor.markText(selection.anchor, markEnd, {className: "highlighted"});
-            } else if(isAfter(selection.head, markDimensions.to)) {
-                let markStart = markDimensions.from;
-
-                mark.clear();
-                this.editor.markText(markStart, selection.head, {className: "highlighted"});
-            }
+            this.checkBoxes.push(checkBoxWrapper);
+            this.editor.setGutterMarker(i, "marking-gutter", checkBoxWrapper);
         }
+        
     }
 
-    erase(unformattedSelection) {
-        var selection = formatSelection(unformattedSelection),
-            marks = this.editor.findMarks(selection.anchor, selection.head);
-
-        if(marks.length > 0) {
-            let mark = marks[0],
-                markDimensions = mark.find();
-
-            if (isBefore(selection.anchor, markDimensions.from) && isAfter(selection.head, markDimensions.to)) {
-                mark.clear();
-            } else if(isBefore(selection.anchor, markDimensions.from)) {
-                let markEnd = markDimensions.to;
-
-                mark.clear();
-                this.editor.markText(selection.head, markEnd, {className: "highlighted"});
-            } else if(isAfter(selection.head, markDimensions.to)) {
-                let markStart = markDimensions.from;
-
-                mark.clear();
-                this.editor.markText(markStart, selection.anchor, {className: "highlighted"});
-            } else if(isBetween({from: selection.anchor, to: selection.head}, markDimensions)) {
-                let markStart = markDimensions.from,
-                    markEnd = markDimensions.to;
-
-                mark.clear();
-                this.editor.markText(markStart, selection.anchor, {className: "highlighted"});
-                this.editor.markText(selection.head, markEnd, {className: "highlighted"});
-            }
-        }
+    set highlights(lines) {
+        lines.forEach(line => {
+            this.editor.addLineClass(line, "background", "highlighted");
+            this.checkBoxes[line].getElementsByClassName("form-check-input")[0].checked = true;
+        });
     }
 
     set editable(isEditable) {
-        this._highlightButton.disabled = !isEditable;
-        this._eraseButton.disabled = !isEditable;
-    }
+        this.checkBoxes.forEach(checkBoxWrapper => {
+            let checkBox = checkBoxWrapper.getElementsByClassName("form-check-input")[0];
 
-    get highlightButton() {
-        return this._highlightButton;
-    }
-
-    get eraseButton() {
-        return this._eraseButton;
+            checkBox.disabled = !isEditable;
+        });
     }
 
     get selections() {
@@ -101,61 +53,34 @@ class EditorMarkView extends EditorView {
     }
 }
 
-function isBefore(cursor1, cursor2) {
-    if(cursor1.line < cursor2.line) {
-        return true;
-    } else if(cursor1.line === cursor2.line && cursor1.ch <= cursor2.ch) {
-        return true;
-    } 
-    return false;
+function adjustColor(type) {
+    //adjust colors if to do
 }
 
-function isAfter(cursor1, cursor2) {
-    if(cursor1.line > cursor2.line) {
-        return true;
-    } else if(cursor1.line === cursor2.line && cursor1.ch > cursor2.ch) {
-        return true;
-    }
-    return false;
+function registerEditor(element, code, readOnly) {
+    var editor = CodeMirror(element, {
+        value: code,
+        mode: "text/x-java",
+        readOnly: readOnly,
+        lineNumbers: true,
+        // configureMouse: function(){
+        //     return{unit: "word"};
+        // },
+        gutters: ["marking-gutter"],
+    });
+    return editor;
 }
 
-function isBetween(selection1, selection2) {
-    if(selection1.from.line >= selection2.from.line && selection1.to.line <= selection2.to.line) {
-        if(selection1.from.line > selection2.from.line && selection1.to.line < selection2.to.line) {
-            return true;
-        } else if(selection1.from.line === selection2.from.line && selection1.to.line === selection2.to.line) {
-            if(selection1.from.ch >= selection2.from.ch && selection1.to.ch <= selection2.to.ch) {
-                return true;
-            }
-        } else if(selection1.from.line === selection2.from.line) {
-            if(selection1.from.ch >= selection2.from.ch) {
-                return true;
-            }
-        } else if(selection1.to.line === selection2.to.line) {
-            if(selection1.to.ch <= selection2.to.ch) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
+function onMark(checkBoxWrapper, line) {
+    var checkBox = checkBoxWrapper.getElementsByClassName("form-check-input")[0];
 
-function formatSelection(oldSelection) {
-    var newSelection = {};
-
-    if(isBefore(oldSelection.head, oldSelection.anchor)) {
-        newSelection.anchor = oldSelection.head;
-        newSelection.head = oldSelection.anchor;
+    if(checkBox.checked) {
+        this.editor.addLineClass(line, "background", "highlighted");
     } else {
-        newSelection = oldSelection;
+        this.editor.removeLineClass(line, "background", "highlighted");
     }
 
-    return newSelection;
-}
-
-function adjustColor(button1, button2, type) {
-    button1.classList.add(type + "-color-btn");
-    button2.classList.add(type + "-color-btn");
+    this.notifyAll(new Event("highlightsChanged"));
 }
 
 export default EditorMarkView;

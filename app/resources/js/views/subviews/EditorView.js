@@ -17,7 +17,14 @@ class EditorView extends CardView {
     }
 
     drawMark(selection, className) {
-        this.editor.markText(selection.anchor, selection.head, {className: className});
+        this.editor.markText(selection.anchor, selection.head, {className: className, atomic: true});
+    }
+
+    drawLineMark(line, className) {
+        var tokens = this.editor.getLineTokens(line);
+ 
+        this.drawMark({anchor: {line: line, ch:tokens[0].start}, head: {line: line, ch: tokens[tokens.length-1].end}}, className);
+        this.editor.addLineClass(line, "gutter", className);
     }
 
     get content() {
@@ -39,8 +46,10 @@ function registerEditor(element, code, readOnly) {
         mode: "text/x-java",
         readOnly: readOnly,
         lineNumbers: true,
+        // configureMouse: function(){
+        //     return{unit: "word"};
+        // },
     });
-
     return editor;
 }
 

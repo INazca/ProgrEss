@@ -9,16 +9,12 @@ class SyntaxMark extends Controller {
     constructor(data, task) {
         super(data, new EditorMarkView(task || data.task, data.code, data.controlType));
 
-        //register control buttons for this card
-        this.highlightButton = this.view.highlightButton;
-        this.eraseButton = this.view.eraseButton;
-
-        //register listeners for controller
-        this.highlightButton.addEventListener("click", onHighlight.bind(this, this.view));
-        this.eraseButton.addEventListener("click", onErase.bind(this, this.view));
+        //register listener for highlight changes
+        this.view.addEventListener("highlightsChanged", onHighlightsChanged.bind(this, this.view));
     }
 
     show() {
+        this.view.addHint("Um eine Zeile zu markieren wählen Sie das jeweilige Kästchen der Zeile aus");
         this.view.showCard();
         if (!this.initialized) {
             this.view.initEditor();
@@ -37,33 +33,8 @@ class SyntaxMark extends Controller {
     }
 }
 
-//event handlers
-function onHighlight(view) {
-    var selections = view.selections;
-
-    Animation.click(this.highlightButton);
-
-    selections.forEach(selection => {
-        view.highlight(selection);
-    });
-
-    updateHighlights(this, view);
-}
-
-function onErase(view) {
-    var selections = view.selections;
-
-    Animation.click(this.eraseButton);
-
-    selections.forEach(selection => {
-        view.erase(selection);
-    });
-
-    updateHighlights(this, view);
-}
-
 //update the highlight Array of the SyntaxSolve data model
-function updateHighlights(self, view) {
+function onHighlightsChanged(view) {
     var marks = view.highlights,
         highlights = [];
 
@@ -71,7 +42,7 @@ function updateHighlights(self, view) {
         highlights.push(mark.find());
     });
     
-    self.data.highlights = highlights;
+    this.data.highlights = highlights;
 }
 
 export default SyntaxMark;

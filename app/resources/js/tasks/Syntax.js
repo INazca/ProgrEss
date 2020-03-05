@@ -64,7 +64,6 @@ class SyntaxSolve {
 
     set highlights(highlights) {
         this._highlights = highlights;
-        console.log(highlights);
     }
 }
 

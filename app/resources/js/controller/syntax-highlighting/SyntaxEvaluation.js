@@ -29,10 +29,8 @@ class SyntaxEvaluation extends SyntaxMark {
     }
 }
 
-function highlight(view, highlights) {
-    highlights.forEach(highlight => {
-        view.highlight(highlight);
-    });
+function highlight(view, lines) {
+    view.highlights = lines;
 }
 
 export default SyntaxEvaluation;
