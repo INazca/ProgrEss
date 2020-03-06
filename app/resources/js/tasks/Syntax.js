@@ -5,7 +5,7 @@ var type = "syntax";
 
 class SyntaxHighlighting {
 
-    constructor(task, code, waitTime, evaluationHighlights, heatmap, solution){
+    constructor(id, task, code, waitTime, evaluationHighlights, heatmap, solution){
         this.solve = new SyntaxSolve(task, code, waitTime);
         this.evaluate = [];
         evaluationHighlights.forEach(highlights => {
@@ -15,6 +15,7 @@ class SyntaxHighlighting {
         this.reveal = new SyntaxReveal(task, code, solution);
 
         this.syntaxData = {
+            id: id,
             type: type,
             solve: this.solve,
             evaluate: this.evaluate,

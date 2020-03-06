@@ -64,9 +64,19 @@ function listenForContinue() {
 }
 
 function parseData() {
-    survey.push(new Syntax(Examples.syntax.task, Examples.syntax.code, 0, Examples.syntax.highlights, Examples.syntax.heatmap, Examples.syntax.solution));
-    survey.push(new TypeDetermination(Examples.type.code, Examples.type.highlight, 0, Examples.type.evaluations, Examples.type.expression, Examples.type.histogramm, Examples.type.solution));
-    survey.push(new Microtask(Examples.microtask.task, Examples.microtask.code, 0, Examples.microtask.evaluations, Examples.microtask.discussionSolutions, Examples.microtask.solution));
+    var taskList = JSON.parse(document.getElementById("task-list").innerHTML);
+
+    for (let i = 0; i < taskList.length; i++) {
+        let task = taskList[i];
+
+        if(task.type === "syntax") {
+            survey.push(new Syntax(task.id, `<span class="bold">Aufgabe ${i+1}:</span> ` + task.task, task.code, task.waitTime, task.highlights, task.heatmap, task.solution));
+        } else if (task.type === "type") {
+            survey.push(new TypeDetermination(task.id, `<span class="bold">Aufgabe ${i+1}:</span> `, task.code, task.highlight, task.waitTime, task.evaluations, task.expression, task.histogramm, task.solution));
+        } else if (task.type === "microtask") {
+            survey.push(new Microtask(task.id, `<span class="bold">Aufgabe ${i+1}:</span> ` + task.task, task.code, task.waitTime, task.evaluations, task.discussionSolutions, task.solution));
+        }
+    }
 }
 
 function initSurvey() {
@@ -79,7 +89,7 @@ function initSurvey() {
 
 function createCards() {
 
-    cards.push(new WaitPhase("Bitte warten Sie, bis die Umfrage startet..."));
+    cards.push(new WaitPhase("Bitte warten Sie, bis die Umfrage startet...", {}));
 
     survey.forEach(type => {
         var task = type.data;
@@ -90,7 +100,7 @@ function createCards() {
 
             //create waitPhase
             if (task.solve.waitTime > 0) {
-                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", task.solve.waitTime);
+                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime});
                 waitPhase.addEventListener("waitEnd", endCard);
                 cards.push(waitPhase);
             }
@@ -100,6 +110,7 @@ function createCards() {
             });
             cards.push(new SyntaxDiscussion(task.discussion));
             cards.push(new SyntaxReveal(task.reveal));
+            cards.push(new WaitPhase(`Füllen Sie bitte nun einen UEQ auf dem rechten Bildschirm aus! Die zugehörige ID lautet: ${task.id}`, {icon: "arrow_right_alt"}));
         }
 
         //create cards if the task type is type determination
@@ -108,7 +119,7 @@ function createCards() {
 
             //create waitPhase
             if (task.solve.waitTime > 0) {
-                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", task.solve.waitTime);
+                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime});
                 waitPhase.addEventListener("waitEnd", endCard);
                 cards.push(waitPhase);
             }
@@ -118,6 +129,7 @@ function createCards() {
             });
             cards.push(new TypeDiscussion(task.discussion));
             cards.push(new TypeReveal(task.reveal));
+            cards.push(new WaitPhase(`Füllen Sie bitte nun einen UEQ auf dem rechten Bildschirm aus! Die zugehörige ID lautet: ${task.id}`, {icon: "arrow_right_alt"}));
         }
 
         //create cards if the task type is microtask
@@ -126,7 +138,7 @@ function createCards() {
 
             //create waitPhase
             if (task.solve.waitTime > 0) {
-                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", task.solve.waitTime);
+                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime});
                 waitPhase.addEventListener("waitEnd", endCard);
                 cards.push(waitPhase);
             }
@@ -136,8 +148,12 @@ function createCards() {
             });
             cards.push(new MicrotaskDiscussion(task.discussion));
             cards.push(new MicrotaskReveal(task.reveal));
+            cards.push(new WaitPhase(`Füllen Sie bitte nun einen UEQ auf dem rechten Bildschirm aus! Die zugehörige ID lautet: ${task.id}`, {icon: "arrow_right_alt"}));
         }
     });
+
+    cards.push(new WaitPhase("Füllen Sie bitte nun noch einen SUS-Fragebogen auf dem rechten Bildschirm aus!", {icon: "edit"}));
+    cards.push(new WaitPhase("Vielen Dank für Ihre Teilnahme! Bitte schließen Sie unter keinen Umständen das Browserfenster oder die Anwendung!", {icon: "tag_faces"}));
 }
 
 function showCard(index) {

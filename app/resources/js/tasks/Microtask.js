@@ -5,7 +5,7 @@ var type = "microtask";
 
 class Microtask {
 
-    constructor(task, code, waitTime, evaluations, discussionSolutions, solution){
+    constructor(id, task, code, waitTime, evaluations, discussionSolutions, solution){
         this.solve = new MicrotaskSolve(task, code, waitTime);
         this.evaluate = [];
         evaluations.forEach(evaluation => {
@@ -15,6 +15,7 @@ class Microtask {
         this.reveal = new MicrotaskReveal(task, solution);
 
         this.typeData = {
+            id: id,
             type: type,
             solve: this.solve,
             evaluate: this.evaluate,

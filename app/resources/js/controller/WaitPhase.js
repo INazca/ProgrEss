@@ -1,13 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 import Controller from "./Controller.js";
-import CardView from "../views/CardView.js";
+import WaitView from "../views/WaitView.js";
 import { Event } from "../utils/Observable.js";
 
 class WaitPhase extends Controller {
 
-    constructor(message, waitTime) {
-        super({controlType: "wait", waitTime: waitTime}, new CardView(message, "wait", "wait-phase"));
+    constructor(message, options) {
+        super({controlType: "wait", waitTime: options.waitTime}, new WaitView(message, options.icon));
     }
 
     show() {
