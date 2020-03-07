@@ -4,14 +4,19 @@ import CardView from "../CardView.js";
 
 var colorCorrect = "#276419",
     colorRest = "#de77ae",
-    template = "type-determination-discussion";
+    template = "type-determination-discussion",
+    id = 0;
 
 class HistogrammView extends CardView {
 
     constructor(task, expression, histogramm, type) {
         super(task, type, template);
 
-        this.card.getElementsByClassName("expression")[0].innerHTML = expression;
+        this.containerClass = "histogramm-" + id;
+        this.card.getElementsByClassName("histogramm-container")[0].classList.add(this.containerClass);
+        id++;
+
+        this.card.getElementsByClassName("expression")[0].innerHTML = expression;      
         this.data = histogramm;
 
         this.highestY = calcHighestY(this.data);
@@ -19,7 +24,7 @@ class HistogrammView extends CardView {
 
     drawHistogramm() {
         //create the barplot
-        var histogramm = d3.select(".histogramm-container"),
+        var histogramm = d3.select("." + this.containerClass),
             margin = { top: 20, right: 20, bottom: 30, left: 30 },
             width = document.getElementsByClassName("histogramm-container")[0].offsetWidth - (margin.left + margin.right),
             height = document.getElementsByClassName("histogramm-container")[0].offsetHeight - (margin.top + margin.bottom),

@@ -65,7 +65,13 @@ function listenForContinue() {
 }
 
 function parseData() {
-    var taskList = JSON.parse(document.getElementById("task-list").innerHTML);
+    var dataString = document.getElementById("task-list").innerHTML,
+        taskList;
+
+    dataString = dataString.replace(/&lt;/g, "<");
+    dataString = dataString.replace(/&gt;/g, ">");
+
+    taskList = JSON.parse(dataString);
 
     for (let i = 0; i < taskList.length; i++) {
         let task = taskList[i];
