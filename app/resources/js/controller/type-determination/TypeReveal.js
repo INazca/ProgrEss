@@ -1,6 +1,7 @@
 /* eslint-env browser */
 import Controller from "../Controller.js";
 import EditorSolutionView from "../../views/subviews/EditorSolutionView.js";
+import Logger from "../../utils/Logger.js";
 
 class TypeReveal extends Controller {
 
@@ -20,6 +21,11 @@ class TypeReveal extends Controller {
             this.view.setStyle();
             this.initialized = true;
         }
+    }
+
+    end() {
+        this.view.hideCardLeft();
+        Logger.addLog("typeEnd");
     }
 }
 

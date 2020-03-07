@@ -2,6 +2,7 @@
 /* eslint-env browser */
 import Controller from "../Controller.js";
 import EditorView from "../../views/subviews/EditorView.js";
+import Logger from "../../utils/Logger.js";
 
 class MicrotaskReveal extends Controller {
 
@@ -16,6 +17,11 @@ class MicrotaskReveal extends Controller {
             this.view.editorStyle = "editor-solution";
             this.initialized = true;
         }
+    }
+
+    end() {
+        this.view.hideCardLeft();
+        Logger.addLog("microtaskEnd");
     }
 }
 

@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 import Animation from "../utils/Animation.js";
+import Logger from "../utils/Logger.js";
 
 var cardsContainer = document.getElementById("cards-container"),
     typeDisplay = document.getElementsByClassName("type-display-wrapper")[0],
@@ -229,7 +230,9 @@ function updateTypeDisplay(self, type) {
     if(self.currentTaskType === "") {
         updateTypeDisplayContent(type);
         setFlex(typeDisplay);
+        Logger.addLog(type + "Started");
     } else if(type !== self.currentTaskType) {
+        Logger.addLog(type + "Started");
         $(typeDisplay).hide("fade", {duration: 1000, complete: setFlex.bind(this, updateTypeDisplayContent.bind(this, type))});
     }
     self.currentTaskType = type;

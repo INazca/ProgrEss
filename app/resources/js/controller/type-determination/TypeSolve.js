@@ -3,6 +3,7 @@
 import Controller from "../Controller.js";
 import EditorDeterminationView from "../../views/subviews/EditorDeterminationView.js";
 import Animation from "../../utils/Animation.js";
+import Logger from "../../utils/Logger.js";
 
 class TypeSolve extends Controller {
 
@@ -45,12 +46,14 @@ class TypeSolve extends Controller {
 }
 
 function onLegal(view) {
+    Logger.addLog("legalClicked");
     Animation.click(this.legalButton);
     view.enableForm();
     this.isLegal = true;
 }
 
 function onIllegal(view) {
+    Logger.addLog("illegalClicked");
     Animation.click(this.illegalButton);
     view.disableForm();
     this.isLegal = false;

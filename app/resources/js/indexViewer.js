@@ -18,6 +18,7 @@ import MicrotaskDiscussion from "./controller/microtask/MicrotaskDiscussion.js";
 import MicrotaskReveal from "./controller/microtask/MicrotaskReveal.js";
 import Animation from "./utils/Animation.js";
 import WaitPhase from "./controller/WaitPhase.js";
+import Logger from "./utils/Logger.js";
 
 var prev,
     next,
@@ -166,12 +167,27 @@ function showCard(index) {
     }
 
     //activate buttons for switching cards, choose the right cases
-    if (index === 0) {
-        view.updateUI(cards[index].controlType, false, cards[index + 1].viewable, isCorrect, cards[index].type);
-    } else if (index === cards.length - 1) {
-        view.updateUI(cards[index].controlType, cards[index - 1].viewable, false, isCorrect, cards[index].type);
+    let prevCard = cards[index - 1],
+        nextCard = cards[index + 1];
+  
+    if (index <= 1) {
+        view.updateUI(cards[index].controlType, false, nextCard.viewable, isCorrect, cards[index].type);
+    } else if (index === cards.length - 2) {
+        if(prevCard.controlType === "wait") {
+            prevCard = cards[index - 2];
+        }
+        if(nextCard.controlType === "wait") {
+            nextCard = cards[index + 2];
+        }
+        view.updateUI(cards[index].controlType, prevCard.viewable, false, isCorrect, cards[index].type);
     } else {
-        view.updateUI(cards[index].controlType, cards[index - 1].viewable, cards[index + 1].viewable, isCorrect, cards[index].type);
+        if(prevCard.controlType === "wait") {
+            prevCard = cards[index - 2];
+        }
+        if(nextCard.controlType === "wait") {
+            nextCard = cards[index + 2];
+        }
+        view.updateUI(cards[index].controlType, prevCard.viewable, nextCard.viewable, isCorrect, cards[index].type);
     }
 }
 
@@ -202,20 +218,33 @@ function endSurvey() {
 
 //event handler
 function onPrev() {
+    Logger.addLog("previousClicked");
     Animation.click(prev);
-    activeIndex--;
-    hideCardRight(activeIndex + 1);
+    if(cards[activeIndex - 1].controlType === "wait") {
+        activeIndex -= 2;
+        hideCardRight(activeIndex + 2);
+    } else {
+        activeIndex--;
+        hideCardRight(activeIndex + 1);
+    }
     showCard(activeIndex);
 }
 
 function onNext() {
+    Logger.addLog("nextClicked");
     Animation.click(next);
-    activeIndex++;
-    hideCardLeft(activeIndex - 1);
+    if(cards[activeIndex + 1].controlType === "wait") {
+        activeIndex += 2;
+        hideCardLeft(activeIndex - 2);
+    } else {
+        activeIndex++;
+        hideCardLeft(activeIndex - 1);
+    }
     showCard(activeIndex);
 }
 
 function onCorrect() {
+    Logger.addLog("correctClicked");
     if (!correct.classList.contains("inactive")) {
         Animation.click(correct);
         cards[activeIndex].isCorrect = true;
@@ -224,6 +253,7 @@ function onCorrect() {
 }
 
 function onIncorrect() {
+    Logger.addLog("incorrectClicked");
     if (!incorrect.classList.contains("inactive")) {
         Animation.click(incorrect);
         cards[activeIndex].isCorrect = false;
@@ -232,6 +262,7 @@ function onIncorrect() {
 }
 
 function onSubmit() {
+    Logger.addLog("submitClicked");
     Animation.click(submit);
     endCard();
 }

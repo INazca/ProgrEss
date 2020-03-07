@@ -1,6 +1,7 @@
 /* eslint-env browser */
 import Controller from "../Controller.js";
 import EditorAnalyseView from "../../views/subviews/EditorAnalyseView.js";
+import Logger from "../../utils/Logger.js";
 
 class SyntaxReveal extends Controller {
 
@@ -17,6 +18,11 @@ class SyntaxReveal extends Controller {
                 this.initialized = true;
             }
         };
+    }
+
+    end() {
+        this.view.hideCardLeft();
+        Logger.addLog("syntaxEnd");
     }
 }
 
