@@ -7,7 +7,7 @@ import { Event } from "../utils/Observable.js";
 class WaitPhase extends Controller {
 
     constructor(message, options) {
-        super({controlType: "wait", waitTime: options.waitTime}, new WaitView(message, options.icon));
+        super({controlType: options.controlType || "wait", waitTime: options.waitTime}, new WaitView(message, options.icon));
     }
 
     show() {

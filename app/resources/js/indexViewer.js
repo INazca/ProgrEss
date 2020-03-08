@@ -28,7 +28,8 @@ var prev,
     view,
     survey = [],
     cards = [],
-    activeIndex = -1;
+    activeIndex = -1,
+    isForwardable = true;
 
 function init() {
     initControls();
@@ -58,7 +59,7 @@ function listenForContinue() {
     document.onkeydown = function (e) {
         e = e || window.event;
 
-        if (e.code === "End") {
+        if (e.code === "End" && isForwardable) {
             endCard();
         }
     };
@@ -107,7 +108,7 @@ function createCards() {
 
             //create waitPhase
             if (task.solve.waitTime > 0) {
-                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime});
+                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime, controlType: "wait-no-forward"});
                 waitPhase.addEventListener("waitEnd", endCard);
                 cards.push(waitPhase);
             }
@@ -126,7 +127,7 @@ function createCards() {
 
             //create waitPhase
             if (task.solve.waitTime > 0) {
-                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime});
+                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime, controlType: "wait-no-forward"});
                 waitPhase.addEventListener("waitEnd", endCard);
                 cards.push(waitPhase);
             }
@@ -145,7 +146,7 @@ function createCards() {
 
             //create waitPhase
             if (task.solve.waitTime > 0) {
-                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime});
+                let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime, controlType: "wait-no-forward"});
                 waitPhase.addEventListener("waitEnd", endCard);
                 cards.push(waitPhase);
             }
@@ -213,6 +214,13 @@ function endCard() {
     if (activeIndex < cards.length - 1) {
         activeIndex++;
         showCard(activeIndex);
+
+        //disable/enable forwarding by pressing "END"
+        if(cards[activeIndex].controlType === "discussion" || cards[activeIndex].controlType === "reveal" || cards[activeIndex].controlType === "wait") {
+            isForwardable = true;
+        } else {
+            isForwardable = false;
+        }
     } else {
         endSurvey();
     }

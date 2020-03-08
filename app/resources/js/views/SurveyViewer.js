@@ -29,7 +29,7 @@ class SurveyViewer {
             updateTypeDisplay(this, taskType);
         }
 
-        if (type === "wait") {
+        if (type === "wait" || type === "wait-no-forward") {
             showControls(this, false, false, false, false);
         } else if (type === "solve") {
             showControls(this, false, false, false, true);
