@@ -5,7 +5,7 @@ import EditorAnalyseView from "../../views/subviews/EditorAnalyseView.js";
 class SyntaxDiscussion extends Controller {
 
     constructor(data) {
-        super(data, new EditorAnalyseView(data.task, data.code, data.controlType));
+        super(data, new EditorAnalyseView(`<div class="discussion-font-color">Statistiken zu den Abgaben</div>` + data.task, data.code, data.controlType));
 
         this.show = function () {
             this.view.showCard();

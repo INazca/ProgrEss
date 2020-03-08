@@ -6,7 +6,7 @@ import Logger from "../../utils/Logger.js";
 class TypeReveal extends Controller {
 
     constructor(data) {
-        super(data, new EditorSolutionView(data.task, data.code, data.solution.type, data.controlType, data.solution.isLegal));
+        super(data, new EditorSolutionView(`<div class="reveal-font-color">Lösung zur Aufgabe</div>` + data.task, data.code, data.solution.type, data.controlType, data.solution.isLegal));
     }
 
     show() {

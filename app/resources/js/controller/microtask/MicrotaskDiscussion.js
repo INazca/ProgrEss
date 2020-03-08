@@ -6,7 +6,7 @@ import EditorsView from "../../views/subviews/EditorsView.js";
 class MicrotaskDiscussion extends Controller {
 
     constructor(data) {
-        super(data, new EditorsView(data.task, data.discussionSolutions, data.controlType));
+        super(data, new EditorsView(`<div class="discussion-font-color">Statistiken zu den Abgaben</div>` + data.task, data.discussionSolutions, data.controlType));
     }
 
     show() {

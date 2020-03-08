@@ -6,7 +6,7 @@ import Logger from "../../utils/Logger.js";
 class SyntaxReveal extends Controller {
 
     constructor(data) {
-        super(data, new EditorAnalyseView(data.task, data.code, data.controlType));
+        super(data, new EditorAnalyseView(`<div class="reveal-font-color">Lösung zur Aufgabe</div>` + data.task, data.code, data.controlType));
 
         this.show = function () {
             this.view.showCard();

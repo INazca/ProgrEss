@@ -7,7 +7,7 @@ import Logger from "../../utils/Logger.js";
 class MicrotaskReveal extends Controller {
 
     constructor(data) {
-        super(data, new EditorView(data.task, data.solution, false, data.controlType));
+        super(data, new EditorView(`<div class="reveal-font-color">Lösung zur Aufgabe</div>` + data.task, data.solution, false, data.controlType));
     }
 
     show() {
