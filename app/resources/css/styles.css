@@ -406,6 +406,7 @@ header {
     border-bottom-left-radius: 0;
     line-height: 0;
     z-index: 2;
+    width: 5rem;
 }
 
 #controls-next {
@@ -415,6 +416,7 @@ header {
     border-bottom-right-radius: 0;
     line-height: 0;
     z-index: 2;
+    width: 5rem;
 }
 
 .controls-correctness {
@@ -466,7 +468,8 @@ header {
 }
 
 .controls {
-    width: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
 }
 
 
