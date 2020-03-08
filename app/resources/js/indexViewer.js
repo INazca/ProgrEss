@@ -56,6 +56,7 @@ function initControls() {
 }
 
 function listenForContinue() {
+    //specifiy a continue-key ("END" atm). Pressing the continue-key will show the next card, when possible for its controlType
     document.onkeydown = function (e) {
         e = e || window.event;
 
@@ -69,6 +70,8 @@ function parseData() {
     var dataString = document.getElementById("task-list").innerHTML,
         taskList;
 
+    //when send to the client as JSON-String every "<" and ">" will be replaced with the corresponding html-codes. Calling these functions and saving the value back to
+    //dataString will recover the initial state
     dataString = dataString.replace(/&lt;/g, "<");
     dataString = dataString.replace(/&gt;/g, ">");
 
@@ -106,7 +109,7 @@ function createCards() {
         if (task.type === "syntax") {
             cards.push(new SyntaxMark(task.solve));
 
-            //create waitPhase
+            //create waitPhase. By giving the controlType "wait-no-forward" to it, it can not be skipped by using the specified continue-key
             if (task.solve.waitTime > 0) {
                 let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime, controlType: "wait-no-forward"});
                 waitPhase.addEventListener("waitEnd", endCard);
@@ -125,7 +128,7 @@ function createCards() {
         if (task.type === "type") {
             cards.push(new TypeSolve(task.solve));
 
-            //create waitPhase
+            //create waitPhase. By giving the controlType "wait-no-forward" to it, it can not be skipped by using the specified continue-key
             if (task.solve.waitTime > 0) {
                 let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime, controlType: "wait-no-forward"});
                 waitPhase.addEventListener("waitEnd", endCard);
@@ -144,7 +147,7 @@ function createCards() {
         if (task.type === "microtask") {
             cards.push(new MicrotaskSolve(task.solve));
 
-            //create waitPhase
+            //create waitPhase. By giving the controlType "wait-no-forward" to it, it can not be skipped by using the specified continue-key
             if (task.solve.waitTime > 0) {
                 let waitPhase = new WaitPhase("Bitte warten Sie, bis andere Teilnehmer ihre Lösung eingereicht haben...", {waitTime: task.solve.waitTime, controlType: "wait-no-forward"});
                 waitPhase.addEventListener("waitEnd", endCard);

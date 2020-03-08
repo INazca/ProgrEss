@@ -46,6 +46,7 @@ function registerEditor(element, code, readOnly) {
         mode: "text/x-java",
         readOnly: readOnly,
         lineNumbers: true,
+        indentUnit: 4,
         // configureMouse: function(){
         //     return{unit: "word"};
         // },
