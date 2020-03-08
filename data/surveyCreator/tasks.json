@@ -242,7 +242,7 @@
             },
             "waitTime": 0,
             "evaluations": [],
-            "expression": "array",
+            "expression": "i % 2 == 0",
             "histogramm": [
                 {
                     "group": "boolean",
@@ -310,7 +310,7 @@
                 { "isLegal": true, "type": "boolean", "editor": "17" },
                 { "isLegal": true, "type": "int", "editor": "26" }
             ],
-            "expression": "array",
+            "expression": "i % 2 == 0",
             "histogramm": [
                 {
                     "group": "boolean",
@@ -383,7 +383,7 @@
                 { "isLegal": true, "type": "int", "editor": "26" },
                 { "isLegal": true, "type": "boolean", "editor": "4" }
             ],
-            "expression": "array",
+            "expression": "i % 2 == 0",
             "histogramm": [
                 {
                     "group": "boolean",
