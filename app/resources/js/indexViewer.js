@@ -180,21 +180,21 @@ function showCard(index) {
     let prevCard = cards[index - 1],
         nextCard = cards[index + 1];
   
-    if (index <= 1) {
+    if (index === 0) {
         view.updateUI(cards[index].controlType, false, nextCard.viewable, isCorrect, cards[index].type);
     } else if (index === cards.length - 2) {
-        if(prevCard.controlType === "wait") {
+        if(prevCard.controlType === "wait-no-forward") {
             prevCard = cards[index - 2];
         }
-        if(nextCard.controlType === "wait") {
+        if(nextCard.controlType === "wait-no-forward") {
             nextCard = cards[index + 2];
         }
         view.updateUI(cards[index].controlType, prevCard.viewable, false, isCorrect, cards[index].type);
     } else {
-        if(prevCard.controlType === "wait") {
+        if(prevCard.controlType === "wait-no-forward") {
             prevCard = cards[index - 2];
         }
-        if(nextCard.controlType === "wait") {
+        if(nextCard.controlType === "wait-no-forward") {
             nextCard = cards[index + 2];
         }
         view.updateUI(cards[index].controlType, prevCard.viewable, nextCard.viewable, isCorrect, cards[index].type);
@@ -237,7 +237,7 @@ function endSurvey() {
 function onPrev() {
     Logger.addLog("previousClicked");
     Animation.click(prev);
-    if(cards[activeIndex - 1].controlType === "wait") {
+    if(cards[activeIndex - 1].controlType === "wait-no-forward") {
         activeIndex -= 2;
         hideCardRight(activeIndex + 2);
     } else {
@@ -250,7 +250,7 @@ function onPrev() {
 function onNext() {
     Logger.addLog("nextClicked");
     Animation.click(next);
-    if(cards[activeIndex + 1].controlType === "wait") {
+    if(cards[activeIndex + 1].controlType === "wait-no-forward") {
         activeIndex += 2;
         hideCardLeft(activeIndex - 2);
     } else {
