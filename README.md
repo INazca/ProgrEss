@@ -80,4 +80,4 @@ Es gibt 3 verschiedene Arten von Aufgabentypen, *Syntaxhighlighting*, *Typebesti
     - **percentage** - zu wie vielen Prozent die Abgabe als richtig gewertet wurde
 * **solution** - vorgegebener Code, der eine richtige Lösung des Problems darstellt
 
-Zusätzlich muss die Nummer der Umfrage noch in der Datei */lib/ServerConst.js* registriert werden.
+Zusätzlich muss die Nummer der Umfrage noch in der Datei */lib/utils/ServerConst.js* registriert werden.
