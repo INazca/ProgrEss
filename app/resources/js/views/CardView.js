@@ -9,6 +9,8 @@ class CardView extends Observable{
         super();
         this.template = template;
         this.type = type;
+
+        console.log(this.template);
         
         if (type === "evaluate-correctness") {
             this.type = "evaluate";

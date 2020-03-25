@@ -881,18 +881,18 @@ header {
 
 
 /* wait view */
-#wait-phase.survey-card {
+#wait-template.survey-card {
     left: 0;
     z-index: 0;
 }
 
-#wait-phase .task-description {
+#wait-template .task-description {
     color: #666;
     border: none;
     font-weight: 800;
 }
 
-#wait-phase i {
+#wait-template i {
     color: #666;
     font-size: 16vh;
 }
@@ -1065,7 +1065,7 @@ g text {
 
 
 /* microtask editors */
-#microtask-discussion .task-wrapper{
+#editors-template .task-wrapper{
     flex-flow: column;
     padding: 1vh 0;
 }

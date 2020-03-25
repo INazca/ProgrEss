@@ -4,7 +4,6 @@ import Syntax from "../js/tasks/Syntax.js";
 import SyntaxMark from "../js/controller/syntax-highlighting/SyntaxMark.js";
 import SyntaxEvaluation from "../js/controller/syntax-highlighting/SyntaxEvaluation.js";
 import SyntaxDiscussion from "../js/controller/syntax-highlighting/SyntaxDiscussion.js";
-import Examples from "../js/utils/Examples.js";
 import SyntaxReveal from "./controller/syntax-highlighting/SyntaxReveal.js";
 import TypeDetermination from "./tasks/Type.js";
 import TypeSolve from "./controller/type-determination/TypeSolve.js";

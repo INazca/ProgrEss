@@ -65,5 +65,5 @@ ProgrEss/
 * die Views enthaltenen die nötigen Objekte und Methoden, um die für den Benutzer sichtbare Schnittstelle zu manipulieren
 * jeder View in */app/resources/js/views/*, außer "Homeview.js" und "SurveyViewer.js" referenziert ein Template aus */app/views/partials/survey-viewer/*, auf Basis dessen die Survey-Card oder der Wait-View erstellt erstellt wird
 * die Survey-Cards werden mit Hilfe des Views mit den jeweiligen Inhalten befüllt
-* jeder der Subviews erbt mindestens von deren oberster Klasse "Cardview.js"
+* jeder der Subviews und WaitView.js erbt mindestens von deren oberster Klasse "Cardview.js", die zentrale Klasse für Views, die im Survey-Viewer angezeigt werden sollen
 * der "SurveyViewer.js" wird für die Verwaltung aller übergeordneten UI-Elemente, wie z.B. die Card-Controls (Abgabe-Button, Vor-/Zurückbuttons, etc.) genutzt

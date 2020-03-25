@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 import EditorView from "../subviews/EditorView.js";
-import Observable, { Event } from "../../utils/Observable.js";
+import { Event } from "../../utils/Observable.js";
 
 class EditorMarkView extends EditorView{
 

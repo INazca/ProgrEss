@@ -2,7 +2,7 @@
 /* eslint-env browser */
 import EditorView from "../subviews/EditorView.js";
 
-var template = "type-determination-evaluate";
+var template = "type-solution-template";
 
 class EditorSolutionView extends EditorView {
 

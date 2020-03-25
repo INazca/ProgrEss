@@ -1,18 +1,17 @@
-<div id="type-determination-evaluate" class="hidden">
+<div id="type-editor-template" class="hidden">
     <div class="card-content">
         <div class="survey-content-wrapper">
             <div class="survey-content">
 
                 <!-- task description and hints -->
-                <p class="task-description">Korrigieren Sie die gegebene Lösung indem Sie ihre Richtigkeit mit dem
-                    entsprechenden Button bewerten!</p>
+                <p class="task-description"></p>
 
                 <!-- editor -->
                 <div class="task-wrapper">
-                    <div class="editor-container editor-container-te"></div>
+                    <div class="editor-container editor-container-ts"></div>
                 </div>
 
-                <!-- solution to be evaluated -->
+                <!-- form to determine legality and type of expression -->
                 <div class="btn-wrapper legal-controls">
                     <div class="btn-wrapper">
                         <button class="btn btn-primary-color btn-togglable controls-legality expression-legal">zulässig</button>
@@ -22,9 +21,10 @@
                     </div>
                 </div>
                 <form action="">
-                <form action="">
                     <div class="form-group">
-                        <input type="text" class="form-control solution-display" value="solution" disabled>
+                        <input type="text" class="form-control type-input" aria-describedby="type-help">
+                        <small id="type-help" class="form-text text-muted text-centered">Geben Sie den Typ des
+                            Rückgabewerts an</small>
                     </div>
                 </form>
 

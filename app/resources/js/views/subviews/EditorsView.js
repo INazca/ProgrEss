@@ -2,7 +2,7 @@
 /* eslint-env browser */
 import EditorView from "../subviews/EditorView.js";
 
-var template = "microtask-discussion";
+var template = "editors-template";
 
 class EditorDeterminationView extends EditorView {
 

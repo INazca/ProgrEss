@@ -4,7 +4,7 @@ import CardView from "../CardView.js";
 
 var colorCorrect = "#276419",
     colorRest = "#de77ae",
-    template = "type-determination-discussion",
+    template = "histogramm-template",
     id = 0;
 
 class HistogrammView extends CardView {

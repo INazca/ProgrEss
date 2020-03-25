@@ -1,9 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 import EditorView from "../subviews/EditorView.js";
-import Animation from "../../utils/Animation.js";
 
-var template = "type-determination-solve";
+var template = "type-editor-template";
 
 class EditorDeterminationView extends EditorView {
 
