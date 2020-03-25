@@ -9,6 +9,15 @@ Um den Prototypen zu installieren und zu starten, laden Sie sich das Projektverz
 Daraufhin startet sich ein lokaler Server, der über die Adresse *http://localhost:8701/* erreichbar ist
 
 ## Usage
+* [Starten einer Umfrage](#starten-einer-umfrage)
+* [Erstellen einer Umfrage](#erstellen-einer-umfrage)
+
+### Starten einer Umfrage
+Um eine Umfrage zu starten, muss auf der Hauptseite ein valider Umfragecode eingegeben und bestätigt werden. Momentan gibt es 30 verschiedene Umfragen mit Codes von *0001* bis *0030*. Auch selbserstellte Umfragen können mit der Anwendung durchlaufen werden.
+
+An bestimmten Stellen der Anwendung muss momentan noch zusätzlich eingegriffen werden. Dies würde eigentlich durch einen Dozenten geschehen, der dann für alle Teilnehmer gleichzeitig die nächste Phase einleitet, was allerdings in diesem Prototypen bis dato nicht umgesetzt wurde. An einer Stelle, an der das System nicht von alleine weiterschaltet, wie z.B. in den *Discuss*- und *Reveal*-Phasen, muss der Nutzer die **ENDE**-Taste betätigen, um zum nächsten View zu gelangen.
+
+Außerdem sind momentan noch Rudimente der Studie enthalten, die nach jeder Aufgabe angezeigt werden. Diese können allerdings einfach ignoriert und mit der Taste **ENDE** geskippt werden.
 
 ### Erstellen einer Umfrage
 Das Erstellen von Umfragen wird momentan nicht direkt durch die Anwendung unterstützt. Möchte man eine eigene Umfrage erstellen, so muss eine neue survey-JSON-Datei angelegt werden. Diese befinden sich im Ordner */data*. Die neue JSON-Datei muss den gewünschten Umfragecode enthalten.  
@@ -72,10 +81,3 @@ Es gibt 3 verschiedene Arten von Aufgabentypen, *Syntaxhighlighting*, *Typebesti
 * **solution** - vorgegebener Code, der eine richtige Lösung des Problems darstellt
 
 Zusätzlich muss die Nummer der Umfrage noch in der Datei */lib/ServerConst.js* registriert werden.
-
-### Starten einer Umfrage
-Um eine Umfrage zu starten, muss auf der Hauptseite ein valider Umfragecode eingegeben und bestätigt werden. Momentan gibt es 30 verschiedene Umfragen mit Codes von *0001* bis *0030*. Auch selbserstellte Umfragen können mit der Anwendung durchlaufen werden.
-
-An bestimmten Stellen der Anwendung muss momentan noch zusätzlich eingegriffen werden. Dies würde eigentlich durch einen Dozenten geschehen, der dann für alle Teilnehmer gleichzeitig die nächste Phase einleitet, was allerdings in diesem Prototypen bis dato nicht umgesetzt wurde. An einer Stelle, an der das System nicht von alleine weiterschaltet, wie z.B. in den *Discuss*- und *Reveal*-Phasen, muss der Nutzer die **ENDE**-Taste betätigen, um zum nächsten View zu gelangen.
-
-Außerdem sind momentan noch Rudimente der Studie enthalten, die nach jeder Aufgabe angezeigt werden. Diese können allerdings einfach ignoriert und mit der Taste **ENDE** geskippt werden.
